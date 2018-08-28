@@ -42,23 +42,27 @@
 
                         <dx-scheduler 
                             [dataSource]="dataSource"
-                            [views]="['month', 'week']"
+                            [views]="['month', 'week', 'agenda']"
                             currentView="month"
                             [currentDate]="currentDate"
                             [firstDayOfWeek]="1"
-                            [startDayHour]="8"
-                            [endDayHour]="18"
+                            [startDayHour]="6"
+                            [endDayHour]="20"
                             [showAllDayPanel]="false"
                             [height]="600"
                             [groups]="['employeeID']"
+                            
                             resourceCellTemplate="resourceCellTemplate"
-                            dataCellTemplate="dataCellTemplate">
+                            dataCellTemplate="dataCellTemplate"
+                            >
 
                         <dxi-resource
                             fieldExpr="employeeID" 
-                            [allowMultiple]="false" 
+                            [allowMultiple]="true" 
                             [dataSource]="resourcesDataSource" 
-                            label="Employee">
+                            label="Employee"
+                            >
+                            
                         </dxi-resource>
 
                         <div *dxTemplate="let employee of 'resourceCellTemplate'">        

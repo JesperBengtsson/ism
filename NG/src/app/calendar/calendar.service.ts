@@ -17,18 +17,18 @@ export class Data {
 
 
 let employees: Employee[] = [{
-    text : "Red",
-    id: 1,
-    color: "#4589f7",
-    avatar: "src/img/joakim.png",
-    description: "Blue conference room"
-}, {
     text : "Blue",
+    id: 1,
+    color: "#425fac",
+    avatar: "src/img/blue.png",
+    description: "Blue conference room"
+}, /*{
+    text : "Red",
     id: 2,
-    color: "#ef0707",
-    avatar: "src/img/kalle.png",
+    color: "#dd2235",
+    avatar: "src/img/red.png",
     description: "Red conference room"
-}
+}*/
 ];
 
 let data: Data[] = [{ 

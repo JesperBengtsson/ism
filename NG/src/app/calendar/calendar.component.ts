@@ -9,8 +9,13 @@ import DataSource from 'devextreme/data/data_source';
   styleUrls: ['./calendar.component.css'],
   providers: [Service]
 })
-export class CalendarComponent {
-  dataSource: any;
+export class CalendarComponent implements OnInit {
+
+    ngOnInit() {
+        
+    }
+
+    dataSource: any;
     currentDate = new Date(Date.parse(Date()));
     resourcesDataSource: Employee[];
 

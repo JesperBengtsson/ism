@@ -14,11 +14,11 @@ import { animate, transition, trigger, style, query, group, state } from '@angul
         /* 2 */ group([  // block executes in parallel
           query(':enter', [
             style({ transform: 'translateX(100%)' }),
-            animate('200ms', style({ transform: 'translateX(0%)' }))
+            animate('300ms', style({ transform: 'translateX(0%)' }))
           ], { optional: true }),
           query(':leave', [
             style({ transform: 'translateX(0%)' }),
-            animate('200ms', style({ transform: 'translateX(100%)' }))
+            animate('300ms', style({ transform: 'translateX(100%)' }))
           ], { optional: true }),
         ])
       ])
