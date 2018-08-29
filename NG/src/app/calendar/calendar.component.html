@@ -3,36 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <title>isMoblie</title>
 
     <!-- meta data -->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
-
-    <!-- title and favicon -->
-
-    <title>About Hiryu Kai</title>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    
-
-    
-
-
 
 
 </head>
-<body class="dx-viewport">
-    <!-- TMP TMP TMP TMP Introduction TMP TMP TMP TMP -->
 
-    <!--( b ) Profile Page Content -->
+<body>
+
+    <!-- SCHEDULER -->
 
     <div class="content-container col-md-12 col-sm-12">
-
-        <!--( A ) Story of Glory -->
 
         <div class="clearfix full-height">
             <h2 class="small-heading">SCHEDULE</h2>
@@ -40,7 +29,7 @@
                 <div class="col-md-10">
                     <div class="row">
 
-                        <dx-scheduler 
+                        <dx-scheduler
                             [dataSource]="dataSource"
                             [views]="['month', 'week', 'agenda']"
                             currentView="month"
@@ -51,45 +40,35 @@
                             [showAllDayPanel]="false"
                             [height]="600"
                             [groups]="['employeeID']"
-                            
                             resourceCellTemplate="resourceCellTemplate"
-                            dataCellTemplate="dataCellTemplate"
-                            >
+                            dataCellTemplate="dataCellTemplate">
 
-                        <dxi-resource
-                            fieldExpr="employeeID" 
-                            [allowMultiple]="true" 
-                            [dataSource]="resourcesDataSource" 
-                            label="Employee"
-                            >
-                            
-                        </dxi-resource>
+                            <dxi-resource
+                                fieldExpr="employeeID"
+                                [allowMultiple]="true"
+                                [dataSource]="resourcesDataSource"
+                                label="Employee">
+                            </dxi-resource>
 
-                        <div *dxTemplate="let employee of 'resourceCellTemplate'">        
-                            <div class='name' [style.background]="employee.color">
-                                <h2>{{employee.text}}</h2>
+                            <div *dxTemplate="let employee of 'resourceCellTemplate'">
+                                <div class='name' [style.background]="employee.color">
+                                    <h2>{{employee.text}}</h2>
+                                </div>
+                                <div class='avatar'>
+                                    <img [src]="employee.data.avatar" />
+                                </div>
+                                <div class='info' [style.color]="employee.color">
+                                    <br/>
+                                    <b>{{employee.data.description}}</b>
+                                </div>
                             </div>
-                            <div class='avatar'>
-                                <img [src]="employee.data.avatar" />
-                            </div>
-                            <div class='info' [style.color]="employee.color">
-                                <br/>
-                                <b>{{employee.data.description}}</b>
-                            </div>
-                        </div>
 
-                        <div *dxTemplate="let cellData of 'dataCellTemplate'" class='employee-weekend' [ngClass]="markWeekEnd(cellData)">
-                            <div class='day-cell'>{{cellData.text}}</div>
-                        </div>
+                            <div *dxTemplate="let cellData of 'dataCellTemplate'" class='employee-weekend' [ngClass]="markWeekEnd(cellData)">
+                                <div class='day-cell'>{{cellData.text}}</div>
+                            </div>
 
                         </dx-scheduler>
 
-
-
-
-
-
-                        
                     </div>
                 </div>
             </div>
@@ -97,6 +76,6 @@
         </div>
 
     </div>
-    <!-- Social Media Icons [ END ] -->
 </body>
+
 </html>
