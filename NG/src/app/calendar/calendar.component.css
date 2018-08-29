@@ -302,7 +302,7 @@
     }
 
     ::ng-deep .dx-scheduler-date-table-other-month.dx-scheduler-date-table-cell {
-        opacity: 1;
+        
         color: rgba(0, 0, 0, 0.3);
     }
     
@@ -355,24 +355,12 @@
         background-repeat: no-repeat;
     }
     
-    ::ng-deep .employee-1 {
-        background-color: rgba(86, 202, 133, 0.1);
-    }
+
     
-    ::ng-deep .employee-2 {
-        background-color: rgba(255, 151, 71, 0.1);
-    }
-    
-    ::ng-deep .employee-weekend-1 {
-        background-color: rgba(86, 202, 133, 0.2);
-    }
-    
-    ::ng-deep .employee-weekend-2 {
-        background-color: rgba(255, 151, 71, 0.2);
-    }
 
 
-    /deep/ .dx-scheduler-cell-sizes-vertical{
+
+    ::ng-deep .dx-scheduler-cell-sizes-vertical{
         height: 25px;
     }
     

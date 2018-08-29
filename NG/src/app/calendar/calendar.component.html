@@ -38,7 +38,7 @@
                             [endDayHour]="20"
                             [showAllDayPanel]="false"
                             [height]="800"
-                            [groups]="['employeeID']"
+                            [groups]="['roomID']"
                             resourceCellTemplate="resourceCellTemplate"
                             dataCellTemplate="dataCellTemplate"
                             >
@@ -61,26 +61,27 @@
                             groupOrientation="vertical">   
                             </dxi-view>
                             <dxi-resource
-                                fieldExpr="employeeID"
+                                fieldExpr="roomID"
                                 [allowMultiple]="false"
                                 [dataSource]="resourcesDataSource"
-                                label="Employee"
+                                label="Conference Room"
+                                
                                 >
                             </dxi-resource>
 
-                            <div *dxTemplate="let employee of 'resourceCellTemplate'">
-                                <div class='name' [style.background]="employee.color">
-                                    <h2>{{employee.text}}</h2>
+                            <div *dxTemplate="let room of 'resourceCellTemplate'">
+                                <div class='name' [style.background]="room.color">
+                                    <h2>{{room.text}}</h2>
                                 </div>
                                 <div class='avatar'>
-                                    <img [src]="employee.data.avatar" />
+                                    <img [src]="room.data.avatar" />
                                 </div>
-                                <div class='info' [style.color]="employee.color">
+                                <div class='info' [style.color]="room.color">
                                     <br/>
-                                    <b>{{employee.data.description}}</b>
+                                    <b>{{room.data.description}}</b>
                                 </div>
                             </div>
-                            <div *dxTemplate="let cellData of 'dataCellTemplate'" class='employee-weekend' [ngClass]="markWeekEnd(cellData)">
+                            <div *dxTemplate="let cellData of 'dataCellTemplate'" class='room-weekend' [ngClass]="markWeekEnd(cellData)">
                                 <div class='day-cell'>{{cellData.text}}</div>
                             </div>
                         

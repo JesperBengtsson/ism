@@ -1,5 +1,5 @@
 import { Component, OnInit, NgModule, enableProdMode } from '@angular/core';
-import { Service, Employee } from './calendar.service';
+import { Service, Room } from './calendar.service';
 
 import DataSource from 'devextreme/data/data_source';
 
@@ -15,23 +15,23 @@ export class CalendarComponent implements OnInit {
         
     }
 
-    conferenceRoom = [
+    /*conferenceRoom = [
         { text : "Blue", conferenceRoomID : 1 },
         { text : "Red", conferenceRoomID : 2 }
     
-    ];
+    ];*/
 
 
     dataSource: any;
     currentDate = new Date(Date.parse(Date()));
-    resourcesDataSource: Employee[];
+    resourcesDataSource: Room[];
 
     constructor(service: Service) {
         this.dataSource = new DataSource({
             store: service.getData()
         });
 
-        this.resourcesDataSource = service.getEmployees();
+        this.resourcesDataSource = service.getRooms();
     }
 
     markWeekEnd(cellData) {
@@ -40,8 +40,8 @@ export class CalendarComponent implements OnInit {
             return day === 0 || day === 6;
         }
         var classObject = {};
-        classObject["employee-" + cellData.groups.employeeID] = true;
-        classObject['employee-weekend-' + cellData.groups.employeeID] = isWeekEnd(cellData.startDate)
+        classObject["room-" + cellData.groups.roomID] = true;
+        classObject['room-weekend-' + cellData.groups.roomID] = isWeekEnd(cellData.startDate)
         
         return classObject;
     }
@@ -50,7 +50,7 @@ export class CalendarComponent implements OnInit {
         var classObject = {
             "day-cell": true
         }
-        classObject[cellData.startDate.getDate(), cellData.groups.employeeID] = true;
+        classObject[cellData.startDate.getDate(), cellData.groups.roomID] = true;
         
         return classObject;
     }
