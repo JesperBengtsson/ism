@@ -15,6 +15,13 @@ export class CalendarComponent implements OnInit {
         
     }
 
+    conferenceRoom = [
+        { text : "Blue", conferenceRoomID : 1 },
+        { text : "Red", conferenceRoomID : 2 }
+    
+    ];
+
+
     dataSource: any;
     currentDate = new Date(Date.parse(Date()));
     resourcesDataSource: Employee[];

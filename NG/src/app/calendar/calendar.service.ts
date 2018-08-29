@@ -7,7 +7,11 @@ export class Employee {
     avatar: string;
 	description: string;
 }
-
+/*
+export class ConferenceRoom {
+    text: string;
+    conferenceRoomID: number;
+}*/
 export class Data {
     text: string;
     employeeID: number;
@@ -16,21 +20,33 @@ export class Data {
 }
 
 
+
 let employees: Employee[] = [{
     text : "Blue",
     id: 1,
     color: "#425fac",
     avatar: "src/img/blue.png",
-    description: "Blue conference room"
-}, /*{
+    description: "Blue"
+}, {
     text : "Red",
     id: 2,
     color: "#dd2235",
     avatar: "src/img/red.png",
-    description: "Red conference room"
-}*/
+    description: "Red"
+}
+];
+/*
+let conferenceRoom: ConferenceRoom[] = [{
+    text : "Blue",
+    conferenceRoomID : 1
+}, {
+    text : "Red",
+    conferenceRoomID : 2
+}
+
 ];
 
+*/
 let data: Data[] = [{ 
         text: "Helen",
         employeeID: 2,
@@ -107,4 +123,7 @@ export class Service {
     getData() {
         return data;
     }
+/*    getConferenceRoom() {
+        return conferenceRoom;
+    }*/
 }
