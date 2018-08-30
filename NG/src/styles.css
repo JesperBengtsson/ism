@@ -1,8 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
 
+    /*----- stylesheet imports -----*/
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
+    /*---- style for calendar popup ----*/
 .dx-datebox-wrapper > .dx-overlay-content {
     transform: translate(249px, 296px) !important;
 }

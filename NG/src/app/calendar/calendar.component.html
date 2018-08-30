@@ -12,8 +12,7 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />   
 
 </head>
 
@@ -40,8 +39,8 @@
                             [height]="800"
                             [groups]="['roomID']"
                             resourceCellTemplate="resourceCellTemplate"
-                            dataCellTemplate="dataCellTemplate"
-                            >
+                            dataCellTemplate="dataCellTemplate">
+                            
                             <dxi-view
                                 type="week"
                                 name="Week"
@@ -49,24 +48,32 @@
                                 [cellDuration]="30"
                                 [intervalCount]="1">
                             </dxi-view>
+
                             <dxi-view
                                 type="month"
                                 name="Month"
                                 groupOrientation="vertical"
                                 [intervalCount]="1">
                             </dxi-view>
+
                             <dxi-view
-                            type="agenda"
-                            name="Agenda"
-                            groupOrientation="vertical">   
+                                type="agenda"
+                                name="Agenda"
+                                groupOrientation="vertical">   
                             </dxi-view>
+
+                            <dxi-view
+                                type="day"
+                                name="Day"
+                                groupOrientation="horizontal"
+                                [intervalCount]="2">
+                            </dxi-view>
+
                             <dxi-resource
                                 fieldExpr="roomID"
                                 [allowMultiple]="false"
                                 [dataSource]="resourcesDataSource"
-                                label="Conference Room"
-                                
-                                >
+                                label="Conference Room">
                             </dxi-resource>
 
                             <div *dxTemplate="let room of 'resourceCellTemplate'">

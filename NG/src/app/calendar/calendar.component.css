@@ -333,7 +333,6 @@
     ::ng-deep .name h2 {
         color: #fff;
         text-align: left;
-        padding: 0 0 5px 175px;
     }
     
     ::ng-deep .info {

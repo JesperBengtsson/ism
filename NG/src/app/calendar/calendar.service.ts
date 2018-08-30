@@ -7,19 +7,13 @@ export class Room {
     avatar: string;
 	description: string;
 }
-/*
-export class Room {
-    text: string;
-    conferenceRoomID: number;
-}*/
+
 export class Data {
     text: string;
     roomID: number;
     startDate: Date;
     endDate: Date;
 }
-
-
 
 let rooms: Room[] = [{
     text : "Blue",
@@ -33,20 +27,33 @@ let rooms: Room[] = [{
     color: "#dd2235",
     avatar: "src/img/red.png",
     description: "Red"
-}
-];
-/*
-let conferenceRoom: Room[] = [{
+}, {
     text : "Blue",
-    conferenceRoomID : 1
+    id: 3,
+    color: "#425fac",
+    avatar: "src/img/blue.png",
+    description: "Blue"
 }, {
     text : "Red",
-    conferenceRoomID : 2
+    id: 4,
+    color: "#dd2235",
+    avatar: "src/img/red.png",
+    description: "Red"
+}, {
+    text : "Blue",
+    id: 5,
+    color: "#425fac",
+    avatar: "src/img/blue.png",
+    description: "Blue"
+}, {
+    text : "Red",
+    id: 6,
+    color: "#dd2235",
+    avatar: "src/img/red.png",
+    description: "Red"
 }
-
 ];
 
-*/
 let data: Data[] = [{ 
         text: "Helen",
         roomID: 2,
@@ -123,7 +130,4 @@ export class Service {
     getData() {
         return data;
     }
-/*    getConferenceRoom() {
-        return conferenceRoom;
-    }*/
 }
