@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DxSchedulerModule, DxTemplateModule, DxTabsModule } from 'devextreme-angular';
+import { DxSchedulerModule, DxTemplateModule, DxTabsModule, DxContextMenuModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
@@ -27,7 +27,8 @@ import { Service } from './calendar/calendar.service';
     BrowserAnimationsModule,
     DxSchedulerModule,
     DxTemplateModule,
-    DxTabsModule 
+    DxTabsModule,
+    DxContextMenuModule 
   ],
   providers: [Service],
   bootstrap: [AppComponent]

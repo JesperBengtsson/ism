@@ -1,6 +1,7 @@
-import { Component, OnInit, NgModule, enableProdMode } from '@angular/core';
-import { Service, Room } from './calendar.service';
-
+import { Component, OnInit, NgModule, enableProdMode, ViewChild, ViewChildren, QueryList} from '@angular/core';
+import {Appointment, Resource, ResourceMenuItem, Service} from './calendar.service';
+import {  DxContextMenuComponent } from 'devextreme-angular';
+import { DxSchedulerComponent } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 
 @Component({
@@ -15,44 +16,119 @@ export class CalendarComponent implements OnInit {
         
     }
 
-    /*conferenceRoom = [
-        { text : "Blue", conferenceRoomID : 1 },
-        { text : "Red", conferenceRoomID : 2 }
+    @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
+    @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
+    @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
     
-    ];*/
+    appointmentsData: Appointment[];
+    currentDate: Date = new Date(Date());
+    resourcesData: Resource[];
+    resourcesMenuItems: ResourceMenuItem[];
+    groups: any;
+    crossScrollingEnabled: boolean = false;
 
-
-    dataSource: any;
-    currentDate = new Date(Date.parse(Date()));
-    resourcesDataSource: Room[];
+    contextMenuCellData: any;
+    contextMenuAppointmentData: any;
+    contextMenuTargetedAppointmentData: any;
+    
+    appointmentContextMenuItems: any;
+    cellContextMenuItems: any;
 
     constructor(service: Service) {
-        this.dataSource = new DataSource({
-            store: service.getData()
+        let that = this;
+        this.appointmentsData = service.getAppointments();
+        this.resourcesData = service.getResources();
+        this.resourcesMenuItems = [];
+        this.cellContextMenuItems = [
+            { text: 'New Appointment', onItemClick: () => this.createAppointment()},
+            { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment()},
+            { text: 'Group by Room/Ungroup', beginGroup: true, onItemClick: () => this.groupCell()},
+            { text: 'Go to Today', onItemClick: () => this.showCurrentDate()}
+        ];
+        
+        this.resourcesData.forEach(function (item) {
+            let menuItem: ResourceMenuItem = {
+                text: item.text,
+                id: item.id,
+                color: item.color,
+                onItemClick: that.setResource.bind(that)
+            }
+
+            that.resourcesMenuItems.push(menuItem);
         });
 
-        this.resourcesDataSource = service.getRooms();
+        this.appointmentContextMenuItems = [
+            { text: 'Open', onItemClick: () => this.showAppointment() },
+            { text: 'Delete', onItemClick: () => this.deleteAppointment() },
+            { text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() },
+            { text: 'Set Room', beginGroup: true, disabled: true }
+        ];
+        this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
+    }
+    
+    setResource(itemData) {
+        let data = Object.assign({}, this.contextMenuAppointmentData, {
+            roomId: [itemData.id]
+        });
+
+        this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, data); 
     }
 
-    markWeekEnd(cellData) {
-        function isWeekEnd(date) {
-            var day = date.getDay();
-            return day === 0 || day === 6;
-        }
-        var classObject = {};
-        classObject["room-" + cellData.groups.roomID] = true;
-        classObject['room-weekend-' + cellData.groups.roomID] = isWeekEnd(cellData.startDate)
-        
-        return classObject;
+    createAppointment() {
+        this.scheduler.instance.showAppointmentPopup({
+            startDate: this.contextMenuCellData.startDate
+        }, true);
     }
 
-    markTraining(cellData) {
-        var classObject = {
-            "day-cell": true
-        }
-        classObject[cellData.startDate.getDate(), cellData.groups.roomID] = true;
-        
-        return classObject;
+    createRecurringAppointment() {
+        this.scheduler.instance.showAppointmentPopup({
+            startDate: this.contextMenuCellData.startDate,
+            recurrenceRule: "FREQ=DAILY"
+        }, true);
+    }
+    
+    groupCell() {
+        if(this.groups && this.groups.length) {
+            this.crossScrollingEnabled = false;
+            this.groups=[];
+        } else {
+            this.groups = ["roomId"];
+            this.crossScrollingEnabled = true;
+        };
+    }
+
+    showCurrentDate() {
+        this.currentDate = new Date();
+    }
+
+    showAppointment() {
+        this.scheduler.instance.showAppointmentPopup(this.contextMenuAppointmentData);
+    }
+    
+    deleteAppointment() {
+        this.scheduler.instance.deleteAppointment(this.contextMenuAppointmentData);
+    }
+    
+    repeatAppointmentWeekly() {
+        let updatedData = Object.assign({}, this.contextMenuAppointmentData, {
+          startDate: this.contextMenuTargetedAppointmentData.startDate,
+          recurrenceRule: "FREQ=WEEKLY"
+        });
+
+        this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, updatedData);
+    }
+
+    onContextMenuItemClick(e) {
+        e.itemData.onItemClick(e.itemData);
+    }
+
+    onAppointmentContextMenu(e) {
+        this.contextMenuAppointmentData = e.appointmentData;
+        this.contextMenuTargetedAppointmentData = e.targetedAppointmentData;
+    }
+
+    onCellContextMenu(e) {
+        this.contextMenuCellData = e.cellData;
     }
 
 }

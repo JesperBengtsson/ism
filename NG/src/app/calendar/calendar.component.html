@@ -26,75 +26,49 @@
             <h2 class="small-heading">SCHEDULE</h2>
             <div class="row" style="justify-content: center">
                 <div class="col-md-10">
-                    <div class="row">
+                    
                         
                         <dx-scheduler
-                            [dataSource]="dataSource"
-                            currentView="Week"
+                            [crossScrollingEnabled]="crossScrollingEnabled"
+                            [dataSource]="appointmentsData"
+                            [views]='["day", "month"]'
+                            currentView="month"
+                            [groups]="groups"
+                            recurrenceEditMode= "series"
                             [currentDate]="currentDate"
+                            (onCellContextMenu)="onCellContextMenu($event)"
+                            (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             [firstDayOfWeek]="1"
-                            [startDayHour]="6"
-                            [endDayHour]="20"
-                            [showAllDayPanel]="false"
-                            [height]="800"
-                            [groups]="['roomID']"
-                            resourceCellTemplate="resourceCellTemplate"
-                            dataCellTemplate="dataCellTemplate">
-                            
-                            <dxi-view
-                                type="week"
-                                name="Week"
-                                groupOrientation="vertical"
-                                [cellDuration]="30"
-                                [intervalCount]="1">
-                            </dxi-view>
-
-                            <dxi-view
-                                type="month"
-                                name="Month"
-                                groupOrientation="vertical"
-                                [intervalCount]="1">
-                            </dxi-view>
-
-                            <dxi-view
-                                type="agenda"
-                                name="Agenda"
-                                groupOrientation="vertical">   
-                            </dxi-view>
-
-                            <dxi-view
-                                type="day"
-                                name="Day"
-                                groupOrientation="horizontal"
-                                [intervalCount]="2">
-                            </dxi-view>
-
+                            [startDayHour]="9"
+                            [height]="600">
                             <dxi-resource
-                                fieldExpr="roomID"
-                                [allowMultiple]="false"
-                                [dataSource]="resourcesDataSource"
-                                label="Conference Room">
-                            </dxi-resource>
-
-                            <div *dxTemplate="let room of 'resourceCellTemplate'">
-                                <div class='name' [style.background]="room.color">
-                                    <h2>{{room.text}}</h2>
-                                </div>
-                                <div class='avatar'>
-                                    <img [src]="room.data.avatar" />
-                                </div>
-                                <div class='info' [style.color]="room.color">
-                                    <br/>
-                                    <b>{{room.data.description}}</b>
-                                </div>
-                            </div>
-                            <div *dxTemplate="let cellData of 'dataCellTemplate'" class='room-weekend' [ngClass]="markWeekEnd(cellData)">
-                                <div class='day-cell'>{{cellData.text}}</div>
-                            </div>
-                        
+                                fieldExpr="roomId"
+                                label="Room"
+                                displayExpr="text"
+                                [dataSource]="resourcesData"
+                            ></dxi-resource>
                         </dx-scheduler>
+                        <dx-context-menu #appointmentMenu
+                            [dataSource]="appointmentContextMenuItems"
+                            target=".dx-scheduler-appointment"
+                            (onItemClick)="onContextMenuItemClick($event)"
+                            [width]="200">
+                        <div *dxTemplate="let e of 'item'">
+                            <div *ngIf="e.color">
+                                <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
+                            </div>
+                            <div class="item-text">{{e.text}}</div>
+                            </div>
+                        </dx-context-menu>
+
+                        <dx-context-menu #cellMenu
+                            [dataSource]="cellContextMenuItems"
+                            target=".dx-scheduler-date-table-cell"
+                            (onItemClick)="onContextMenuItemClick($event)"
+                            [width]="200">
+                        </dx-context-menu>
         
-                    </div>
+                    
                 </div>
             </div>
 

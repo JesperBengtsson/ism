@@ -5,5 +5,26 @@
 
     /*---- style for calendar popup ----*/
 .dx-datebox-wrapper > .dx-overlay-content {
-    transform: translate(249px, 296px) !important;
+    transform: translate(285px, 260px) !important
 }
+
+.dx-dropdownlist-popup-wrapper > .dx-overlay-content {
+    transform: translate(44px, 530px) !important;
+    width: 240px !important;
+}
+
+.dx-scheduler-scrollable-fixed-content {
+    padding-bottom: 1px !important;
+}
+
+/*::ng-deep .item-badge {
+    text-align: center;
+      float: left;
+      margin-right: 12px;
+      color: white;
+    width: 18px;
+      height: 18px;
+      font-size: 19.5px;
+      border-radius: 18px;
+      margin-top: 2px;
+  }*/

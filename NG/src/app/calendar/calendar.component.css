@@ -301,67 +301,7 @@
         min-height: 100vh;
     }
 
-    ::ng-deep .dx-scheduler-date-table-other-month.dx-scheduler-date-table-cell {
-        
-        color: rgba(0, 0, 0, 0.3);
-    }
-    
-    ::ng-deep .dx-scheduler-group-header-content {
-        position: relative;
-    }
-    
-    ::ng-deep .dx-template-wrapper {
-        position: relative;
-        height: 100%;
-    }
-    
-    ::ng-deep .avatar {
-        width: 155px;
-        float: left;
-        overflow: hidden;
-        position: relative;
-        height: 125px;
-    }
-    
-    ::ng-deep .name {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-    }
-    
-    ::ng-deep .name h2 {
-        color: #fff;
-        text-align: left;
-    }
-    
-    ::ng-deep .info {
-        width: auto;
-        text-align: left;
-        height: 100%;
-        font-size: 11pt;
-        font-weight: normal;
-        padding: 25px 20px;
-    }
-    
-    ::ng-deep .userInfo div {
-        margin: 20px;
-    }
-    
-    ::ng-deep .day-cell {
-        height: 100%;
-        background-position: center center;
-        background-repeat: no-repeat;
-    }
-    
-
-    
-
-
-
-    ::ng-deep .dx-scheduler-cell-sizes-vertical{
-        height: 25px;
-    }
+  
     
 
     
