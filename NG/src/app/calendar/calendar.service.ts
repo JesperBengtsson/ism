@@ -43,7 +43,7 @@ let appointments: Appointment[] = [
         recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2"
     }, {
         text: "Meeting type 4",
-        roomId: [7],
+        roomId: [4],
         startDate: new Date(2018, 7, 1, 9, 0),
         endDate: new Date(2018, 7, 1, 9, 15),
         recurrenceRule: "FREQ=DAILY;BYDAY=WE;UNTIL=20170601"
@@ -56,13 +56,13 @@ let appointments: Appointment[] = [
         recurrenceException: "20170611T100000"
     }, {
         text: "Meeting type 6",
-        roomId: [3],
+        roomId: [4],
         startDate: new Date(2018, 7, 26, 12, 0),
         endDate: new Date(2018, 7, 26, 13, 35),
         recurrenceRule: "FREQ=YEARLY;BYWEEKNO=24;BYDAY=TH,FR"
     }, {
         text: "Meeting type 7",
-        roomId: [7],
+        roomId: [4],
         startDate: new Date(2018, 7, 26, 14, 30),
         endDate: new Date(2018, 7, 26, 15, 45),
         recurrenceRule: "FREQ=MONTHLY;BYMONTHDAY=27;COUNT=1"
@@ -96,7 +96,7 @@ let resources: Resource[] = [
         color: "#ae7fcc"
     }, {
         text: "Room 404",
-        id: 7,
+        id: 4,
         color: "#ff8817"
     }, {
         text: "Conference Room",
