@@ -2,7 +2,8 @@ import { Component, OnInit, NgModule, enableProdMode, ViewChild, ViewChildren, Q
 import {Appointment, Resource, ResourceMenuItem, Service} from './calendar.service';
 import {  DxContextMenuComponent } from 'devextreme-angular';
 import { DxSchedulerComponent } from 'devextreme-angular';
-import DataSource from 'devextreme/data/data_source';
+import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'calendar',
@@ -12,14 +13,35 @@ import DataSource from 'devextreme/data/data_source';
 })
 export class CalendarComponent implements OnInit {
 
+    countDown: Subscription;
+    timer = (60 * 30);
+
     ngOnInit() {
-        
+        // do init at here for current route.
+        this.countDown = this.startTimer(1000);
     }
+
+    startTimer(time: number): Subscription {
+        return interval(time).subscribe(() => {
+            if(this.timer > 0) {
+                this.timer--;
+            }
+            if(this.timer === 0) {
+                this.router.navigate(['']);
+                this.countDown.unsubscribe();
+            }
+        });
+    }
+
+    
+    
 
     @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
     @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
     @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
     
+
+
     appointmentsData: Appointment[];
     currentDate: Date = new Date(Date());
     resourcesData: Resource[];
@@ -34,7 +56,7 @@ export class CalendarComponent implements OnInit {
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
 
-    constructor(service: Service) {
+    constructor(service: Service, private router : Router) {
         let that = this;
         this.appointmentsData = service.getAppointments();
         this.resourcesData = service.getResources();

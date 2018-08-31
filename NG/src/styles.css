@@ -7,7 +7,7 @@
 .dx-datebox-wrapper > .dx-overlay-content {
     transform: translate(285px, 260px) !important
 }
-
+    /*----- FIX THIS -----*/
 .dx-dropdownlist-popup-wrapper > .dx-overlay-content {
     transform: translate(44px, 530px) !important;
     width: 240px !important;

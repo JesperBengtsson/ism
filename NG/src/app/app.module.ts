@@ -28,7 +28,7 @@ import { Service } from './calendar/calendar.service';
     DxSchedulerModule,
     DxTemplateModule,
     DxTabsModule,
-    DxContextMenuModule 
+    DxContextMenuModule
   ],
   providers: [Service],
   bootstrap: [AppComponent]
