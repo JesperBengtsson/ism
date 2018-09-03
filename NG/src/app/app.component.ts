@@ -1,5 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state } from '@angular/animations';
+import { interval, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -34,9 +36,8 @@ export class AppComponent implements OnInit {
   title = 'isMobile'; 
   openClose:string = 'open';
 
-
   ngOnInit() {
-    
+
   }
   
   getState(outlet) {
