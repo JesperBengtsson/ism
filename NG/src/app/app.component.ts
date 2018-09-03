@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'isMobile'; 
-  openClose:string = 'open';
+  openClose:string = 'close';
 
   ngOnInit() {
 

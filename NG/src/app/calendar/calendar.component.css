@@ -9,13 +9,15 @@
     button,
     input {
         /*font-family: 'Playfair Display', serif;*/
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Domine', serif;
     }
     
     h1,h2,h3,h4,h5,h6 {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Domine', serif;
     }
-    h1{font-family: 'Raleway', sans-serif;}
+    h1 {
+        font-family: 'Domine', serif;
+    }
     
     p {
         /*font-size: 14px;*/
@@ -30,7 +32,7 @@
     }
 
     .intro-content {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Domine', serif;
         position: relative;
         z-index: 10;
         top: 35%;
@@ -47,7 +49,7 @@
     .intro-content h1 {
         color: lightgrey;
         display: block;
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Domine', serif;
         margin-bottom: -15px;
         font-size: 35px;
         font-weight: 700;
@@ -56,7 +58,7 @@
     .intro-content h2 {
         color: lightgrey;
         display: block;
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Domine', serif;
         padding-left: 50px;
         margin-bottom: -15px;
         /*font-size: 55px;*/
@@ -272,6 +274,7 @@
         position: relative;
         display: block;
         text-align: center;
+        font-family: 'Domine', serif;
     }
     
     h2.small-heading::after {
@@ -281,7 +284,7 @@
         content: "\f107";
         left: 48%;
         bottom: -28px;
-        color: #073a63;
+        color: #000;
         background-color: #e8e7e4;
         padding: 0px 8px;
     }
@@ -291,7 +294,7 @@
         bottom: -10px;
         content: "";
         height: 2px;
-        background-color: #073a63;
+        background-color: #000;
         display: block;
         width: 23%;
         left: 38%;
