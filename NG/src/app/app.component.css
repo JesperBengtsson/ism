@@ -176,7 +176,6 @@
     h2.small-heading {
         padding: 60px 0 10px 0;
         font-size: 3.50em;
-        margin-bottom: 60px;
         position: relative;
         display: block;
         text-align: center;
@@ -224,13 +223,64 @@
         width: 100%;
         height: 100vh;
         float: right;
+        position: sticky;
     }
 
     .home-text {
         color: #fff;
-        right: 25vw;
         transform: translateX(15%);
     }
+
+    .home-text li {
+        font-size: 22px;
+        list-style-type: none;
+    }
+    .home-text-heading {
+        color: #fff;
+        transform: translateX(15%);
+    }
+
+    .client-name {
+        padding: 60px 0 10px 0;
+        font-size: 2.50em;
+        position: relative;
+        display: block;
+        text-align: center;
+        color: #fff;
+    }
+
+    .client-info {
+        padding: 0 0 10px 0;
+        font-size: 1.50em;
+        margin-bottom: 60px;
+        position: relative;
+        display: block;
+        text-align: center;
+        color: #fff;
+    }
+
+    .carousel-container {
+        min-height: 400px;
+        max-height: 400px;
+        overflow: hidden;
+        background-color: #00000038;
+        width: 40rem;
+        margin-left: 9rem;
+    }
+
+    .carousel{
+        left: 10px;
+        transform: translateX(-100%);
+    }
+
+    .carousel h2 {
+        color: #fff;
+        font-size: 26px;
+    }
+    
+
+
+  
 
     
     /* ( b ) Introduction Section */
@@ -347,7 +397,6 @@
     .menu {
         float: left;
         padding: 0;
-        background: #000;
         width: 25%;
         height: 100%;
         display: flex;
@@ -355,17 +404,17 @@
         position: absolute;
     }
     
-    .menu > a {
+    .nav-btn {
         width: 100%;
         height: 25%;
         overflow: hidden;
         float: left;
         position: relative;
         cursor: pointer;
-        text-decoration: none;       
+        text-decoration: none;
     }
     
-    .menu > a > img {
+    .nav-btn > img {
         position: absolute;
         top: 0;
         left: 0;
@@ -378,7 +427,7 @@
         height: 100%;
     }
     
-    .menu > a:hover > img {
+    .nav-btn:hover > img {
         -webkit-transform: scale(1.2);
         -moz-transform: scale(1.2);
         -ms-transform: scale(1.2);
@@ -386,7 +435,10 @@
         transform: scale(1.2);
     }
 
-    
+    #nav-icon {
+        color: #fff;
+        font-size: 45px;
+    }
     
     .heading {
         position: relative;
@@ -397,6 +449,7 @@
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
+        font-family: 'Raleway', sans-serif;
     }
     
     .heading i {
@@ -419,15 +472,15 @@
         transition: all 0.3s;
     }
     
-    .menu > a:hover .heading i {
+    .nav-btn:hover .heading i {
         box-shadow: 0 0 0 50px rgba(256, 256, 256, 0);
     }
     
-    .menu > a.active {
+    .nav-btn.active {
         font-weight: bold;
     }
 
-    .menu > a {
+    .nav-btn {
         color: #fff;
         font-family: 'Domine', serif;
         font-size: 30px;
@@ -1327,3 +1380,12 @@
             display:none;
         }
     }
+
+    .owl-animated-out {
+        z-index : 10 
+         }
+      /* .owl-animated-in - only for upcoming item
+      /* This is very important class. Use z-index if you want move In item above Out item */ 
+      .owl-animated-in {
+        z-index : -10
+         }

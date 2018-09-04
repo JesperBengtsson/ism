@@ -1,7 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { animate, transition, trigger, style, query, group, state } from '@angular/animations';
-import { interval, Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Component, AfterViewInit } from '@angular/core';
+import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -29,24 +27,45 @@ import { Router } from '@angular/router';
       state('open', style({ width: '*' })),
       state('close', style({ width: '0px' })),
       transition('close <=> open', animate('200ms'))
+    ]),
+    
+    trigger('move', [
+      transition('in => out', [
+        query('.carousel', stagger('300ms', [
+          animate('20s', keyframes([
+            style({  transform: 'translateY(25rem)', offset: 0 }),
+            style({  transform: 'translateY(-100%)', offset: 1 }),
+          ]))]), { optional: true })
+      ])
     ])
   ]
 })
-export class AppComponent implements OnInit {
-  title = 'isMobile'; 
+
+export class AppComponent implements AfterViewInit {
+
   openClose:string = 'close';
-
-  ngOnInit() {
-
-  }
+  state = 'in';
   
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.state = 'out';
+    }, 0);
+  }
+  onEnd(event) {
+    this.state = 'in';
+    if (event.toState === 'in') {
+      setTimeout(() => {
+        this.state = 'out';
+      }, 0);
+    }
+  }
+
   getState(outlet) {
     return outlet.activatedRouteData.state;
   }
   
   hideAndShow($event){
     this.openClose = (this.openClose === 'open') ? 'close' : 'open';
-    console.log(this.openClose);
   }
 
 }

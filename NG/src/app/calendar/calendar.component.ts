@@ -1,6 +1,6 @@
-import { Component, OnInit, NgModule, enableProdMode, ViewChild, ViewChildren, QueryList} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Appointment, Resource, ResourceMenuItem, Service } from './calendar.service';
-import {  DxContextMenuComponent } from 'devextreme-angular';
+import { DxContextMenuComponent } from 'devextreme-angular';
 import { DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';

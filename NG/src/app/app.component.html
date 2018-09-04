@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    
+
 </head>
 
 <body>
@@ -20,69 +20,93 @@
     <div class="home-page">
 
         <img alt="" src="/src/img/jumbotron.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" (click)="hideAndShow($event)">
-    
+
         <!-- Navigation Menu -->
 
         <div class="home-container" (click)="hideAndShow($event)">
 
-                <div class="home-content">
-                        <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
-                        <h2 class="home-text">Upcoming meetings</h2>
-                        <h4 class="home-text">2018-09-03 11:00 in Blue</h4>
-                        <h4 class="home-text">2018-09-04 13:00 in Red</h4>
-                        <h4 class="home-text">2018-09-05 15:00 in Blue</h4>
+            <div class="home-content">
+                <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
+                <h2 class="client-name">Vattenfall</h2>
+                <h2 class="client-info">Your meeting is 11:00 in conference room Blue</h2>
+                <h2 class="home-text-heading">Upcoming meetings</h2>
+
+                <div [@move]="state" (@move.done)="onEnd($event)" class="carousel-container">
+
+                    <div class="carousel">
+                        <!--    TMP DUMMY DATA    -->
+                        <h2>2018-01-01 08:00 Red</h2>
+                        <h2>2018-01-01 09:00 Blue</h2>
+                        <h2>2018-01-01 10:00 Red</h2>
+                        <h2>2018-01-01 12:00 Blue</h2>
+                        <h2>2018-01-01 13:00 Red</h2>
+                        <h2>2018-01-01 14:00 Blue</h2>
+                        <h2>2018-01-01 15:00 Red</h2>
+                        <h2>2018-01-01 16:00 Blue</h2>
+                        <h2>2018-01-01 17:00 Red</h2>
+                        <h2>2018-01-01 18:00 Blue</h2>
+                        <h2>2018-01-01 19:00 Red</h2>
+                        <h2>2018-01-01 20:00 Blue</h2>
+                        <h2>2018-01-01 21:00 Red</h2>
+                        <h2>2018-01-01 22:00 Blue</h2>
+                        <h2>2018-01-01 23:00 Red</h2>
+                        <h2>2018-01-01 24:00 Blue</h2>
+                    </div>
+
                 </div>
 
+            </div>
 
-        <div class="menu" [@toggleMenu]='openClose'>
+            <div class="menu" [@toggleMenu]='openClose'>
 
-            <!-- About Navigation Menu Button -->
+                <!-- Home Navigation Menu Button -->
 
-            <a class="profile-btn" [routerLink]="['/about']" routerLinkActive="active">
-                <img alt="" src="/src/img/about.jpg">
+                <a class="nav-btn" [routerLink]="['']">
+                    <img alt="" src="/src/img/portfolio.jpg">
 
-                <div class="heading">
-                    <i class="fa fa-users"></i>
-                    About
-                </div>
-            </a>
+                    <div class="heading">
+                        <i class="fa fa-home"></i>
+                        Home
+                    </div>
+                </a>
 
-            <!-- Products Navigation Menu Button -->
+                <!-- About Navigation Menu Button -->
 
-            <a class="products-btn" [routerLink]="['']">
-                <img alt="" src="/src/img/portfolio.jpg">
+                <a class="nav-btn" [routerLink]="['/about']" routerLinkActive="active">
+                    <img alt="" src="/src/img/about.jpg">
 
-                <div class="heading">
-                    <i class="fa fa-database"></i>
-                    Products
-                </div>
-            </a>
+                    <div class="heading">
+                        <i class="fa fa-users"></i>
+                        About
+                    </div>
+                </a>
 
-            <!-- Calendar Navigation Menu Button -->
+                <!-- Calendar Navigation Menu Button -->
 
-            <a class="Calendar-btn" routerLink="/calendar" routerLinkActive="active">
-                <img alt="" src="/src/img/conference.png">
+                <a class="nav-btn" [routerLink]="['/calendar']" routerLinkActive="active">
+                    <img alt="" src="/src/img/conference.png">
 
-                <div class="heading">
-                    <i class="fa fa-calendar"></i>
-                    Calendar
-                </div>
-            </a>
+                    <div class="heading">
+                        <i class="fa fa-calendar"></i>
+                        Calendar
+                    </div>
+                </a>
 
-            <!-- Options Navigation Menu Button -->
+                <!-- Options Navigation Menu Button -->
 
-            <a class="options-btn">
-                <img alt="" src="/src/img/options.png">
+                <a class="nav-btn" [routerLink]="['/products']" routerLinkActive="active">
+                    <img alt="" src="/src/img/service.jpg">
 
-                <div class="heading">
-                    <i class="fa fa-cogs"></i>
-                    Options
-                </div>
-            </a>
+                    <div class="heading">
+                        <i class="fa fa-database"></i>
+                        Products
+                    </div>
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
         <!-- Router outlet -->
 
         <div class="introduction" [@routerTransition]="getState(o)">
