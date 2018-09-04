@@ -235,29 +235,8 @@
         font-size: 14px;
     }
     
-    /* First, define the common wrapper elements 
-        Padding-top is for the fixed height header of the embedded content */
-    
-    .youtubeWrapper {
-        /*position: relative;*/
-        padding-top: 30px; 
-        height: 0; 
-        /*overflow: hidden;*/
-        padding-bottom: 56.25%;
-    }
-        
-    /* For each content source, set the IFRAME to be top left and occupy 100% of width and height of the containing DIV wrapper */    
-    .youtubeWrapper iframe,
-    .youtubeWrapper object,
-    .youtubeWrapper embed {
-        /*position: absolute;*/
-        top: 0;
-        left: 0;
-        /*width: 100%;*/
-        /*height: 100%;*/
-    }
 
-       .services {
+    .services {
         text-align: center;
         padding: 15px;
         -webkir-transition: all 0.3s;
