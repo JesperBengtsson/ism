@@ -15,59 +15,195 @@
     <title>About Hiryu Kai</title>
     <link rel="icon" href="/src/img/icon/fav_icon.gif">
 
+    <script type="text/javascript" src="/node_modules/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
+
 </head>
 
 <body (click)="timer=(60 * 30)">
 
-    <!-- TMP TMP TMP TMP Introduction TMP TMP TMP TMP -->
+    <!-- TMP TMP TMP TMP Products TMP TMP TMP TMP -->
 
     <!--( b ) Profile Page Content -->
 
     <div class="content-container col-md-12 col-sm-12">
-    
-        <div class="clearfix full-height">
-            <h2 class="small-heading">OUR PRODUCTS</h2>
 
-            <div class="col">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="team-member-box center-block text-center">
-                            <img src="src/img/tmp1.jpg" class="img-responsive col-md-12">
-                            <h4 class="text-capitalize">nice deck</h4>
-                            <p class="text-uppercase">description</p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="team-member-box center-block text-center">
-                            <img src="src/img/tmp2.jpg" class="img-responsive col-md-12">
-                            <h4 class="text-capitalize">old ship</h4>
-                            <p class="text-uppercase">description</p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="team-member-box center-block text-center">
-                            <img src="src/img/tmp3.png" class="img-responsive col-md-12" id="myImg">                    
-                            <h4 class="text-capitalize">cool valley</h4>
-                            <p class="text-uppercase">description</p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="team-member-box center-block text-center">
-                            <img src="src/img/tmp4.jpg" class="img-responsive col-md-12">
-                            <h4 class="text-capitalize">pretty lake</h4>
-                            <p class="text-uppercase">description</p>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                        </div>
+        <div class="container">
+
+            <div class="modal fade and carousel" id="lightbox" data-ride="carousel" data-interval="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <ul class="carousel-indicators">
+                                <li data-target="#lightbox" data-slide-to="0" class="active"></li>
+                                <li data-target="#lightbox" data-slide-to="1"></li>
+                                <li data-target="#lightbox" data-slide-to="2"></li>
+                                <li data-target="#lightbox" data-slide-to="3"></li>
+                            </ul>
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a href="#collapse" data-toggle="collapse" class="collapse-toggle">
+
+                                        <img src="src/img/tmp1.jpg" alt="first">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h4 class="text-capitalize">nice deck</h4>
+                                        <div id="collapse" class="collapse">
+                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi repudiandae
+                                                ad, est, quo tenetur?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#collapse" data-toggle="collapse" class="collapse-toggle">
+
+                                        <img src="src/img/tmp2.jpg" alt="second">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h4 class="text-capitalize">old ship</h4>
+                                        <div id="collapse" class="collapse">
+                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi repudiandae
+                                                ad, est, quo tenetur?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#collapse" data-toggle="collapse" class="collapse-toggle">
+                                        <img src="src/img/tmp3.png" alt="third">
+
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h4 class="text-capitalize">cool valley</h4>
+
+                                        <div id="collapse" class="collapse">
+                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi repudiandae
+                                                ad, est, quo tenetur?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#collapse" data-toggle="collapse" class="collapse-toggle">
+
+                                        <img src="src/img/tmp4.jpg" alt="fourth">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <h4 class="text-capitalize">pretty lake</h4>
+                                        <div id="collapse" class="collapse">
+                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi repudiandae
+                                                ad, est, quo tenetur?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.carousel-inner -->
+
+                            <a class="carousel-control-prev" href="#lightbox" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+
+                            </a>
+                            <a class="carousel-control-next" href="#lightbox" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+
+                            </a>
+                        </div><!-- /.modal-body -->
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div class="clearfix full-height">
+                <h2 class="small-heading">OUR PRODUCTS</h2>
+
+                <div class="col">
+                    <div class="row">
+
+                        <ul class="nav nav-pills nav-stacked">
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="0">
+                                            <img src="src/img/tmp1.jpg" class="img-responsive col-md-12">
+                                        </a></li>
+                                    <h4 class="text-capitalize">nice deck</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p class="product-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                        provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
+                                        culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="1">
+                                            <img src="src/img/tmp2.jpg" class="img-responsive col-md-12">
+                                        </a></li>
+
+                                    <h4 class="text-capitalize">old ship</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                        Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
+                                        neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="2">
+                                            <img src="src/img/tmp3.png" class="img-responsive col-md-12" id="myImg">
+                                        </a></li>
+                                    <h4 class="text-capitalize">cool valley</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                        Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
+                                        neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="3">
+                                            <img src="src/img/tmp4.jpg" class="img-responsive col-md-12">
+                                        </a></li>
+                                    <h4 class="text-capitalize">pretty lake</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                        Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
+                                        neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
+                            </div>
+                        </ul>
                     </div>
                 </div>
+
             </div>
-        </div>
+
+        </div><!-- /.container -->
 
     </div>
     <!-- Social Media Icons [ END ] -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Enable swiping...
+            $(".modal.and.carousel").swipe({
+                //Generic swipe handler for all directions
+                swipeLeft: function (event, direction, distance, duration, fingerCount, fingerData) {
+                    $(this).parent().carousel('prev');
+                },
+                swipeRight: function () {
+                    $(this).parent().carousel('next');
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                threshold: 0
+            });
+        });
+    </script>
+
 </body>
 
 </html>

@@ -1,6 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
 
+import * as $ from 'jquery';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -2,6 +2,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { Service } from './calendar/calendar.service';
 
+import 'hammerjs';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -16,19 +18,22 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     RoutingComponents
   ],
   imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DxSchedulerModule,
-    DxTemplateModule,
+    BrowserModule,
+    CommonModule,
+    DxContextMenuModule,
     DxTabsModule,
-    DxContextMenuModule
+    DxTemplateModule,
+    DxSchedulerModule,
+    FormsModule
   ],
   providers: [Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+document.addEventListener('DOMContentLoaded', () => {
+  platformBrowserDynamic().bootstrapModule(AppModule)
+      .catch(err => console.log(err));
+});
