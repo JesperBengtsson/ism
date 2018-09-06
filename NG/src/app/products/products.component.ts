@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 
 declare var jquery :any;
 declare var $ :any;
@@ -14,12 +14,18 @@ export class ProductsComponent implements OnInit {
  
   constructor() { }
 
-  ngOnInit() {$("#lightbox").carousel({
-    swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
-  });
+  ngOnInit() {
   }
 
+  @ViewChild('carousel') public el: any;
 
+    @HostListener('swipeleft', ['$event']) public swipePrev(event: any) {
+        this.el.previousSlide();
+    }
+
+    @HostListener('swiperight', ['$event']) public swipeNext(event: any) {
+        this.el.nextSlide();
+    }
 
 
 }

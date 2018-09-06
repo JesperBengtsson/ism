@@ -313,20 +313,13 @@
     justify-content: center;
   }
 
-  .carousel-caption {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #00000038;
-    
-  }
+
+  .carousel-caption > .text-capitalize {
+    margin-bottom: 20px;
+}
 
   .carousel-caption > .product-desc {
     margin-top: 10px;
-  }
-
-  .carousel-caption > .text-capitalize {
-      margin-bottom: 20px;
   }
 
   .collapse-toggle:hover {
@@ -342,3 +335,5 @@
       outline-style: none;
 
   }
+
+  

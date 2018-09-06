@@ -8,8 +8,8 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
+    
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- title and favicon -->
 
     <title>About Hiryu Kai</title>
@@ -23,96 +23,97 @@
     <!-- TMP TMP TMP TMP Products TMP TMP TMP TMP -->
     
     <!--( b ) Profile Page Content -->
-    
+
     <div class="content-container col-md-12 col-sm-12">
         
         <div class="container">
             
-            <div class="modal fade and carousel" id="lightbox" data-ride="carousel" data-interval="false" data-wrap="false">
+            <div class="modal fade" id="carousel" data-ride="carousel"  data-wrap="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-body">
-                            <ul class="carousel-indicators">
-                                <li data-target="#lightbox" data-slide-to="0" class="active"></li>
-                                <li data-target="#lightbox" data-slide-to="1"></li>
-                                <li data-target="#lightbox" data-slide-to="2"></li>
-                                <li data-target="#lightbox" data-slide-to="3"></li>
-                            </ul>
+                        <div class="modal-body">                        
                             
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <a href="#collapseFirst" data-toggle="collapse" class="collapse-toggle">
-                                        
-                                        <img src="src/img/tmp1.jpg" alt="first">
-                                        <div class="carousel-caption">
-                                            <h4 class="text-capitalize">nice deck</h4>
-                                            <div id="collapseFirst" class="collapse" data-target="#lightbox">
-                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                    repudiandae ad, est, quo tenetur?</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <a href="#collapseSecond" data-toggle="collapse" class="collapse-toggle">
-                                            
-                                            <img src="src/img/tmp2.jpg" alt="second">
-                                            <div class="carousel-caption">
-                                                <h4 class="text-capitalize">old ship</h4>
-                                                <div id="collapseSecond" class="collapse" data-target="#lightbox">
-                                                    <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                        elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                        doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                        repudiandae ad, est, quo tenetur?</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <a href="#collapseThird" data-toggle="collapse" class="collapse-toggle">
-                                                <img src="src/img/tmp3.png" alt="third">
-                                                
-                                                <div class="carousel-caption">
-                                                    <h4 class="text-capitalize">cool valley</h4>
+                            <!--Carousel Wrapper-->
+                            <mdb-carousel [isControls]="true" class="carousel-fade" [animation]="'fade'" data-interval="false" #carousel>
+                                    <!--First slide-->
+                                    <mdb-carousel-item>
+                                            <div href="#collapseFirst" data-toggle="collapse" class="view w-100">
                                                     
-                                                    <div id="collapseThird" class="collapse" data-target="#lightbox">
-                                                        <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                            elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                            doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                            repudiandae ad, est, quo tenetur?</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <a href="#collapseFourth" data-toggle="collapse" class="collapse-toggle">
+                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
                                                     
-                                                    <img src="src/img/tmp4.jpg" alt="fourth">
                                                     <div class="carousel-caption">
-                                                        <h4 class="text-capitalize">pretty lake</h4>
-                                                        <div id="collapseFourth" class="collapse" data-target="#lightbox">
+                                                            <h3 class="h3-responsive">Nice deck</h3>
+                                                        <div id="collapseFirst" class="collapse">
+                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                                repudiandae ad, est, quo tenetur?</p>
+                                                            </div>
+                                                    
+                                                    </div>
+                                            </div>
+                                    </mdb-carousel-item>
+                                    <!--/First slide-->
+                                    <!--Second slide-->
+                                    
+                                    <mdb-carousel-item>
+                                            <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
+                                                    
+                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+                                                    <div class="carousel-caption">
+                                                        <h4 class="text-capitalize">old ship</h4>
+                                                        <div id="collapseSecond" class="collapse">
                                                             <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
                                                                 elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
                                                                 doloremque pariatur fugiat voluptatum expedita magni error excepturi
                                                                 repudiandae ad, est, quo tenetur?</p>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </div>
-                                            </div><!-- /.carousel-inner -->
+                                                    </div>
+                                    </mdb-carousel-item>
+                                    <!--/Second slide-->
+                                    <!--Third slide-->
+                                    <mdb-carousel-item>
+                                            <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100"> 
+                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Third slide">
+                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+                                                    <div class="carousel-caption">
+                                                        <h4 class="text-capitalize">cool valley</h4>
+                                                        <div id="collapseThird" class="collapse">
+                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                                repudiandae ad, est, quo tenetur?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    </mdb-carousel-item>
+                                    <!--/Third slide-->
+                                    <!--/Fourth slide-->
+                                    <mdb-carousel-item>
+                                            <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
+                                                    
+                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Fourth slide">
+                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+                                                    <div class="carousel-caption">
+                                                        <h4 class="text-capitalize">pretty lake</h4>
+                                                        <div id="collapseFourth" class="collapse">
+                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                                repudiandae ad, est, quo tenetur?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    </mdb-carousel-item>
+                                    <!--/Fourth slide-->
+                                </mdb-carousel>
+                                <!--/.Carousel Wrapper-->
+                            
                                             
-                            <a class="carousel-control-prev test" href="#lightbox" data-slide="prev">
-                                <button class="tmp" data-target="#lightbox"></button>
-                                <span class="carousel-control-prev-icon"></span>
-
-                            </a>
-                            <a class="carousel-control-next test" href="#lightbox" data-slide="next">
-                                <button class="tmp" data-target="#lightbox"></button>
-                                <span class="carousel-control-next-icon"></span>
-                                
-                            </a>
+                         
                         </div><!-- /.modal-body -->
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -127,12 +128,12 @@
                             
                             <div class="col-md-6">
                                 <div class="team-member-box center-block text-center">
-                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="0">
+                                    <li><a href="#carousel" data-toggle="modal" data-slide-to="0">
                                         <img src="src/img/tmp1.jpg" class="img-responsive col-md-12">
                                     </a></li>
                                     <h4 class="text-capitalize">nice deck</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="product-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
                                         provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
                                         culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                     </div>
@@ -140,13 +141,13 @@
                                 
                                 <div class="col-md-6">
                                     <div class="team-member-box center-block text-center">
-                                        <li><a href="#lightbox" data-toggle="modal" data-slide-to="1">
+                                        <li><a href="#carousel" data-toggle="modal" data-slide-to="1">
                                             <img src="src/img/tmp2.jpg" class="img-responsive col-md-12">
                                         </a></li>
                                         
                                         <h4 class="text-capitalize">old ship</h4>
                                         <p class="text-uppercase">description</p>
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                        <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
                                             Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
                                             neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                         </div>
@@ -154,12 +155,12 @@
                                     
                                     <div class="col-md-6">
                                 <div class="team-member-box center-block text-center">
-                                    <li><a href="#lightbox" data-toggle="modal" data-slide-to="2">
+                                    <li><a href="#carousel" data-toggle="modal" data-slide-to="2">
                                         <img src="src/img/tmp3.png" class="img-responsive col-md-12" id="myImg">
                                     </a></li>
                                     <h4 class="text-capitalize">cool valley</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
                                         Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
                                         neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                     </div>
@@ -167,12 +168,12 @@
                                 
                                 <div class="col-md-6">
                                     <div class="team-member-box center-block text-center">
-                                        <li><a href="#lightbox" data-toggle="modal" data-slide-to="3">
+                                        <li><a href="#carousel" data-toggle="modal" data-slide-to="3">
                                             <img src="src/img/tmp4.jpg" class="img-responsive col-md-12">
                                         </a></li>
                                         <h4 class="text-capitalize">pretty lake</h4>
                                         <p class="text-uppercase">description</p>
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
+                                        <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
                                             Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
                                             neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                         </div>
