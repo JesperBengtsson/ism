@@ -56,6 +56,7 @@
     @import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900);
     @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
     @import url(https://fonts.googleapis.com/css?family=Domine);
+    @import url(https://fonts.googleapis.com/css?family=Cinzel);
     
                         /*----------------------
                             2 ) Preloader Styles
@@ -150,10 +151,10 @@
 
     
     h1,h2,h3,h4,h5,h6 {
-        font-family: 'Domine', serif;
+        font-family: 'Cinzel', serif;
     }
     h1 {
-        font-family: 'Domine', serif;
+        font-family: 'Cinzel', serif;
     }
     
     p {
