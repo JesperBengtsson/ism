@@ -8,189 +8,189 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- title and favicon -->
 
     <title>About Hiryu Kai</title>
     <link rel="icon" href="/src/img/icon/fav_icon.gif">
 
-    
+
 </head>
 
 <body (click)="timer=(60 * 30)">
-    
+
     <!-- TMP TMP TMP TMP Products TMP TMP TMP TMP -->
-    
+
     <!--( b ) Profile Page Content -->
 
     <div class="content-container col-md-12 col-sm-12">
-        
+
         <div class="container">
-            
-            <div class="modal fade" id="carousel" data-ride="carousel"  data-wrap="false">
+
+            <div class="modal fade" id="carousel" data-ride="carousel" data-wrap="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-body">                        
-                            
+                        <div class="modal-body accordion" id="accordion">
+
                             <!--Carousel Wrapper-->
-                            <mdb-carousel [isControls]="true" class="carousel-fade" [animation]="'fade'" data-interval="false" #carousel>
-                                    <!--First slide-->
-                                    <mdb-carousel-item>
-                                            <div href="#collapseFirst" data-toggle="collapse" class="view w-100">
-                                                    
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-                                                    
-                                                    <div class="carousel-caption">
-                                                            <h3 class="h3-responsive">Nice deck</h3>
-                                                        <div id="collapseFirst" class="collapse">
-                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                                repudiandae ad, est, quo tenetur?</p>
-                                                            </div>
-                                                    
-                                                    </div>
+                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="myInterval" #carousel>
+                                <!--First slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseFirst" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+
+                                        <div class="carousel-caption">
+                                            <h3 class="h3-responsive">Nice deck</h3>
+                                            <div id="collapseFirst" class="collapse" data-parent="#accordion">
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                    repudiandae ad, est, quo tenetur?</p>
                                             </div>
-                                    </mdb-carousel-item>
-                                    <!--/First slide-->
-                                    <!--Second slide-->
-                                    
-                                    <mdb-carousel-item>
-                                            <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
-                                                    
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-                                                    <div class="carousel-caption">
-                                                        <h4 class="text-capitalize">old ship</h4>
-                                                        <div id="collapseSecond" class="collapse">
-                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                                repudiandae ad, est, quo tenetur?</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                    </mdb-carousel-item>
-                                    <!--/Second slide-->
-                                    <!--Third slide-->
-                                    <mdb-carousel-item>
-                                            <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100"> 
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Third slide">
-                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-                                                    <div class="carousel-caption">
-                                                        <h4 class="text-capitalize">cool valley</h4>
-                                                        <div id="collapseThird" class="collapse">
-                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                                repudiandae ad, est, quo tenetur?</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                    </mdb-carousel-item>
-                                    <!--/Third slide-->
-                                    <!--/Fourth slide-->
-                                    <mdb-carousel-item>
-                                            <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
-                                                    
-                                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Fourth slide">
-                                                    <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-                                                    <div class="carousel-caption">
-                                                        <h4 class="text-capitalize">pretty lake</h4>
-                                                        <div id="collapseFourth" class="collapse">
-                                                            <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                                elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                                doloremque pariatur fugiat voluptatum expedita magni error excepturi
-                                                                repudiandae ad, est, quo tenetur?</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                    </mdb-carousel-item>
-                                    <!--/Fourth slide-->
-                                </mdb-carousel>
-                                <!--/.Carousel Wrapper-->
-                            
-                                            
-                         
+
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/First slide-->
+                                <!--Second slide-->
+
+                                <mdb-carousel-item>
+                                    <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="carousel-caption">
+                                            <h4 class="text-capitalize">old ship</h4>
+                                            <div id="collapseSecond" class="collapse" data-parent="#accordion">
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                    repudiandae ad, est, quo tenetur?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Second slide-->
+                                <!--Third slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100">
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Third slide">
+                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="carousel-caption">
+                                            <h4 class="text-capitalize">cool valley</h4>
+                                            <div id="collapseThird" class="collapse" data-parent="#accordion">
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                    repudiandae ad, est, quo tenetur?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Third slide-->
+                                <!--/Fourth slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Fourth slide">
+                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="carousel-caption">
+                                            <h4 class="text-capitalize">pretty lake</h4>
+                                            <div id="collapseFourth" class="collapse" data-parent="#accordion">
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                    repudiandae ad, est, quo tenetur?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Fourth slide-->
+                            </mdb-carousel>
+                            <!--/.Carousel Wrapper-->
+
+
+
                         </div><!-- /.modal-body -->
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             <div class="clearfix full-height">
                 <h2 class="small-heading">OUR PRODUCTS</h2>
-                
+
                 <div class="col">
                     <div class="row">
-                        
-                        <ul class="nav nav-pills nav-stacked">
-                            
+
+                        <ul class="nav nav-indicators nav-stacked">
+
                             <div class="col-md-6">
                                 <div class="team-member-box center-block text-center">
-                                    <li><a href="#carousel" data-toggle="modal" data-slide-to="0">
-                                        <img src="src/img/tmp1.jpg" class="img-responsive col-md-12">
-                                    </a></li>
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(0)">
+                                            <img src="src/img/tmp1.jpg" class="img-responsive col-md-12">
+                                        </a></li>
                                     <h4 class="text-capitalize">nice deck</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
-                                        provident delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
-                                        culpa officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                                    </div>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                 </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="team-member-box center-block text-center">
-                                        <li><a href="#carousel" data-toggle="modal" data-slide-to="1">
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(1)">
                                             <img src="src/img/tmp2.jpg" class="img-responsive col-md-12">
                                         </a></li>
-                                        
-                                        <h4 class="text-capitalize">old ship</h4>
-                                        <p class="text-uppercase">description</p>
-                                        <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
-                                            Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
-                                            neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
+
+                                    <h4 class="text-capitalize">old ship</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
                                 <div class="team-member-box center-block text-center">
-                                    <li><a href="#carousel" data-toggle="modal" data-slide-to="2">
-                                        <img src="src/img/tmp3.png" class="img-responsive col-md-12" id="myImg">
-                                    </a></li>
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(2)">
+                                            <img src="src/img/tmp3.png" class="img-responsive col-md-12" id="myImg">
+                                        </a></li>
                                     <h4 class="text-capitalize">cool valley</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
-                                        Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
-                                        neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                                    </div>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
                                 </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="team-member-box center-block text-center">
-                                        <li><a href="#carousel" data-toggle="modal" data-slide-to="3">
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(3)">
                                             <img src="src/img/tmp4.jpg" class="img-responsive col-md-12">
                                         </a></li>
-                                        <h4 class="text-capitalize">pretty lake</h4>
-                                        <p class="text-uppercase">description</p>
-                                        <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident delectus repudiandae.
-                                            Dolorem amet, quidem veniam similique maxime doloribus culpa officia aspernatur illo
-                                            neque voluptatum excepturi accusamus tempora odit voluptas.</p>
-                                        </div>
-                                    </div>
-                                </ul>
+                                    <h4 class="text-capitalize">pretty lake</h4>
+                                    <p class="text-uppercase">description</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                </div>
                             </div>
-                        </div>
-                        
+                        </ul>
+                    </div>
+                </div>
+
             </div>
-            
+
         </div><!-- /.container -->
-        
+
     </div>
     <!-- Social Media Icons [ END ] -->
-    
-    
-    
+
+
+
 </body>
 
 </html>

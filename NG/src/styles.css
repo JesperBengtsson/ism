@@ -13,9 +13,6 @@
     width: 240px !important;
 }
 
-.dx-scheduler-scrollable-fixed-content {
-    padding-bottom: 1px !important;
-}
 
 ::ng-deep .item-badge {
     text-align: center;

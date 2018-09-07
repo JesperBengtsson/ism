@@ -14,7 +14,16 @@ export class ProductsComponent implements OnInit {
  
   constructor() { }
 
+  public myInterval: number = 0;
+
   ngOnInit() {
+    $('#carousel').on('hidden.bs.modal', function () {
+        $('.collapse').collapse('hide');
+      });
+
+    $('#carousel').click( function () {
+        $('.collapse').collapse('hide');
+    });
   }
 
   @ViewChild('carousel') public el: any;
@@ -26,6 +35,5 @@ export class ProductsComponent implements OnInit {
     @HostListener('swiperight', ['$event']) public swipeNext(event: any) {
         this.el.nextSlide();
     }
-
 
 }
