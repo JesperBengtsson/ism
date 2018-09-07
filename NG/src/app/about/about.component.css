@@ -179,12 +179,14 @@
     
     .facts p {
         color: #fff;
+    
     }
     
     .facts p.count {
         font-size: 29px;
     }
     
+
     .team-member-box {
         background-color: #f3f3f3;
         border: 1px solid #F3f3f3;

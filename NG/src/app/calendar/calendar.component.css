@@ -274,7 +274,6 @@
         position: relative;
         display: block;
         text-align: center;
-        font-family: 'Domine', serif;
     }
     
     h2.small-heading::after {
