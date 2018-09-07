@@ -26,58 +26,58 @@ let appointments: Appointment[] = [
     {
         text: "Meeting type 1",
         roomId: [1],
-        startDate: new Date(2018, 7, 2, 9, 30),
-        endDate: new Date(2018, 7, 2, 11),
+        startDate: new Date(2018, 8, 2, 9, 30),
+        endDate: new Date(2018, 8, 2, 11),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=TU,FR;COUNT=10"
     }, {
         text: "Meeting type 2",
         roomId: [2],
-        startDate: new Date(2018, 7, 1, 9, 30),
-        endDate: new Date(2018, 7, 1, 11),
+        startDate: new Date(2018, 8, 1, 9, 30),
+        endDate: new Date(2018, 8, 1, 11),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=MO,TH;COUNT=10"
     }, {
         text: "Meeting type 3",
         roomId: [3],
-        startDate: new Date(2018, 7, 1, 12, 0),
-        endDate: new Date(2018, 7, 1, 13, 0),
+        startDate: new Date(2018, 8, 1, 12, 0),
+        endDate: new Date(2018, 8, 1, 13, 0),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2"
     }, {
         text: "Meeting type 4",
         roomId: [4],
-        startDate: new Date(2018, 7, 1, 9, 0),
-        endDate: new Date(2018, 7, 1, 9, 15),
-        recurrenceRule: "FREQ=DAILY;BYDAY=WE;UNTIL=20170601"
+        startDate: new Date(2018, 8, 1, 9, 0),
+        endDate: new Date(2018, 8, 1, 9, 15),
+        recurrenceRule: "FREQ=DAILY;BYDAY=WE;UNTIL=20190601"
     }, {
         text: "Meeting type 5",
         roomId: [5],
-        startDate: new Date(2018, 7, 26, 10, 0),
-        endDate: new Date(2018, 7, 26, 11, 0),
+        startDate: new Date(2018, 8, 26, 10, 0),
+        endDate: new Date(2018, 8, 26, 11, 0),
         recurrenceRule: "FREQ=YEARLY;BYWEEKNO=23",
-        recurrenceException: "20170611T100000"
+        recurrenceException: "20181011T100000"
     }, {
         text: "Meeting type 6",
         roomId: [4],
-        startDate: new Date(2018, 7, 26, 12, 0),
-        endDate: new Date(2018, 7, 26, 13, 35),
+        startDate: new Date(2018, 8, 26, 12, 0),
+        endDate: new Date(2018, 8, 26, 13, 35),
         recurrenceRule: "FREQ=YEARLY;BYWEEKNO=24;BYDAY=TH,FR"
     }, {
-        text: "Meeting type 7",
+        text: "Meeting type 8",
         roomId: [4],
-        startDate: new Date(2018, 7, 26, 14, 30),
-        endDate: new Date(2018, 7, 26, 15, 45),
-        recurrenceRule: "FREQ=MONTHLY;BYMONTHDAY=27;COUNT=1"
+        startDate: new Date(2018, 8, 26, 14, 30),
+        endDate: new Date(2018, 8, 26, 15, 45),
+        recurrenceRule: "FREQ=MONTHLY;BYMONTHDAY=28;COUNT=1"
     }, {
         text: "Meeting type 8",
         roomId: [5],
-        startDate: new Date(2018, 7, 1, 9, 30),
-        endDate: new Date(2018, 7, 1, 13),
+        startDate: new Date(2018, 8, 1, 9, 30),
+        endDate: new Date(2018, 8, 1, 13),
         recurrenceRule: "FREQ=YEARLY;BYYEARDAY=148"
     },
     {
         text: "new booking",
         roomId: [1],
-        startDate: new Date(2018, 7, 1, 14, 30),
-        endDate: new Date(2018, 7, 1, 15, 30)
+        startDate: new Date(2018, 8, 1, 14, 30),
+        endDate: new Date(2018, 8, 1, 15, 30)
     }
 ];
 
