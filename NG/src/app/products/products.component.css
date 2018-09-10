@@ -32,158 +32,12 @@
         text-align: center;
     }
 
-    .intro-content {
-        font-family: 'Domine', serif;
-        position: relative;
-        z-index: 10;
-        top: 35%;
-        display: table;
-        margin: 0 auto;
-        text-align: center;
-        /*-webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);*/
-    }
-
-    .intro-content h1 {
-        color: lightgrey;
-        display: block;
-        font-family: 'Domine', serif;
-        margin-bottom: -15px;
-        font-size: 35px;
-        font-weight: 700;
-    }
-
-    .intro-content h2 {
-        color: lightgrey;
-        display: block;
-        font-family: 'Domine', serif;
-        padding-left: 50px;
-        margin-bottom: -15px;
-        /*font-size: 55px;*/
-        font-weight: 700;
-    }
-
-    .intro-content span {
-        color: #6f5499;
-        font-size: 135px;
-        font-weight: 700;
-        line-height: 0px;
-        letter-spacing: 1px;
-    }
-
-    .intro-content span.number {
-        font-size: 15em;
-    }
-
-    .intro-content .slogan-text {
-        font-weight: 400;
-        font-size: 25px;
-        padding-left: 21px;
-    }
-
-    .profile-page,
-    {
-        
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-
-    .image-container {
-        height: 100vh;
-        position: fixed;
-        padding: 0;
-        right: 0;
-    }
-
-    .main-heading {
-        
-        -ms-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-        left: 10%;
-        transform-origin: left;
-        -webkit-transform-origin: left;
-        -moz-transform-origin: left;
-        -ms-transform-origin: left;
-        -o-transform-origin: left;
-        bottom: 40%;
-    }
-
-    .main-heading h1 {
-        color: #fff;
-        font-size: 50px;
-        position: relative;
-        text-transform: capitalize;
-        text-align: left;
-    }
-
-    /*.main-heading h1:after {
-        background-color: #00B796;
-        position: absolute;
-        content: "";
-        top: 100%;
-        left: 0;
-        width: 400px;
-        height: 6px;
-    }*/
 
     .content-container {
         left: 0;
         position: relative;
         padding: 0, 10, 0, 10;
         background: #e8e7e4;
-    }
-
-                        /*------------------
-                            7 ) Profile Page
-                        ------------------*/
-
-    /* ( a ) Story of Glory */
-
-    .profile-page .image-container {
-        background: url(/src/img/about_us_featured.png);
-        background-size: cover;
-        background-position: bottom;
-    }
-
-    .services {
-        text-align: center;
-        padding: 15px;
-        -webkir-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -ms-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-    }
-
-    .facts {
-        /*background: url(/src/img/about_us_video.png);*/
-        /*background-attachment: fixed;*/
-        margin-bottom: 20px;
-    }
-
-    .facts-overlay {
-        padding: 40px;
-        background-color: rgb(35, 46, 52);
-    }
-
-    .facts i {
-        color: #ffffff;
-        margin-bottom: 20px;
-    }
-
-    .facts p {
-        color: #fff;
-    }
-
-    .facts p.count {
-        font-size: 29px;
     }
 
     .team-member-box {
@@ -211,40 +65,6 @@
 
     .team-member-box:hover {
         box-shadow: 3px 5px 9px #dfdfdf;
-    }
-
-    .video {
-        box-shadow: 2px 5px 9px #dfdfdf;
-    }
-
-    .video iframe {
-        width: 560px; 
-        height: 315px;
-    }
-
-    .about-us-desc p:first-child {
-        font-size: 17px;
-    }
-
-    .about-us-desc p:last-child {
-        -webkit-column-count: 2;/* Chrome, Safari, Opera */
-        -moz-column-count: 2;/* Firefox */
-        column-count: 2; 
-        -webkit-column-gap: 30px;/* Chrome, Safari, Opera */ 
-        -moz-column-gap: 30px;/* Firefox */ 
-        column-gap: 30px;
-        font-size: 14px;
-    }
-
-
-    .services {
-        text-align: center;
-        padding: 15px;
-        -webkir-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -ms-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
     }
 
     h2.small-heading {

@@ -30,107 +30,6 @@
         font-weight: 500;
         text-align: center;
     }
-
-    .intro-content {
-        font-family: 'Cinzel', serif;
-        position: relative;
-        z-index: 10;
-        top: 35%;
-        display: table;
-        margin: 0 auto;
-        text-align: center;
-        /*-webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);*/
-    }
-
-    .intro-content h1 {
-        color: lightgrey;
-        display: block;
-        font-family: 'Domine', serif;
-        margin-bottom: -15px;
-        font-size: 35px;
-        font-weight: 700;
-    }
-
-    .intro-content h2 {
-        color: lightgrey;
-        display: block;
-        font-family: 'Domine', serif;
-        padding-left: 50px;
-        margin-bottom: -15px;
-        /*font-size: 55px;*/
-        font-weight: 700;
-    }
-
-    .intro-content span {
-        color: #6f5499;
-        font-size: 135px;
-        font-weight: 700;
-        line-height: 0px;
-        letter-spacing: 1px;
-    }
-
-    .intro-content span.number {
-        font-size: 15em;
-    }
-
-    .intro-content .slogan-text {
-        font-weight: 400;
-        font-size: 25px;
-        padding-left: 21px;
-    }
-
-    .profile-page,
-     {
-        
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-
-    .image-container {
-        height: 100vh;
-        position: fixed;
-        padding: 0;
-        right: 0;
-    }
-    
-    .main-heading {
-        
-        -ms-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-        left: 10%;
-        transform-origin: left;
-        -webkit-transform-origin: left;
-        -moz-transform-origin: left;
-        -ms-transform-origin: left;
-        -o-transform-origin: left;
-        bottom: 40%;
-    }
-    
-    .main-heading h1 {
-        color: #fff;
-        font-size: 50px;
-        position: relative;
-        text-transform: capitalize;
-        text-align: left;
-    }
-    
-    /*.main-heading h1:after {
-        background-color: #00B796;
-        position: absolute;
-        content: "";
-        top: 100%;
-        left: 0;
-        width: 400px;
-        height: 6px;
-    }*/
     
     .content-container {
         left: 0;
@@ -212,15 +111,6 @@
     
     .team-member-box:hover {
         box-shadow: 3px 5px 9px #dfdfdf;
-    }
-
-    .video {
-        box-shadow: 2px 5px 9px #dfdfdf;
-    }
-    
-    .video iframe {
-        width: 560px; 
-        height: 315px;
     }
 
     .about-us-desc p:first-child {

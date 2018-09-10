@@ -34,7 +34,7 @@
                         <div class="modal-body accordion" id="accordion">
 
                             <!--Carousel Wrapper-->
-                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="myInterval" (activeSlideChange)="activeSlideChange($event)" #carousel>
+                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="0" (activeSlideChange)="activeSlideChange($event)" #carousel>
                                
                                 <!--First slide-->
                                 <mdb-carousel-item>
@@ -118,7 +118,7 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            
+
             <div class="clearfix full-height">
                 <h2 class="small-heading">OUR PRODUCTS</h2>
 

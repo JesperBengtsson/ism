@@ -9,7 +9,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { DxSchedulerModule, DxTemplateModule, DxTabsModule, DxContextMenuModule } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CarouselModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';

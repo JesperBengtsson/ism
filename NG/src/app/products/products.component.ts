@@ -12,8 +12,6 @@ import 'hammerjs';
 })
 export class ProductsComponent implements OnInit {
  
-  public myInterval: number = 0;
-
   constructor() { }
 
   ngOnInit() {
