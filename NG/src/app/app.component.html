@@ -17,22 +17,21 @@
 
     <!-- home-page -->
 
-    <div class="home-page">
+    <div class="home-page" >
 
-        <img alt="" src="/src/img/jumbotron.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" (click)="hideAndShow($event)"> 
+        <img class="background" src="/src/img/background.png"> 
 
         <!-- Navigation Menu -->
 
         <div class="home-container" (click)="hideAndShow($event)">
 
-            <div class="home-content" >
+            <div class="home-content">
                 <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
                 <h2 class="client-name">Vattenfall</h2>
                 <h2 class="client-info">Your meeting is 11:00 in conference room Blue</h2>
                 <h2 class="home-text-heading">Upcoming meetings</h2>
 
                 <div [@move]="state" (@move.done)="onEnd($event)" class="carousel-container">
-
                     <div class="carousel">
                         <!--    TMP DUMMY DATA    -->
                         <h2>2018-01-01 08:00 in Red</h2>
@@ -53,7 +52,6 @@
                         <h2>2018-01-01 23:00 in Red</h2>
                         <h2>2018-01-01 24:00 in Blue</h2>
                     </div>
-
                 </div>
 
             </div>
@@ -103,7 +101,7 @@
                         Products
                     </div>
                 </a>
-
+               
             </div>
 
         </div>

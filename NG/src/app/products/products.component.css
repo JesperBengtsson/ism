@@ -279,9 +279,7 @@
         left: 38%;
     }
 
-    .modal.and.carousel {
-        position: fixed;
-    }
+
 
     .modal-content {
         background-color: #00000038;
@@ -311,7 +309,6 @@
     display: flex;
     justify-content: center;
   }
-
 
   .carousel-caption > .text-capitalize {
     margin-bottom: 20px;
