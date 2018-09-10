@@ -33,14 +33,9 @@ export class CalendarComponent implements OnInit {
         });
     }
 
-    
-    
-
     @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
     @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
     @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
-    
-
 
     appointmentsData: Appointment[];
     currentDate: Date = new Date(Date());
