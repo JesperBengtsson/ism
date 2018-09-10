@@ -28,19 +28,19 @@
 
         <div class="container">
 
-            <div class="modal fade" id="carousel" data-ride="carousel" data-wrap="false">
+            <div class="modal fade" id="carousel">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body accordion" id="accordion">
 
                             <!--Carousel Wrapper-->
-                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="myInterval" #carousel>
+                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="myInterval" (activeSlideChange)="activeSlideChange($event)" #carousel>
                                 <!--First slide-->
                                 <mdb-carousel-item>
                                     <div href="#collapseFirst" data-toggle="collapse" class="collapse-toggle view w-100">
 
                                         <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="mask rgba-black-slight"></div>
 
                                         <div class="carousel-caption">
                                             <h3 class="h3-responsive">Nice deck</h3>
@@ -61,7 +61,7 @@
                                     <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
 
                                         <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="text-capitalize">old ship</h4>
                                             <div id="collapseSecond" class="collapse" data-parent="#accordion">
@@ -78,7 +78,7 @@
                                 <mdb-carousel-item>
                                     <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100">
                                         <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Third slide">
-                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="text-capitalize">cool valley</h4>
                                             <div id="collapseThird" class="collapse" data-parent="#accordion">
@@ -96,7 +96,7 @@
                                     <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
 
                                         <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Fourth slide">
-                                        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                        <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="text-capitalize">pretty lake</h4>
                                             <div id="collapseFourth" class="collapse" data-parent="#accordion">

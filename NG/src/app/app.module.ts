@@ -38,38 +38,6 @@ import { CarouselModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md
 })
 export class AppModule { }
 
-declare var Hammer: any;
-
-
-@NgModule({
-  providers: [
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig
-    }
-  ],
-})
-
-export class MyHammerConfig extends HammerGestureConfig {
-  overrides = <any> {
-    'pan': { direction: Hammer.DIRECTION_All },
-    'swipe': { direction: Hammer.DIRECTION_VERTICAL }
-  };
-
-  buildHammer(element: HTMLElement) {
-    const mc = new Hammer(element, {
-      
-          inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput,
-          recognizers: [
-            [Hammer.Swipe, {
-              direction: Hammer.DIRECTION_HORIZONTAL
-            }]
-          ]
-    });
-    return mc;
-  }
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppModule)

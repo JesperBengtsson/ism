@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Host } from '@angular/core';
 
 declare var jquery :any;
 declare var $ :any;
@@ -12,28 +12,18 @@ import 'hammerjs';
 })
 export class ProductsComponent implements OnInit {
  
-  constructor() { }
-
   public myInterval: number = 0;
+
+  constructor() { }
 
   ngOnInit() {
     $('#carousel').on('hidden.bs.modal', function () {
         $('.collapse').collapse('hide');
       });
-
-    $('#carousel').click( function () {
-        $('.collapse').collapse('hide');
-    });
   }
 
-  @ViewChild('carousel') public el: any;
-
-    @HostListener('swipeleft', ['$event']) public swipePrev(event: any) {
-        this.el.previousSlide();
-    }
-
-    @HostListener('swiperight', ['$event']) public swipeNext(event: any) {
-        this.el.nextSlide();
-    }
+  activeSlideChange(event: any){
+    $('.collapse').collapse('hide');
+  }
 
 }
