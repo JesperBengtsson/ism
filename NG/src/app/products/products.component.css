@@ -28,6 +28,15 @@
         line-height: 1.42;
     }
 
+    .introduction {
+        float: right;
+        padding: 0;
+        overflow-x: hidden;
+        position: relative;
+        width: 50%;
+        height: 100%;
+    }
+
     .content-container {
         left: 0;
         position: relative;

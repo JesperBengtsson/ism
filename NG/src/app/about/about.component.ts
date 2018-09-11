@@ -25,7 +25,7 @@ export class AboutComponent implements OnInit {
               this.timer--;
           }
           if(this.timer === 0) {
-              this.router.navigate(['']);
+              this.router.navigate(['/home']);
               this.countDown.unsubscribe();
           }
       });

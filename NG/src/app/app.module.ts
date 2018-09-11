@@ -11,7 +11,7 @@ import { DxSchedulerModule, DxTemplateModule, DxTabsModule, DxContextMenuModule 
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { CarouselModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+import { CarouselModule, ButtonsModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,7 @@ import { CarouselModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md
     DxTabsModule,
     DxTemplateModule,
     DxSchedulerModule,
-    FormsModule,
-    WavesModule
+    FormsModule
   ],
   providers: [Service],
   bootstrap: [AppComponent]

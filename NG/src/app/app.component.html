@@ -17,10 +17,10 @@
 
     <!-- home-page -->
 
-    <div class="home-page" >
+    <div class="home-page">
 
         <img class="background" src="/src/img/background.png"> 
-
+        
         <!-- Navigation Menu -->
 
         <div class="home-container" (click)="hideAndShow($event)">
@@ -60,7 +60,7 @@
 
                 <!-- Home Navigation Menu Button -->
 
-                <a class="nav-btn" [routerLink]="['']">
+                <a class="nav-btn" [routerLink]="['/home']">
                     <img alt="" src="/src/img/portfolio.jpg">
 
                     <div class="heading">
@@ -108,7 +108,7 @@
 
         <!-- Router outlet -->
 
-        <div class="introduction" [@routerTransition]="getState(o)">
+        <div [@routerTransition]="getState(o)">
             <router-outlet #o="outlet" class="dx-viewport">
             </router-outlet>
         </div>
