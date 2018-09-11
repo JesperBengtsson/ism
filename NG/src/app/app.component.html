@@ -53,7 +53,6 @@
                         <h2>2018-01-01 24:00 in Blue</h2>
                     </div>
                 </div>
-
             </div>
 
             <div class="menu" [@toggleMenu]='openClose'>
@@ -108,7 +107,7 @@
 
         <!-- Router outlet -->
 
-        <div [@routerTransition]="getState(o)">
+        <div class="router-container" [@routerTransition]="getState(o)">
             <router-outlet #o="outlet" class="dx-viewport">
             </router-outlet>
         </div>

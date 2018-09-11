@@ -207,15 +207,18 @@
         color: #fff;
         font-size: 36px;
     }
+
+    .next-meeting {
+        padding: 60px 0 10px 0;
+        font-size: 3.50em;
+        text-align: center;
+        color: #fff;
+    }
+
     
     /* ( b ) Introduction Section */
     
-    .introduction {
-        float: right;
-        padding: 0;
-        overflow-x: hidden;
-        position: relative;
-        width: 50%;
+    .router-container {
         height: 100%;
     }
     /* 

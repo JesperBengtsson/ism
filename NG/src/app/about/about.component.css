@@ -34,7 +34,7 @@
     .introduction {
         float: right;
         padding: 0;
-        overflow-x: hidden;
+        overflow-x: hidden; 
         position: relative;
         width: 50%;
         height: 100%;
@@ -44,7 +44,7 @@
         left: 0;
         position: relative;
         padding: 0, 10, 0, 10;
-        background: #e8e7e4;
+        background: #e8e7e4; 
     }
     
                         /*------------------

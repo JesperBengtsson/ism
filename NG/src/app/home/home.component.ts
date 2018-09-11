@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
 
   introductionInOut($event){
     this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
-    console.log(this.introductionState);
   }
 
 }
