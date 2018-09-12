@@ -179,6 +179,10 @@
         color: #fff;
     }
 
+    .client-name img {
+        width: 40rem;
+    }
+
     .client-info {
         padding: 0 0 10px 0;
         font-size: 2.25em;

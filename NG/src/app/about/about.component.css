@@ -3,6 +3,7 @@
     @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
     @import url(https://fonts.googleapis.com/css?family=Asap);
 
+
     html,
     body,
     textarea,
@@ -39,26 +40,23 @@
         width: 50%;
         height: 100%;
     }
+
     
     .content-container {
         left: 0;
         position: relative;
         padding: 0, 10, 0, 10;
-        background: #e8e7e4; 
-    }
-    
-                        /*------------------
-                            7 ) Profile Page
-                        ------------------*/
-    
-    /* ( a ) Story of Glory */
-    
-    .profile-page .image-container {
-        background: url(/src/img/about_us_featured.png);
-        background-size: cover;
-        background-position: bottom;
+        background: #e8e7e4;
+        bottom: 0; 
     }
 
+    
+    section {
+        height: 100vh;
+        background: #e8e7e4;
+    }
+
+    
     .services {
         text-align: center;
         padding: 15px;
@@ -123,7 +121,8 @@
     }
 
     .about-us-desc p:first-child {
-        font-size: 17px;
+        font-size: 32px;
+        font-family: 'Cinzel', serif;
     }
     
     .about-us-desc p:last-child {
@@ -133,7 +132,8 @@
         -webkit-column-gap: 30px;/* Chrome, Safari, Opera */ 
         -moz-column-gap: 30px;/* Firefox */ 
         column-gap: 30px;
-        font-size: 14px;
+        font-size: 24px;
+        font-family: 'Cinzel', serif;
     }
     
 

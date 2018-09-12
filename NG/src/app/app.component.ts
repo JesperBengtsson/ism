@@ -35,7 +35,7 @@ import * as $ from 'jquery';
     trigger('move', [
       transition('in => out', [
         query('.carousel', stagger('300ms', [
-          animate('20s', keyframes([
+          animate('30s', keyframes([
             style({  transform: 'translateY(25rem)', offset: 0 }),
             style({  transform: 'translateY(-100%)', offset: 1 }),
           ]))]), { optional: true })
