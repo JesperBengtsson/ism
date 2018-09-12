@@ -31,9 +31,11 @@
                     <img src="/src/img/logos/vattenfall_logo1.png">
                 </h2>
                 <h2 class="client-info">Your meeting is 11:00 in conference room Blue</h2>
+                
+                <div class="meetings-container">
                 <h2 class="home-text-heading">Upcoming meetings</h2>
-
-                <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-container">
+                
+                <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
                     <div class="meetings">
                         <!--    TMP DUMMY DATA    -->
                         <h2>2018-01-01 08:00 in Red</h2>
@@ -56,7 +58,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             <div class="menu" [@toggleMenu]='openClose'>
 
                 <!-- Home Navigation Menu Button -->

@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
   introductionState = 'in';
 
   ngOnInit() {
-    
+    $(document).ready(function(){
+      $('#carousel-home').carousel();
+      });
   }
 
   introductionInOut($event){
