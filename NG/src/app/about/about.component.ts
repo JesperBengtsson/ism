@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
+declare var $ :any;
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -17,6 +19,11 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
       // do init at here for current route.
       this.countDown = this.startTimer(1000);
+
+      $(document).ready(function(){
+        $('.carousel').carousel();
+        });
+
   }
 
   startTimer(time: number): Subscription {

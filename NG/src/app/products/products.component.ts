@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.countDown = this.startTimer(1000);
 
-    $('#carousel').on('hidden.bs.modal', function () {
+    $('#productCarousel').on('hidden.bs.modal', function () {
         $('.collapse').collapse('hide');
       });
   }

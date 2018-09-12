@@ -193,7 +193,7 @@
         color: #fff;
     }
 
-    .carousel-container {
+    .meetings-container {
         min-height: 400px;
         max-height: 400px;
         overflow: hidden;
@@ -202,12 +202,12 @@
         margin-left: 9rem;
     }
 
-    .carousel{
+    .meetings{
         left: 10px;
         transform: translateX(-100%);
     }
 
-    .carousel h2 {
+    .meetings h2 {
         color: #fff;
         font-size: 36px;
     }

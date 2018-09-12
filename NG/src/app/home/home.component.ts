@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state, stagger, query, keyframes } from '@angular/animations';
 
+declare var $ :any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,10 +22,14 @@ export class HomeComponent implements OnInit {
   introductionState = 'in';
 
   ngOnInit() {
+    
   }
 
   introductionInOut($event){
     this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
+    $(document).ready(function(){
+      $('#carousel-home').carousel();
+      });
   }
 
 }
