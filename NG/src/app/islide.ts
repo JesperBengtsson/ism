@@ -1,4 +1,4 @@
-import { ISlideBundle }  from './islidebundle';
+import { IBundle }  from './ibundle';
 
 export interface ISlide {
     id: number;
@@ -6,5 +6,5 @@ export interface ISlide {
     image: string;
     title: string;
     text: string;
-    bundle: ISlideBundle;
+    bundle: IBundle;
 }

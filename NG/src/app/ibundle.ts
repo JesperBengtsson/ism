@@ -1,4 +1,4 @@
-export interface ISlideBundle {
+export interface IBundle {
     id: number;
     name: string;
 }
