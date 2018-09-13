@@ -1,13 +1,9 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+
 
 @Entity(name = "slide")
 @Table(name = "slide")
@@ -21,6 +17,13 @@ public class Slide {
 
     private String name;
     private String image;
+
+
+
+    @ManyToOne()
+    //@ManyToOne()
+    @JoinColumn(name = "bundle_id")
+    private Bundle bundle;
 
 	/*
     @Override
@@ -54,6 +57,15 @@ public class Slide {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @JsonGetter("bundle")
+    public Bundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
     }
 
 }

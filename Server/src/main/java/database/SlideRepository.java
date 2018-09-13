@@ -11,6 +11,6 @@ import entity.Slide;
 public interface SlideRepository extends CrudRepository<Slide, Long>{
     public void deleteById(int id);
     public Slide findById(int id);
-    //public List<Book> findByTitle(String title);
+    //public List<Slide> findByTitle(String title);
     public List<Slide> findAll();
 }
