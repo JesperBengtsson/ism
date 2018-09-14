@@ -19,7 +19,6 @@ public class Slide {
     private String text;
 
     @ManyToOne()
-    //@ManyToOne()
     @JoinColumn(name = "bundle_id")
     private Bundle bundle;
 

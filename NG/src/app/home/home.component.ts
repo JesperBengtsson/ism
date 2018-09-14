@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state, stagger, query, keyframes } from '@angular/animations';
 import { ISlide } from '../islide';
 import { DataService } from '../data.service';
+import { IBundle } from '../ibundle';
 
 declare var $ :any;
 
