@@ -1,11 +1,11 @@
-package database;
+package homepage.database;
 
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
-import entity.Bundle;
+import homepage.entity.Bundle;
 
 @Transactional
 public interface BundleRepository extends CrudRepository<Bundle, Long>{

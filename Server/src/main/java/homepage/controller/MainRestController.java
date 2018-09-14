@@ -1,9 +1,9 @@
-package controller;
+package homepage.controller;
 
-import database.BundleRepository;
-import database.SlideRepository;
-import entity.Bundle;
-import entity.Slide;
+import homepage.database.BundleRepository;
+import homepage.database.SlideRepository;
+import homepage.entity.Bundle;
+import homepage.entity.Slide;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

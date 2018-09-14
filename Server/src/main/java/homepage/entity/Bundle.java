@@ -1,10 +1,11 @@
-package entity;
+package homepage.entity;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "bundle")
@@ -17,11 +18,10 @@ public class Bundle {
     private String name;
 
 
-    @OneToMany(mappedBy = "slide")
+    @OneToMany(mappedBy = "bundle")
 //    @OneToMany()
-//    @JoinColumn(name = "ticket_id")
+//    @JoinColumn(name = "slide_id")
     private List<Slide> slides = new ArrayList<>();
-
 
     @JsonGetter("id")
     public int getId() {
@@ -41,12 +41,14 @@ public class Bundle {
         this.name = name;
     }
 
-    @JsonGetter("slide")
-    public List<Slide> getSlides() {
-        return slides;
+
+    @JsonGetter("slides")
+    public List<Integer> getSlideIDs() {
+        List<Integer> tmp = this.slides.stream().map(Slide::getId).collect(Collectors.toList());
+        return tmp;
     }
 
-    public void setSlidse(List<Slide> slides) {
+    public void setSlides(List<Slide> slides) {
         this.slides = slides;
     }
 }

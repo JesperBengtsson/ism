@@ -1,11 +1,11 @@
-package database;
+package homepage.database;
 
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
-import entity.Slide;
+import homepage.entity.Slide;
 
 @Transactional
 public interface SlideRepository extends CrudRepository<Slide, Long>{

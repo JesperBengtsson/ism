@@ -16,6 +16,18 @@
 
 <body>
 
+    <div class="row">
+        <div *ngFor="let item of slides">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" height="400px" src="{{httpBase + item.image}}" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">test</h4>              
+              <p class="card-text">{{item.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
 <!--Carousel Wrapper-->
 <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)">
 
