@@ -28,6 +28,13 @@ export class HomeComponent implements OnInit {
   introductionState = 'in';
 
   ngOnInit() {
+    this._dataService.getAllSlides()
+    .subscribe( data => {
+      this.slides = data;
+      this.jsonTest = JSON.stringify(data);
+    });
+
+
     $(document).ready(function(){
       $('#carousel-home').carousel();
       });

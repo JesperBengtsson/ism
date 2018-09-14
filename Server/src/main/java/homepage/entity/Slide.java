@@ -15,6 +15,8 @@ public class Slide {
 
     private String name;
     private String image;
+    private String title;
+    private String text;
 
     @ManyToOne()
     //@ManyToOne()
@@ -44,6 +46,24 @@ public class Slide {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @JsonGetter("title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @JsonGetter("text")
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @JsonGetter("image")

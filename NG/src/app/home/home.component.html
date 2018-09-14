@@ -16,17 +16,6 @@
 
 <body>
 
-    <div class="row">
-        <div *ngFor="let item of slides">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" height="400px" src="{{httpBase + item.image}}" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">test</h4>              
-              <p class="card-text">{{item.name}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
 <!--Carousel Wrapper-->
 <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)">
@@ -34,96 +23,20 @@
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
 
-    <div class="carousel-item active">
+    <div class="carousel-item" *ngFor="let item of slides; let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
       <div class="view">
-        <img class="d-block image" src="/src/img/home2.jpg" alt="First slide">
+        <img class="d-block image" src="{{item.image}}" alt="First slide">
         <div class="mask rgba-black-light"></div>
       </div>
       <a href="http://www.ismobile.com/">
         <img class="logo" src="/src/img/ismlogo.png">
       </a>
       <div class="carousel-caption">
-        <h3 class="h3-responsive">SITUATION-SMART MOBILITY</h3>
-        <p>POWERFUL, PAPER-FREE MANAGED PROCESS</p>
+        <h3 class="h3-responsive">{{item.title}}</h3>
+        <p>{{item.text}}</p>
       </div>
     </div>
-
-    <div class="carousel-item">
-      <!--Mask color-->
-      <div class="view">
-        <img class="d-block image" src="/src/img/home1.jpg" alt="Second slide">
-        <div class="mask rgba-black-light"></div>
-      </div> 
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">LOGISTICS</h3>
-        <p>SMARTER EQUIPMENT TRACKING</p>
-      </div>
-    </div>
-
-    
-    <div class="carousel-item">
-      <div class="view">
-        <video class="d-block" autoplay loop muted>
-          <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" class="d-block" alt="Third slide" />
-        </video>
-      </div>
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">VIDEO</h3>
-            <p>TESTING OUT HOW VID WORKS</p>
-          </div>
-      </div>
-      
-
-    <div class="carousel-item">
-      <!--Mask color-->
-      <div class="view">
-        <img class="d-block image" src="/src/img/home3.jpg" alt="Third slide">
-        <div class="mask rgba-black-light"></div>
-      </div>
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">SMART METER ROLLOUT</h3>
-        <p>A PREDEFINED WORKFLOW FOR METER EXCHANGE</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <!--Mask color-->
-      <div class="view">
-        <img class="d-block image" src="/src/img/home4.jpg" alt="Fifth slide">
-        <div class="mask rgba-black-light"></div>
-      </div>
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">SITUATION-SMART MOBILITY</h3>
-        <p>POWERFUL, PAPER-FREE MANAGED PROCESS</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <!--Mask color-->
-      <div class="view">
-        <img class="d-block image" src="/src/img/home5.jpg" alt="Sixth slide">
-        <div class="mask rgba-black-light"></div>
-      </div>
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">AUTOMATED APPOINTMENT BOOKING</h3>
-        <p>WITH TRUE EFFICIENCY BUILT-IN</p>
-      </div>
-    </div>   
+ 
   </div>
   <!--/.Slides-->
 

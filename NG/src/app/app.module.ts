@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CarouselModule, ButtonsModule } from 'angular-bootstrap-md';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CarouselModule, ButtonsModule } from 'angular-bootstrap-md';
     DxTabsModule,
     DxTemplateModule,
     DxSchedulerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [Service],
   bootstrap: [AppComponent]

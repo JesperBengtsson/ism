@@ -15,6 +15,7 @@ public class Bundle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bundle_id", updatable = false, nullable = false)
     private int id;
+
     private String name;
 
 
@@ -40,7 +41,6 @@ public class Bundle {
     public void setName(String name) {
         this.name = name;
     }
-
 
     @JsonGetter("slides")
     public List<Integer> getSlideIDs() {
