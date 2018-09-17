@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47484d94-85af-48c3-95ee-929c36efb6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NG/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/NG/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NG/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/NG/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NG/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/NG/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NG/src/app/data.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NG/src/app/data.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NG/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NG/src/app/home/home.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NG/src/app/ibundle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NG/src/app/ibundle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NG/src/app/islide.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NG/src/app/islide.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/homepage/entity/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/homepage/entity/Slide.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Server/target/" />
@@ -77,7 +75,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/src/main/java/homepage/entity/Bundle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -94,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/main/java/homepage/entity/Slide.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
+            <state relative-caret-position="972">
               <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -103,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/main/resources/data.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
@@ -446,6 +444,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/homepage/entity/Slide.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/main/java/homepage/entity/Bundle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -455,23 +470,6 @@
             <element signature="e#762#763#0" expanded="true" />
             <element signature="e#789#790#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/homepage/entity/Slide.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/main/resources/data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
