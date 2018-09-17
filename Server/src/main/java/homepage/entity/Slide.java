@@ -74,7 +74,6 @@ public class Slide {
         this.image = image;
     }
 
-
     public Bundle getBundle() {
         return bundle;
     }

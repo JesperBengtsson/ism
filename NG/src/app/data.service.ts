@@ -66,4 +66,11 @@ export class DataService {
     this._http.get<IBundle[]>('http://localhost:8080/api/allbundles').subscribe( bundles => { this.bundles = bundles; });
   }
 
+  slide4bundles(bundle: IBundle) {
+    if ( this.slides === [] ) {
+      return [];
+    }
+    return this.slides.filter( b => b.bundle.id === bundle.id);
+  }
+
 }
