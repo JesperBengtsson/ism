@@ -7,11 +7,9 @@
 
     1 ) Font Import From Google Fonts
 
-    2 ) Preloader Styles
+    2 ) General Rules
 
-    3 ) General Rules
-
-    4 ) Homepage Styles
+    3 ) Homepage Styles
 
         - ( a ) Homepage
         - ( b ) Introduction Section
@@ -26,20 +24,14 @@
     -----------------------------------*/
 
     @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,300,500);
-    @import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900);
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
     @import url(https://fonts.googleapis.com/css?family=Domine);
     @import url(https://fonts.googleapis.com/css?family=Cinzel);
     
-                        /*----------------------
-                            2 ) Preloader Styles
-                        ----------------------*/
-    
-    
-                        /*-------------------
-                            3 ) General Rules
-                        -------------------*/
-    
+
+    /*-------------------------
+        2 ) General Rules
+    -------------------------*/
+
     html {
         font-size: 16px;
     }
@@ -56,15 +48,6 @@
     h5,
     h6 {
         color: #343333;
-    }
-    
-    html,
-    body,
-    textarea,
-    button,
-    input {
-        /*font-family: 'Playfair Display', serif;*/
-        font-family: 'Domine', serif;
     }
 
     h1,h2,h3,h4,h5,h6 {
@@ -100,8 +83,6 @@
         color: #fff;
     }
     
-    
-    
     h3 {
         font-size: 2.25em;
         font-weight: 400;
@@ -112,7 +93,7 @@
     }
     
     /*---------------------
-    4 ) Homepage Styles
+    3 ) Homepage Styles
     ---------------------*/
     
     /* ( a ) Homepage */
@@ -306,9 +287,8 @@
         line-height: 60px;
         margin: auto auto 10px;
         text-align: center;
-        /*box-shadow: 0 0 0 0 rgba(256, 256, 256, 0.2);*/
         width: 60px;
-        -webkir-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         -ms-transition: all 0.3s;
         -o-transition: all 0.3s;
