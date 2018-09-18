@@ -13,7 +13,7 @@ import { interval, Subscription } from 'rxjs';
 export class CalendarComponent implements OnInit {
 
     countDown: Subscription;
-    timer = (60 * 30);
+    timer = (60 * 3);
 
     ngOnInit() {
         // do init at here for current route.
@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit {
     resourcesData: Resource[];
     resourcesMenuItems: ResourceMenuItem[];
     groups: any;
-    crossScrollingEnabled: boolean = true;
+    crossScrollingEnabled: boolean = false;
 
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
@@ -61,7 +61,6 @@ export class CalendarComponent implements OnInit {
             { text: 'Go to Today', onItemClick: () => this.showCurrentDate()}
         ];
 
-        
         this.resourcesData.forEach(function (item) {
             let menuItem: ResourceMenuItem = {
                 text: item.text,
@@ -84,7 +83,7 @@ export class CalendarComponent implements OnInit {
     }
 
     onValueChanged(e) {
-        beginGroup: true
+        beginGroup: true;
         this.groupCell();
     }
 

@@ -12,7 +12,7 @@ declare var $ :any;
 export class AboutComponent implements OnInit {
 
   countDown: Subscription;
-  timer = (60 * 30);
+  timer = (60 * 1);
 
   constructor(private router : Router) {}
 

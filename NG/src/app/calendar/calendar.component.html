@@ -22,7 +22,8 @@
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             [firstDayOfWeek]="1"
                             [startDayHour]="5"
-                            [height]="780">
+                            [height]="780"
+                            >
 
                             <dxi-resource
                                 fieldExpr="roomId"
@@ -32,14 +33,14 @@
                             ></dxi-resource>
 
                             <dxo-editing
-                            [allowAdding]="true"
-                            [allowDeleting]="true"
-                            [allowDragging]="true"
-                            [allowResizing]="true"
-                            [allowUpdating]="true">
-                        </dxo-editing>
+                                [allowAdding]="true"
+                                [allowDeleting]="true"
+                                [allowDragging]="true"
+                                [allowResizing]="true"
+                                [allowUpdating]="true">
+                            </dxo-editing>
                         
-                    </dx-scheduler>
+                        </dx-scheduler>
                     
                         <div class="options">
                             <div class="caption">Options</div>

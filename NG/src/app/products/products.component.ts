@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   constructor(private router : Router) { }
 
   countDown: Subscription;
-    timer = (60 * 30);
+    timer = (60 * 3);
 
 
     startTimer(time: number): Subscription {
