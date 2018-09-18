@@ -1,20 +1,5 @@
-<!doctype html>
 
-<html>
-
-<head>
-    <title>isMoblie</title>
-
-    <!-- meta data -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-
-</head>
-
-<div class="introduction">
-
-<body (click)="timer=(60 * 3)">
+<div class="introduction" (click)="timer=(60 * 3)">
 
     <!-- SCHEDULER -->
 
@@ -37,7 +22,7 @@
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             [firstDayOfWeek]="1"
                             [startDayHour]="5"
-                            [height]="880">
+                            [height]="780">
 
                             <dxi-resource
                                 fieldExpr="roomId"
@@ -52,15 +37,23 @@
                             [allowDragging]="true"
                             [allowResizing]="true"
                             [allowUpdating]="true">
-                            </dxo-editing>
-
-                        </dx-scheduler>
-
+                        </dxo-editing>
+                        
+                    </dx-scheduler>
+                    
+                        <div class="options">
+                            <div class="caption">Options</div>
+                            <div class="option">
+                                <dx-check-box text="Room group" (onValueChanged)="onValueChanged($event)"></dx-check-box>
+                            </div>
+                        </div>
+                        
                         <dx-context-menu #appointmentMenu
                             [dataSource]="appointmentContextMenuItems"
                             target=".dx-scheduler-appointment"
                             (onItemClick)="onContextMenuItemClick($event)"
                             [width]="200">
+                            
                         <div *dxTemplate="let e of 'item'">
                             <div *ngIf="e.color">
                                 <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
@@ -76,13 +69,11 @@
                             [width]="200">
                         </dx-context-menu>
 
-
                 </div>
             </div>
 
         </div>
 
     </div>
-</body>
+
 </div>
-</html>

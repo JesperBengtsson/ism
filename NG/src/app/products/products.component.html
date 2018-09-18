@@ -1,19 +1,6 @@
-<!doctype html>
 
-<html lang="en" class="no-js">
 
-<head>
-
-    <!-- meta data -->
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-</head>
-
-<div class="introduction">
-
-<body (click)="timer=(60 * 3)">
+<div class="introduction" (click)="timer=(60 * 3)">
 
     <!-- TMP TMP TMP TMP Products TMP TMP TMP TMP -->
 
@@ -29,20 +16,25 @@
                         <div class="modal-body accordion" id="accordion">
 
                             <!--Carousel Wrapper-->
-                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'" [interval]="0" (activeSlideChange)="activeSlideChange($event)" #productCarousel>
-                               
+                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'"
+                                [interval]="0" (activeSlideChange)="activeSlideChange($event)" #productCarousel>
+
                                 <!--First slide-->
                                 <mdb-carousel-item>
                                     <div href="#collapseFirst" data-toggle="collapse" class="collapse-toggle view w-100">
 
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                                            alt="First slide">
                                         <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h3 class="h3-responsive">Nice deck</h3>
                                             <div id="collapseFirst" class="collapse" data-parent="#accordion">
-                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur,
+                                                    adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis
+                                                    dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error
+                                                    excepturi
                                                     repudiandae ad, est, quo tenetur?</p>
                                             </div>
                                         </div>
@@ -54,14 +46,18 @@
                                 <mdb-carousel-item>
                                     <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
 
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+                                            alt="Second slide">
                                         <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="h3-responsive">old ship</h4>
                                             <div id="collapseSecond" class="collapse" data-parent="#accordion">
-                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur,
+                                                    adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis
+                                                    dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error
+                                                    excepturi
                                                     repudiandae ad, est, quo tenetur?</p>
                                             </div>
                                         </div>
@@ -72,14 +68,18 @@
                                 <!--Third slide-->
                                 <mdb-carousel-item>
                                     <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100">
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Third slide">
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                                            alt="Third slide">
                                         <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="h3-responsive">cool valley</h4>
                                             <div id="collapseThird" class="collapse" data-parent="#accordion">
-                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur,
+                                                    adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis
+                                                    dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error
+                                                    excepturi
                                                     repudiandae ad, est, quo tenetur?</p>
                                             </div>
                                         </div>
@@ -91,14 +91,18 @@
                                 <mdb-carousel-item>
                                     <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
 
-                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Fourth slide">
+                                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+                                            alt="Fourth slide">
                                         <div class="mask rgba-black-slight"></div>
                                         <div class="carousel-caption">
                                             <h4 class="h3-responsive">pretty lake</h4>
                                             <div id="collapseFourth" class="collapse" data-parent="#accordion">
-                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing
-                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis dignissimos,
-                                                    doloremque pariatur fugiat voluptatum expedita magni error excepturi
+                                                <p class="product-desc">Lorem ipsum dolor sit amet consectetur,
+                                                    adipisicing
+                                                    elit. Praesentium harum ea cumque vero facilis deserunt reiciendis
+                                                    dignissimos,
+                                                    doloremque pariatur fugiat voluptatum expedita magni error
+                                                    excepturi
                                                     repudiandae ad, est, quo tenetur?</p>
                                             </div>
                                         </div>
@@ -129,9 +133,12 @@
                                         </a></li>
                                     <h4 class="text-capitalize">nice deck</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
-                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
-                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                        provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
+                                        culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit
+                                        voluptas.</p>
                                 </div>
                             </div>
 
@@ -143,9 +150,12 @@
 
                                     <h4 class="text-capitalize">old ship</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
-                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
-                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                        provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
+                                        culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit
+                                        voluptas.</p>
                                 </div>
                             </div>
 
@@ -156,9 +166,12 @@
                                         </a></li>
                                     <h4 class="text-capitalize">cool valley</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
-                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
-                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                        provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
+                                        culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit
+                                        voluptas.</p>
                                 </div>
                             </div>
 
@@ -169,9 +182,12 @@
                                         </a></li>
                                     <h4 class="text-capitalize">pretty lake</h4>
                                     <p class="text-uppercase">description</p>
-                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed provident
-                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus culpa
-                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit voluptas.</p>
+                                    <p class="col-md-12">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
+                                        provident
+                                        delectus repudiandae. Dolorem amet, quidem veniam similique maxime doloribus
+                                        culpa
+                                        officia aspernatur illo neque voluptatum excepturi accusamus tempora odit
+                                        voluptas.</p>
                                 </div>
                             </div>
                         </ul>
@@ -185,10 +201,4 @@
     </div>
     <!-- Social Media Icons [ END ] -->
 
-
-
-</body>
-
 </div>
-
-</html>

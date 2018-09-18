@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { animate, transition, trigger, style, state, stagger, query, keyframes } from '@angular/animations';
+import { animate, transition, trigger, style, state } from '@angular/animations';
 import { ISlide } from '../islide';
 import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
+import { IBundle } from '../ibundle';
 
 declare var $ :any;
 
@@ -20,10 +22,13 @@ declare var $ :any;
 export class HomeComponent implements OnInit {
 
   public slides: ISlide[];
+  public bundles: IBundle[];
+  public filteredSlides: ISlide[];
   public jsonTest = '';
   public httpBase = 'http://localhost:8080/';
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService,
+    private _route: ActivatedRoute) { }
 
   introductionState = 'in';
 

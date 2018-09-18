@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 
-@Entity(name = "slide")
+@Entity
 @Table(name = "slide")
 public class Slide {
 

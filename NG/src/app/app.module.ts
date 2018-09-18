@@ -7,7 +7,7 @@ import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { DxSchedulerModule, DxTemplateModule, DxTabsModule, DxContextMenuModule } from 'devextreme-angular';
+import { DxSchedulerModule, DxTemplateModule, DxTabsModule, DxContextMenuModule, DxCheckBoxModule, DxSelectBoxModule, } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -26,10 +26,12 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonsModule,
     CarouselModule,
     CommonModule,
+    DxCheckBoxModule,
     DxContextMenuModule,
     DxTabsModule,
     DxTemplateModule,
     DxSchedulerModule,
+    DxSelectBoxModule,
     FormsModule,
     HttpClientModule
   ],

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Appointment, Resource, ResourceMenuItem, Service } from './calendar.service';
-import { DxContextMenuComponent } from 'devextreme-angular';
-import { DxSchedulerComponent } from 'devextreme-angular';
+import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
@@ -42,7 +41,7 @@ export class CalendarComponent implements OnInit {
     resourcesData: Resource[];
     resourcesMenuItems: ResourceMenuItem[];
     groups: any;
-    crossScrollingEnabled: boolean = false;
+    crossScrollingEnabled: boolean = true;
 
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
@@ -59,9 +58,9 @@ export class CalendarComponent implements OnInit {
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment()},
             { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment()},
-            { text: 'Group by Room/Ungroup', beginGroup: true, onItemClick: () => this.groupCell()},
             { text: 'Go to Today', onItemClick: () => this.showCurrentDate()}
         ];
+
         
         this.resourcesData.forEach(function (item) {
             let menuItem: ResourceMenuItem = {
@@ -77,12 +76,18 @@ export class CalendarComponent implements OnInit {
         this.appointmentContextMenuItems = [
             { text: 'Open', onItemClick: () => this.showAppointment() },
             { text: 'Delete', onItemClick: () => this.deleteAppointment() },
-            { text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() },
-            { text: 'Set Room', beginGroup: true, disabled: true }
+            { text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() }
+            //{ text: 'Set Room', beginGroup: true, disabled: true }
         ];
-        this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
+        //this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
+
     }
-    
+
+    onValueChanged(e) {
+        beginGroup: true
+        this.groupCell();
+    }
+
     setResource(itemData) {
         let data = Object.assign({}, this.contextMenuAppointmentData, {
             roomId: [itemData.id]
@@ -147,6 +152,6 @@ export class CalendarComponent implements OnInit {
     onCellContextMenu(e) {
         this.contextMenuCellData = e.cellData;
     }
-
+    
 }
 
