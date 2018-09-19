@@ -19,6 +19,7 @@ public class Bundle {
     private String name;
 
 
+
     @OneToMany(mappedBy = "bundle")
 //    @OneToMany()
 //    @JoinColumn(name = "slide_id")

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -41,11 +42,17 @@ import { animate, transition, trigger, style, query, group, state, stagger, keyf
   ]
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
 
   openClose:string = 'close';
   state = 'in';
   
+  constructor(private _dataService: DataService ) {}
+
+  ngOnInit() {
+    this._dataService.cacheData();
+  }
+
   ngAfterViewInit() {
     setTimeout(() => {
       this.state = 'out';

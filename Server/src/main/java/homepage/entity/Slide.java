@@ -74,6 +74,7 @@ public class Slide {
         this.image = image;
     }
 
+    @JsonGetter("bundle")
     public Bundle getBundle() {
         return bundle;
     }

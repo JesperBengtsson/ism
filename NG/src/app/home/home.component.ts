@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state } from '@angular/animations';
-import { ISlide } from '../islide';
+
 import { DataService } from '../data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ISlide } from '../islide';
 import { IBundle } from '../ibundle';
 
 declare var $ :any;
@@ -18,19 +18,16 @@ declare var $ :any;
       transition('in <=> out', animate('200ms'))
     ])
   ]
-})
+}) 
 export class HomeComponent implements OnInit {
 
   public slides: ISlide[];
   public bundles: IBundle[];
-  public filteredSlides: ISlide[];
   public jsonTest = '';
   public httpBase = 'http://localhost:8080/';
-
-  constructor(private _dataService: DataService,
-    private _route: ActivatedRoute) { }
-
   introductionState = 'in';
+
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
     this._dataService.getAllSlides()
@@ -38,7 +35,6 @@ export class HomeComponent implements OnInit {
       this.slides = data;
       this.jsonTest = JSON.stringify(data);
     });
-
 
     $(document).ready(function(){
       $('#carousel-home').carousel();
@@ -51,5 +47,15 @@ export class HomeComponent implements OnInit {
       $('#carousel-home').carousel();
       });
   }
+
+  myBundles() {
+    return this._dataService.getCachedBundles()[1];
+  }
+
+  mySlides() {
+    return this._dataService.slides4bundles(this.myBundles());
+  }
+
+
 
 }

@@ -1,15 +1,14 @@
 
 
 <div class="introduction" [@introductionTransition]="introductionState">
-
-
+    
 <!--Carousel Wrapper-->
 <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)">
 
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
 
-    <div class="carousel-item" *ngFor="let item of slides; let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+    <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
       <div class="view">
         <img class="d-block image" src="{{item.image}}" alt="First slide">
         <div class="mask rgba-black-light"></div>

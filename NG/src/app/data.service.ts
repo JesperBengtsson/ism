@@ -44,7 +44,6 @@ export class DataService {
     return this._http.post<string>('http://localhost:8080/api/postslide', slide, this.httpOptions);
 }
 
-
     // ------------- Bundles
   // Update the local bundle array
   pushGlobBundle(bundles: IBundle[]) {
@@ -60,7 +59,6 @@ export class DataService {
     return this._http.post<string>('http://localhost:8080/api/postbundle', bundle, this.httpOptions);
   }
   
-
   cacheData() {
     this._http.get<ISlide[]>('http://localhost:8080/api/allslides').subscribe( slides => { this.slides = slides; });
     this._http.get<IBundle[]>('http://localhost:8080/api/allbundles').subscribe( bundles => { this.bundles = bundles; });
@@ -70,7 +68,7 @@ export class DataService {
     if ( this.slides === [] ) {
       return [];
     }
-    return this.slides.filter( b => b.bundle.id === bundle.id);
+    return this.slides.filter( s => s.bundle.id === bundle.id);
   }
 
 }

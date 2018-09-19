@@ -13,10 +13,10 @@
                         <dx-scheduler
                             [crossScrollingEnabled]="crossScrollingEnabled"
                             [dataSource]="appointmentsData"
-                            [views]='["day","week", "month"]'
+                            [views]='["day", "week", "month"]'
                             currentView="week"
                             [groups]="groups"
-                            recurrenceEditMode= "series"
+                            recurrenceEditMode="series"
                             [currentDate]="currentDate"
                             (onCellContextMenu)="onCellContextMenu($event)"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
@@ -29,6 +29,7 @@
                                 fieldExpr="roomId"
                                 label="Room"
                                 displayExpr="text"
+                                allowMultiple="false"
                                 [dataSource]="resourcesData"
                             ></dxi-resource>
 

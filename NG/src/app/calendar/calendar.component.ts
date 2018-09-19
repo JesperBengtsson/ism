@@ -75,7 +75,7 @@ export class CalendarComponent implements OnInit {
         this.appointmentContextMenuItems = [
             { text: 'Open', onItemClick: () => this.showAppointment() },
             { text: 'Delete', onItemClick: () => this.deleteAppointment() },
-            { text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() }
+            //{ text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() }
             //{ text: 'Set Room', beginGroup: true, disabled: true }
         ];
         //this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
@@ -130,14 +130,14 @@ export class CalendarComponent implements OnInit {
         this.scheduler.instance.deleteAppointment(this.contextMenuAppointmentData);
     }
     
-    repeatAppointmentWeekly() {
+    /*repeatAppointmentWeekly() {
         let updatedData = Object.assign({}, this.contextMenuAppointmentData, {
           startDate: this.contextMenuTargetedAppointmentData.startDate,
           recurrenceRule: "FREQ=WEEKLY"
         });
 
         this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, updatedData);
-    }
+    }*/
 
     onContextMenuItemClick(e) {
         e.itemData.onItemClick(e.itemData);
