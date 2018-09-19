@@ -42,7 +42,7 @@ import { DataService } from './data.service';
   ]
 })
 
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   openClose:string = 'close';
   state = 'in';

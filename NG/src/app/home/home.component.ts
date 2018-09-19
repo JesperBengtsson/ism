@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   public bundles: IBundle[];
   public jsonTest = '';
   public httpBase = 'http://localhost:8080/';
+  isDataAvailable: boolean = false;
   introductionState = 'in';
 
   constructor(private _dataService: DataService) { }
@@ -32,13 +33,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._dataService.getAllSlides()
     .subscribe( data => {
+      this.isDataAvailable = true;
       this.slides = data;
       this.jsonTest = JSON.stringify(data);
     });
-
+    
     $(document).ready(function(){
       $('#carousel-home').carousel();
-      });
+    });
   }
 
   introductionInOut($event){

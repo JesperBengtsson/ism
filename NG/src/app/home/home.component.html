@@ -3,7 +3,7 @@
 <div class="introduction" [@introductionTransition]="introductionState">
     
 <!--Carousel Wrapper-->
-<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)">
+<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)" *ngIf="isDataAvailable">
 
   <!--Slides-->
   <div class="carousel-inner" role="listbox">

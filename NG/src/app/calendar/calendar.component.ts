@@ -16,7 +16,6 @@ export class CalendarComponent implements OnInit {
     timer = (60 * 3);
 
     ngOnInit() {
-        // do init at here for current route.
         this.countDown = this.startTimer(1000);
     }
 
@@ -82,25 +81,21 @@ export class CalendarComponent implements OnInit {
 
     }
 
-    onValueChanged(e) {
-        beginGroup: true;
-        this.groupCell();
-    }
-
+    
     setResource(itemData) {
         let data = Object.assign({}, this.contextMenuAppointmentData, {
             roomId: [itemData.id]
         });
-
+        
         this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, data); 
     }
-
+    
     createAppointment() {
         this.scheduler.instance.showAppointmentPopup({
             startDate: this.contextMenuCellData.startDate
         }, true);
     }
-
+    
     createRecurringAppointment() {
         this.scheduler.instance.showAppointmentPopup({
             startDate: this.contextMenuCellData.startDate,
@@ -117,11 +112,11 @@ export class CalendarComponent implements OnInit {
             this.crossScrollingEnabled = true;
         };
     }
-
+    
     showCurrentDate() {
         this.currentDate = new Date();
     }
-
+    
     showAppointment() {
         this.scheduler.instance.showAppointmentPopup(this.contextMenuAppointmentData);
     }
@@ -132,25 +127,29 @@ export class CalendarComponent implements OnInit {
     
     /*repeatAppointmentWeekly() {
         let updatedData = Object.assign({}, this.contextMenuAppointmentData, {
-          startDate: this.contextMenuTargetedAppointmentData.startDate,
-          recurrenceRule: "FREQ=WEEKLY"
+            startDate: this.contextMenuTargetedAppointmentData.startDate,
+            recurrenceRule: "FREQ=WEEKLY"
         });
-
+        
         this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, updatedData);
     }*/
-
+    
     onContextMenuItemClick(e) {
         e.itemData.onItemClick(e.itemData);
     }
-
+    
     onAppointmentContextMenu(e) {
         this.contextMenuAppointmentData = e.appointmentData;
         this.contextMenuTargetedAppointmentData = e.targetedAppointmentData;
     }
-
+    
     onCellContextMenu(e) {
         this.contextMenuCellData = e.cellData;
     }
     
+    onValueChanged(e) {
+        this.groupCell();
+    }
+
 }
 
