@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Appointment, Resource, ResourceMenuItem, Service } from './calendar.service';
+import { Appointment, Resource, ResourceMenuItem, Clients, Service } from './calendar.service';
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
@@ -25,7 +25,7 @@ export class CalendarComponent implements OnInit {
                 this.timer--;
             }
             if(this.timer === 0) {
-                this.router.navigate(['/home']);
+                this._route.navigate(['/home']);
                 this.countDown.unsubscribe();
             }
         });
@@ -38,6 +38,7 @@ export class CalendarComponent implements OnInit {
     appointmentsData: Appointment[];
     currentDate: Date = new Date(Date());
     resourcesData: Resource[];
+    clientsData: Clients[];
     resourcesMenuItems: ResourceMenuItem[];
     groups: any;
     crossScrollingEnabled: boolean = false;
@@ -49,8 +50,9 @@ export class CalendarComponent implements OnInit {
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
 
-    constructor(service: Service, private router : Router) {
+    constructor(service: Service, private _route : Router) {
         let that = this;
+        this.clientsData = service.getClients();
         this.appointmentsData = service.getAppointments();
         this.resourcesData = service.getResources();
         this.resourcesMenuItems = [];
@@ -148,8 +150,33 @@ export class CalendarComponent implements OnInit {
     }
     
     onValueChanged(e) {
+        beginGroup: true;
         this.groupCell();
     }
+    
+    onAppointmentFormCreated(e) {
+        var form = e.form;
 
+        form.itemOption("startDate", {
+                name: "startDate",
+                dataField: "startDate",
+                editorType: "dxDateBox",
+                editorOptions: {
+                type: "time",
+                pickerType: "list",
+                readOnly: true,
+            }
+        })
+
+        form.itemOption("endDate", {
+            name: "endDate",
+            dataField: "endDate",
+            editorType: "dxDateBox",
+            editorOptions: {
+                type: "time",
+                pickerType: "list",
+            }
+        });
+    }
 }
 

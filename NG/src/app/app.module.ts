@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 
 import 'hammerjs';
 
+import { DxDateBoxModule } from "devextreme-angular";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'angular-bootstrap-md';
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     CarouselModule,
     DxCheckBoxModule,
     DxContextMenuModule,
+    DxDateBoxModule,
     DxTemplateModule,
     DxSchedulerModule,
     FormsModule,
@@ -33,4 +35,3 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

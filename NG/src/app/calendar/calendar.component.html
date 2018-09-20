@@ -11,6 +11,7 @@
                 <div class="col-md-11">
 
                         <dx-scheduler
+                            (click)="timer=(60 * 3)"
                             [crossScrollingEnabled]="crossScrollingEnabled"
                             [dataSource]="appointmentsData"
                             [views]='["day", "week", "month"]'
@@ -20,19 +21,25 @@
                             [currentDate]="currentDate"
                             (onCellContextMenu)="onCellContextMenu($event)"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
+                            (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
                             [firstDayOfWeek]="1"
                             [startDayHour]="5"
-                            [height]="780"
-                            >
+                            [height]="780">
+
+                            <dxi-resource
+                                fieldExpr="client"
+                                displayExpr="text"
+                                label="Client"
+                                [dataSource]="clientsData">
+                            </dxi-resource>
 
                             <dxi-resource
                                 fieldExpr="roomId"
                                 label="Room"
                                 displayExpr="text"
-                                allowMultiple="false"
-                                [dataSource]="resourcesData"
-                            ></dxi-resource>
-
+                                [dataSource]="resourcesData">
+                            </dxi-resource>
+                                                    
                             <dxo-editing
                                 [allowAdding]="true"
                                 [allowDeleting]="true"
@@ -41,8 +48,8 @@
                                 [allowUpdating]="true">
                             </dxo-editing>
                         
-                        </dx-scheduler>
-                    
+                    </dx-scheduler>
+                        
                         <div class="options">
                             <div class="caption">Options</div>
                             <div class="option">
@@ -51,26 +58,26 @@
                         </div>
                         
                         <dx-context-menu #appointmentMenu
-                            [dataSource]="appointmentContextMenuItems"
-                            target=".dx-scheduler-appointment"
-                            (onItemClick)="onContextMenuItemClick($event)"
-                            [width]="200">
-                            
+                        [dataSource]="appointmentContextMenuItems"
+                        target=".dx-scheduler-appointment"
+                        (onItemClick)="onContextMenuItemClick($event)"
+                        [width]="200">
+                        
                         <div *dxTemplate="let e of 'item'">
                             <div *ngIf="e.color">
                                 <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
                             </div>
                             <div class="item-text">{{e.text}}</div>
                         </div>
-                        </dx-context-menu>
-
-                        <dx-context-menu #cellMenu
-                            [dataSource]="cellContextMenuItems"
-                            target=".dx-scheduler-date-table-cell"
-                            (onItemClick)="onContextMenuItemClick($event)"
-                            [width]="200">
-                        </dx-context-menu>
-
+                    </dx-context-menu>
+                    
+                    <dx-context-menu #cellMenu
+                    [dataSource]="cellContextMenuItems"
+                    target=".dx-scheduler-date-table-cell"
+                    (onItemClick)="onContextMenuItemClick($event)"
+                    [width]="200">
+                </dx-context-menu>
+                
                 </div>
             </div>
 

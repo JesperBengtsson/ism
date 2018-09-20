@@ -23,6 +23,30 @@ export class ResourceMenuItem {
     onItemClick: any;
 }
 
+export class Clients {
+    text: string;
+    id: number;
+}
+
+let clients: Clients[] = [
+    {
+        text: "Vattenfall",
+        id: 1
+    },
+    {
+        text: "Tullverket",
+        id: 2
+    },
+    {
+        text: "Eltel",
+        id: 3
+    },
+    {
+        text: "IBM",
+        id: 4
+    } 
+];
+
 let appointments: Appointment[] = [
     {
         text: "Meeting type 1",
@@ -122,5 +146,8 @@ export class Service {
     }
     getResources(): Resource[] {
         return resources;
+    }
+    getClients(): Clients[] {
+        return clients;
     }
 }
