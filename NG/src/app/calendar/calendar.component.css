@@ -93,6 +93,10 @@
         vertical-align: middle;
     }
 
+    ::ng-deep .dx-scheduler-appointment-content {
+        padding: 5px 5px 5px 5px !important;
+    }
+
     ::ng-deep .appointment-preview > div:first-child {
         font-size: 12px;
         white-space: normal;

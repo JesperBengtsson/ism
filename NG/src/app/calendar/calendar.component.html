@@ -15,6 +15,7 @@
                             appointmentTooltipTemplate="tooltip-template"
                             currentView="week"
                             recurrenceEditMode="series"
+                            [showAllDayPanel]="false"
                             [crossScrollingEnabled]="crossScrollingEnabled"
                             [currentDate]="currentDate"
                             [dataSource]="appointmentsData"
@@ -80,14 +81,13 @@
                                         </div>
                                     </div>
                                     <div class="appointment-button">
-                                        <dx-button class ="delete-appointment" icon="trash" (onClick)="tooltipDeleteAppointment(appointment)"></dx-button>
-                                        <dx-button class ="delete-appointment" icon="edit" (onClick)="tooltipShowAppointment(appointment)"></dx-button>
+                                        <dx-button class ="delete-appointment" icon="trash" (onClick)="onTooltipDeleteAppointment(appointment)"></dx-button>
+                                        <dx-button class ="delete-appointment" icon="edit" (onClick)="onTooltipShowAppointment(appointment)"></dx-button>
                                     </div>
                                 </div>
                             </div>
 
-
-                    </dx-scheduler>
+                        </dx-scheduler>
                         
                         <div class="options">
                             <div class="caption">Options</div>
@@ -97,25 +97,25 @@
                         </div>
                         
                         <dx-context-menu #appointmentMenu
-                        [dataSource]="appointmentContextMenuItems"
-                        target=".dx-scheduler-appointment"
-                        (onItemClick)="onContextMenuItemClick($event)"
-                        [width]="200">
+                            [dataSource]="appointmentContextMenuItems"
+                            target=".dx-scheduler-appointment"
+                            (onItemClick)="onContextMenuItemClick($event)"
+                            [width]="200">
                         
-                        <div *dxTemplate="let e of 'item'">
-                            <div *ngIf="e.color">
-                                <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
+                            <div *dxTemplate="let e of 'item'">
+                                <div *ngIf="e.color">
+                                    <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
+                                </div>
+                                <div class="item-text">{{e.text}}</div>
                             </div>
-                            <div class="item-text">{{e.text}}</div>
-                        </div>
-                    </dx-context-menu>
+                        </dx-context-menu>
                     
                     <dx-context-menu #cellMenu
-                    [dataSource]="cellContextMenuItems"
-                    target=".dx-scheduler-date-table-cell"
-                    (onItemClick)="onContextMenuItemClick($event)"
-                    [width]="200">
-                </dx-context-menu>
+                        [dataSource]="cellContextMenuItems"
+                        target=".dx-scheduler-date-table-cell"
+                        (onItemClick)="onContextMenuItemClick($event)"
+                        [width]="200">
+                    </dx-context-menu>
                 
                 </div>
             </div>

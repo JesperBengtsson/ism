@@ -12,30 +12,14 @@ import Query from 'devextreme/data/query';
   providers: [Service]
 })
 export class CalendarComponent implements OnInit {
-
-    countDown: Subscription;
-    timer = (60 * 3);
-
-    ngOnInit() {
-        this.countDown = this.startTimer(1000);
-    }
-
-    startTimer(time: number): Subscription {
-        return interval(time).subscribe(() => {
-            if(this.timer > 0) {
-                this.timer--;
-            }
-            if(this.timer === 0) {
-                this._route.navigate(['/home']);
-                this.countDown.unsubscribe();
-            }
-        });
-    }
-
+ 
     @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
     @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
     @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
-
+    
+    countDown: Subscription;
+    timer = (60 * 3);
+    
     appointmentsData: Appointment[];
     currentDate: Date = new Date(Date());
     resourcesData: Resource[];
@@ -43,19 +27,23 @@ export class CalendarComponent implements OnInit {
     resourcesMenuItems: ResourceMenuItem[];
     groups: any;
     crossScrollingEnabled: boolean = false;
-
+    
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
     contextMenuTargetedAppointmentData: any;
     
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
+    
+    constructor(private service: Service, private _route : Router) { }
+    
+    ngOnInit() {
+        this.countDown = this.startTimer(1000);
 
-    constructor(service: Service, private _route : Router) {
         let that = this;
-        this.clientsData = service.getClients();
-        this.appointmentsData = service.getAppointments();
-        this.resourcesData = service.getResources();
+        this.clientsData = this.service.getClients();
+        this.appointmentsData = this.service.getAppointments();
+        this.resourcesData = this.service.getResources();
         this.resourcesMenuItems = [];
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment()},
@@ -81,7 +69,18 @@ export class CalendarComponent implements OnInit {
             //{ text: 'Set Room', beginGroup: true, disabled: true }
         ];
         //this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
-
+    }
+    
+    startTimer(time: number): Subscription {
+        return interval(time).subscribe(() => {
+            if(this.timer > 0) {
+                this.timer--;
+            }
+            if(this.timer === 0) {
+                this._route.navigate(['/home']);
+                this.countDown.unsubscribe();
+            }
+        });
     }
 
     getRoomById(id) {
@@ -122,19 +121,22 @@ export class CalendarComponent implements OnInit {
             this.crossScrollingEnabled = true;
         };
     }
+
+    onValueChanged() {
+        this.groupCell();
+    }
     
     showCurrentDate() {
         this.currentDate = new Date();
     }
     
-    tooltipDeleteAppointment(appointment) {
+    onTooltipDeleteAppointment(appointment) {
         this.scheduler.instance.deleteAppointment(appointment);
     }
 
-    tooltipShowAppointment(appointment) {
+    onTooltipShowAppointment(appointment) {
         this.scheduler.instance.showAppointmentPopup(appointment);
     }
-
 
     onContextShowAppointment() {
         this.scheduler.instance.showAppointmentPopup(this.contextMenuAppointmentData);
@@ -155,12 +157,7 @@ export class CalendarComponent implements OnInit {
     
     onCellContextMenu(e) {
         this.contextMenuCellData = e.cellData;
-    }
-    
-    onValueChanged(e) {
-        beginGroup: true;
-        this.groupCell();
-    }
+    }  
     
     onAppointmentFormCreated(e) {
         var form = e.form;
@@ -174,8 +171,7 @@ export class CalendarComponent implements OnInit {
                 pickerType: "list",
                 readOnly: true
             }
-        })
-
+        });
         form.itemOption("endDate", {
             name: "endDate",
             dataField: "endDate",
@@ -185,6 +181,12 @@ export class CalendarComponent implements OnInit {
                 pickerType: "list",
             }
         });
+        form.itemOption("roomId", {
+            validationRules: [{
+                type: "required"
+            }]
+        });
+        form.itemOption("allDay", "visible", false);
     }
 }
 
