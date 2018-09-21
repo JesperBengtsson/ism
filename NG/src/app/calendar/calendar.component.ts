@@ -3,6 +3,7 @@ import { Appointment, Resource, ResourceMenuItem, Clients, Service } from './cal
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
+import Query from 'devextreme/data/query';
 
 @Component({
   selector: 'calendar',
@@ -74,8 +75,8 @@ export class CalendarComponent implements OnInit {
         });
 
         this.appointmentContextMenuItems = [
-            { text: 'Open', onItemClick: () => this.showAppointment() },
-            { text: 'Delete', onItemClick: () => this.deleteAppointment() },
+            { text: 'Open', onItemClick: () => this.onContextShowAppointment() },
+            { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },
             //{ text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() }
             //{ text: 'Set Room', beginGroup: true, disabled: true }
         ];
@@ -83,7 +84,14 @@ export class CalendarComponent implements OnInit {
 
     }
 
+    getRoomById(id) {
+        return Query(this.resourcesData).filter(["id", "=", id]).toArray()[0];
+    }
     
+    getClientById(id) {
+        return Query(this.clientsData).filter(["id", "=", id]).toArray()[0];
+    }
+
     setResource(itemData) {
         let data = Object.assign({}, this.contextMenuAppointmentData, {
             roomId: [itemData.id]
@@ -119,22 +127,22 @@ export class CalendarComponent implements OnInit {
         this.currentDate = new Date();
     }
     
-    showAppointment() {
+    tooltipDeleteAppointment(appointment) {
+        this.scheduler.instance.deleteAppointment(appointment);
+    }
+
+    tooltipShowAppointment(appointment) {
+        this.scheduler.instance.showAppointmentPopup(appointment);
+    }
+
+
+    onContextShowAppointment() {
         this.scheduler.instance.showAppointmentPopup(this.contextMenuAppointmentData);
     }
-    
-    deleteAppointment() {
+
+    onContextDeleteAppointment() {
         this.scheduler.instance.deleteAppointment(this.contextMenuAppointmentData);
     }
-    
-    /*repeatAppointmentWeekly() {
-        let updatedData = Object.assign({}, this.contextMenuAppointmentData, {
-            startDate: this.contextMenuTargetedAppointmentData.startDate,
-            recurrenceRule: "FREQ=WEEKLY"
-        });
-        
-        this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, updatedData);
-    }*/
     
     onContextMenuItemClick(e) {
         e.itemData.onItemClick(e.itemData);
@@ -164,7 +172,7 @@ export class CalendarComponent implements OnInit {
                 editorOptions: {
                 type: "time",
                 pickerType: "list",
-                readOnly: true,
+                readOnly: true
             }
         })
 

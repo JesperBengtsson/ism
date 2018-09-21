@@ -93,4 +93,92 @@
         vertical-align: middle;
     }
 
+    ::ng-deep .appointment-preview > div:first-child {
+        font-size: 12px;
+        white-space: normal;
+    }
+    
+    ::ng-deep .appointment-preview > div:not(:first-child) {
+        font-size: 11px;
+        white-space: normal;
+    }
+    
+    ::ng-deep .appointment-tooltip img {
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    ::ng-deep .appointment-content {
+        margin-top: 3px;
+    }
+    
+    ::ng-deep .dx-popup-content .appointment-content {
+        margin-top: 7px;
+        height: fit-content;
+        width: max-content;
+    }
+    
+    ::ng-deep .appointment-badge {
+        text-align: center;
+        float: left;
+        margin-right: 12px;
+        color: white;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        line-height: 20px;
+        border-radius: 28px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    ::ng-deep .appointment-dates {
+        color: #959595;
+        font-size: 12px;
+        text-align: left;
+        float: left;
+    }
+    
+    ::ng-deep .appointment-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        
+        font-size: 15px;
+        text-align: left;
+        float: left;
+    }
+    
+    ::ng-deep .delete-appointment {
+        position: relative;
+        border: none;
+        box-shadow: none;
+        top: -5px;
+        height: 40px;
+    }
+    
+    ::ng-deep .delete-appointment .dx-button-content {
+        width: 40px;
+        height: 40px;
+        padding-left: 4px;
+    }
+    
+    ::ng-deep .delete-appointment.dx-state-hover,
+    ::ng-deep .dx-list-item.dx-state-hover .dx-button {
+        box-shadow: none;
+        background-color: inherit;
+    }
+    
+    ::ng-deep .delete-appointment .dx-icon {
+        color: #337ab7 !important;
+        font-size: 23px !important;
+    }
+    
+    ::ng-deep .appointment-button {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+    }
     

@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 
 export class Appointment {
+    roomId: number;
+    clientId?: number;
     text: string;
-    client: string;
-    roomId: number[];
     startDate: Date;
     endDate: Date;
     recurrenceRule?: string;
@@ -14,6 +14,7 @@ export class Resource {
     text: string;
     id: number;
     color: string;
+    image: string;
 }
 
 export class ResourceMenuItem {
@@ -49,67 +50,66 @@ let clients: Clients[] = [
 
 let appointments: Appointment[] = [
     {
+        roomId: 1,
         text: "Meeting type 1",
-        client: "Vattenfall",
-        roomId: [1],
         startDate: new Date(2018, 8, 2, 9, 30),
         endDate: new Date(2018, 8, 2, 11),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=TU,FR;COUNT=10"
     }, {
+        roomId: 2,
+        clientId: 1,
         text: "Meeting type 2",
-        client: "Vattenfall",
-        roomId: [2],
         startDate: new Date(2018, 8, 1, 9, 30),
         endDate: new Date(2018, 8, 1, 11),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=MO,TH;COUNT=10"
     }, {
+        roomId: 3,
+        clientId: 1,
         text: "Meeting type 3",
-        client: "Vattenfall",
-        roomId: [3],
         startDate: new Date(2018, 8, 1, 12, 0),
         endDate: new Date(2018, 8, 1, 13, 0),
         recurrenceRule: "FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2"
     }, {
+        roomId: 4,
+        clientId: 2,
         text: "Meeting type 4",
-        client: "Vattenfall",
-        roomId: [4],
         startDate: new Date(2018, 8, 1, 9, 0),
         endDate: new Date(2018, 8, 1, 9, 15),
         recurrenceRule: "FREQ=DAILY;BYDAY=WE;UNTIL=20190601"
     }, {
+        roomId: 5,
+        clientId: 2,
         text: "Meeting type 5",
-        client: "Tullverket",
-        roomId: [5],
         startDate: new Date(2018, 8, 26, 10, 0),
         endDate: new Date(2018, 8, 26, 11, 0),
         recurrenceRule: "FREQ=YEARLY;BYWEEKNO=23",
         recurrenceException: "20181011T100000"
     }, {
+        roomId: 4,
+        clientId: 3,
         text: "Meeting type 6",
-        client: "Tullverket",
-        roomId: [4],
         startDate: new Date(2018, 8, 26, 12, 0),
         endDate: new Date(2018, 8, 26, 13, 35),
         recurrenceRule: "FREQ=YEARLY;BYWEEKNO=24;BYDAY=TH,FR"
     }, {
+        roomId: 4,
+        clientId: 3,
         text: "Meeting type 8",
-        client: "Tullverket",
-        roomId: [4],
         startDate: new Date(2018, 8, 26, 14, 30),
         endDate: new Date(2018, 8, 26, 15, 45),
         recurrenceRule: "FREQ=MONTHLY;BYMONTHDAY=28;COUNT=1"
     }, {
+        roomId: 5,
+        clientId: 4,
         text: "Meeting type 8",
-        client: "Tullverket",
-        roomId: [5],
         startDate: new Date(2018, 8, 1, 9, 30),
         endDate: new Date(2018, 8, 1, 13),
         recurrenceRule: "FREQ=YEARLY;BYYEARDAY=148"
     },
     {
+        roomId: 1,
+        clientId: 4,
         text: "new booking",
-        client: "Tullverket",
-        roomId: [1],
         startDate: new Date(2018, 8, 1, 14, 30),
         endDate: new Date(2018, 8, 1, 15, 30)
     }
@@ -119,23 +119,28 @@ let resources: Resource[] = [
     {
         text: "Room Blue",
         id: 1,
-        color: "#425fac"
+        color: "#425fac",
+        image: "./src/img/blue.png"
     }, {
         text: "Room Red",
         id: 2,
-        color: "#dd2235"
+        color: "#dd2235",
+        image: "./src/img/red.png"
     }, {
         text: "Room 101",
         id: 3,
-        color: "#ae7fcc"
+        color: "#8dca93",
+        image: "./src/img/green.png"
     }, {
         text: "Room 404",
         id: 4,
-        color: "#ff8817"
+        color: "#e1c539",
+        image: "./src/img/yellow.png"
     }, {
         text: "Conference Room",
         id: 5,
-        color: "#03bb92"
+        color: "#9bc7df",
+        image: "./src/img/teal.png"
     }
 ];
 

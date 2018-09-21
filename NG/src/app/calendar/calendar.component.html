@@ -11,32 +11,34 @@
                 <div class="col-md-11">
 
                         <dx-scheduler
-                            (click)="timer=(60 * 3)"
-                            [crossScrollingEnabled]="crossScrollingEnabled"
-                            [dataSource]="appointmentsData"
-                            [views]='["day", "week", "month"]'
+                            appointmentTemplate="appointment-template"
+                            appointmentTooltipTemplate="tooltip-template"
                             currentView="week"
-                            [groups]="groups"
                             recurrenceEditMode="series"
+                            [crossScrollingEnabled]="crossScrollingEnabled"
                             [currentDate]="currentDate"
+                            [dataSource]="appointmentsData"
+                            [firstDayOfWeek]="1"
+                            [groups]="groups"
+                            [height]="780"
+                            [startDayHour]="5"
+                            [views]='["day", "week", "month"]'
+                            (click)="timer=(60 * 3)"
                             (onCellContextMenu)="onCellContextMenu($event)"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
-                            [firstDayOfWeek]="1"
-                            [startDayHour]="5"
-                            [height]="780">
-
+                            >
                             <dxi-resource
-                                fieldExpr="client"
                                 displayExpr="text"
+                                fieldExpr="clientId"
                                 label="Client"
                                 [dataSource]="clientsData">
                             </dxi-resource>
 
                             <dxi-resource
+                                displayExpr="text"
                                 fieldExpr="roomId"
                                 label="Room"
-                                displayExpr="text"
                                 [dataSource]="resourcesData">
                             </dxi-resource>
                                                     
@@ -47,7 +49,44 @@
                                 [allowResizing]="true"
                                 [allowUpdating]="true">
                             </dxo-editing>
-                        
+                            
+                            <div *dxTemplate="let appointment of 'appointment-template'">
+                                <div class='appointment-preview'>
+                                    <div>
+                                        {{getRoomById(appointment.roomId).text}}
+                                    </div>
+                                    <div *ngIf="getClientById(appointment.clientId)">
+                                        {{getClientById(appointment.clientId).text}}
+                                    </div>
+                                    <div class='dropdown-appointment-dates'>
+                                        {{(appointment.startDate | date:'shortTime') + ' - ' + (appointment.endDate | date:'shortTime')}}                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *dxTemplate="let appointment of 'tooltip-template'">
+                                <div class="appointment-content">
+                                    <div class='appointment-tooltip'>
+                                        <img [src]="getRoomById(appointment.roomId).image" />
+                                    </div>  
+                                    <div class='appointment-text'>
+                                        <div *ngIf="appointment.text">{{appointment.text}}</div>
+                                        <div>{{getRoomById(appointment.roomId).text}}</div>
+                                        <div *ngIf="getClientById(appointment.clientId)">
+                                            {{'Client: ' + getClientById(appointment.clientId).text}}
+                                        </div>
+                                        <div class="appointment-dates">
+                                            {{(appointment.startDate | date : 'MMM d') + ' , ' + (appointment.startDate | date:'shortTime') + ' - ' + (appointment.endDate | date:'shortTime')}}
+                                        </div>
+                                    </div>
+                                    <div class="appointment-button">
+                                        <dx-button class ="delete-appointment" icon="trash" (onClick)="tooltipDeleteAppointment(appointment)"></dx-button>
+                                        <dx-button class ="delete-appointment" icon="edit" (onClick)="tooltipShowAppointment(appointment)"></dx-button>
+                                    </div>
+                                </div>
+                            </div>
+
+
                     </dx-scheduler>
                         
                         <div class="options">
