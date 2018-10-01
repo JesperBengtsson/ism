@@ -2,12 +2,8 @@
     h1,h2,h3,h4,h5,h6 {
         font-family: 'Cinzel', serif;
     }
-    h1 {
-        font-family: 'Cinzel', serif;
-    }
     
     p {
-        /*font-size: 14px;*/
         font-size: 1em;
         line-height: 1.42;
     }

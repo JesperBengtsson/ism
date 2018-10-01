@@ -2,9 +2,6 @@
     h1,h2,h3,h4,h5,h6 {
         font-family: 'Cinzel', serif;
     }
-    h1 {
-        font-family: 'Cinzel', serif;
-    }
     
     p {
         /*font-size: 14px;*/
@@ -26,7 +23,6 @@
         width: 50%;
         height: 100%;
     }
-
     
     .content-container {
         left: 0;
@@ -35,13 +31,11 @@
         background: #e8e7e4;
         bottom: 0; 
     }
-
     
     section {
         height: 100vh;
         background: #e8e7e4;
     }
-
     
     .services {
         text-align: center;
@@ -54,8 +48,6 @@
     }
     
     .facts {
-        /*background: url(/src/img/about_us_video.png);*/
-        /*background-attachment: fixed;*/
         margin-bottom: 20px;
     }
     
@@ -78,7 +70,6 @@
         font-size: 29px;
     }
     
-
     .team-member-box {
         background-color: #f3f3f3;
         border: 1px solid #F3f3f3;
@@ -120,8 +111,7 @@
         column-gap: 30px;
         font-size: 24px;
         font-family: 'Cinzel', serif;
-    }
-    
+    } 
 
     .services {
         text-align: center;

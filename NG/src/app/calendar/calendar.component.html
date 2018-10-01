@@ -77,7 +77,8 @@
                                             {{'Client: ' + getClientById(appointment.clientId).text}}
                                         </div>
                                         <div class="appointment-dates">
-                                            {{(appointment.startDate | date : 'MMM d') + ' , ' + (appointment.startDate | date:'shortTime') + ' - ' + (appointment.endDate | date:'shortTime')}}
+                                            {{(appointment.startDate | date : 'MMM d') + ' , ' + (appointment.startDate | date:'shortTime') +
+                                            ' - ' + (appointment.endDate | date:'shortTime')}}
                                         </div>
                                     </div>
                                     <div class="appointment-button">

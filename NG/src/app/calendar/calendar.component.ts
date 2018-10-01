@@ -41,7 +41,6 @@ export class CalendarComponent implements OnInit {
 
         console.log(new Date(2018, 8, 1, 9, 30));
 
-        let that = this;
         this.clientsData = this.service.getClients();
         this.appointmentsData = this.service.getAppointments();
         this.roomsData = this.service.getRooms();
@@ -78,7 +77,7 @@ export class CalendarComponent implements OnInit {
         return Query(this.clientsData).filter(["id", "=", id]).toArray()[0];
     }
 
-    setResource(itemData) {
+    setRoom(itemData) {
         let data = Object.assign({}, this.contextMenuAppointmentData, {
             roomId: [itemData.id]
         });

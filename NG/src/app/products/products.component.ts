@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, Host } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
@@ -18,7 +18,6 @@ export class ProductsComponent implements OnInit {
 
   countDown: Subscription;
     timer = (60 * 3);
-
 
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {

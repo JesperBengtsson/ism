@@ -38,7 +38,6 @@ public class MainRestController {
 
     @GetMapping(value = "/allappointments")
     public List<Appointment> appointmentPage(Map<String, Object> model) {
-        System.out.println(new Date(118, 8, 26, 12, 0));
         return appointmentRepository.findAll();
     }
 
@@ -107,7 +106,5 @@ public class MainRestController {
 
         return "{\"ret\": \"SLIDE THROWN\"}";
     }
-
-
 
 }

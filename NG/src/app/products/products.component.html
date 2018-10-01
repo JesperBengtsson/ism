@@ -12,7 +12,7 @@
 
             <div class="modal fade" id="carousel">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" (click)="timer=(60 * 3)">
                         <div class="modal-body accordion" id="accordion">
 
                             <!--Carousel Wrapper-->
@@ -131,10 +131,9 @@
                                     <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(0)">
                                             <img src="/src/img/blue.png" style="width: initial" class="img-responsive col-md-12">
                                         </a></li>
-                                    <span class="styling"><br>
-                                    <div class="styling-size">BLÅ COORDINATOR</div><br>
-                                    <span class="italic-style">THE</span><span> ENTERPRISE WORKFORCE SOLUTION</span></span>
-                                    
+                                        <span class="styling"><br>
+                                        <div class="styling-size">BLÅ COORDINATOR</div><br>
+                                        <span class="italic-style">THE</span><span> ENTERPRISE WORKFORCE SOLUTION</span></span> 
                                 </div>
                             </div>
 
@@ -143,7 +142,6 @@
                                     <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(1)">
                                             <img src="src/img/red.png" style="width: initial" class="img-responsive col-md-12">
                                         </a></li>
-
                                         <span class="styling"><br>
                                         <div class="styling-size">SMART METER ROLLOUT</div><br>
                                         <div>A PREDEFINED WORKFLOW FOR METER EXCHANGE</div></span>
@@ -153,7 +151,7 @@
                             <div class="col-md-6">
                                 <div class="team-member-box center-block text-center">
                                     <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(2)">
-                                            <img src="src/img/lime.png" style="width: initial" class="img-responsive col-md-12" id="myImg">
+                                            <img src="src/img/yellow.png" style="width: initial" class="img-responsive col-md-12" id="myImg">
                                         </a></li>
                                         <span class="styling"><br>
                                         <div class="styling-size">MOBILE WORKFORCE TOOLS</div><br>
@@ -173,15 +171,15 @@
                             </div>
 
                             <div class="col-md-6">
-                                    <div class="team-member-box center-block text-center">
-                                        <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(3)">
-                                                <img src="src/img/lightblue.png" style="width: initial" class="img-responsive col-md-12">
-                                            </a></li>
-                                            <span class="styling"><br>
-                                            <div class="styling-size">LOGISTICS</div><br>
-                                            <div>SMARTER EQUIPMENT TRACKING</div></span>
-                                    </div>
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(3)">
+                                            <img src="src/img/teal.png" style="width: initial" class="img-responsive col-md-12">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">LOGISTICS</div><br>
+                                        <div>SMARTER EQUIPMENT TRACKING</div></span>
                                 </div>
+                            </div>
                         </ul>
                     </div>
                 </div>
