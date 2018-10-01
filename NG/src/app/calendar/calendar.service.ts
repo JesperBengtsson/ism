@@ -10,26 +10,19 @@ export class Appointment {
     recurrenceException?: string;
 }
 
-export class Resource {
+export class Room {
     text: string;
     id: number;
     color: string;
     image: string;
 }
 
-export class ResourceMenuItem {
-    text: string;
-    id: number;
-    color: string;
-    onItemClick: any;
-}
-
-export class Clients {
+export class Client {
     text: string;
     id: number;
 }
 
-let clients: Clients[] = [
+let clients: Client[] = [
     {
         text: "Vattenfall",
         id: 1
@@ -94,7 +87,7 @@ let appointments: Appointment[] = [
     }, {
         roomId: 4,
         clientId: 3,
-        text: "Meeting type 8",
+        text: "Meeting type 7",
         startDate: new Date(2018, 8, 26, 14, 30),
         endDate: new Date(2018, 8, 26, 15, 45),
         recurrenceRule: "FREQ=MONTHLY;BYMONTHDAY=28;COUNT=1"
@@ -115,7 +108,7 @@ let appointments: Appointment[] = [
     }
 ];
 
-let resources: Resource[] = [
+let rooms: Room[] = [
     {
         text: "Room Blue",
         id: 1,
@@ -149,10 +142,10 @@ export class Service {
     getAppointments(): Appointment[] {
         return appointments;
     }
-    getResources(): Resource[] {
-        return resources;
+    getRooms(): Room[] {
+        return rooms;
     }
-    getClients(): Clients[] {
+    getClients(): Client[] {
         return clients;
     }
 }

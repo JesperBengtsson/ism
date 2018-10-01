@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Appointment, Resource, ResourceMenuItem, Clients, Service } from './calendar.service';
+import { Appointment, Room, Client, Service } from './calendar.service';
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
@@ -20,18 +20,17 @@ export class CalendarComponent implements OnInit {
     countDown: Subscription;
     timer = (60 * 3);
     
-    appointmentsData: Appointment[];
     currentDate: Date = new Date(Date());
-    resourcesData: Resource[];
-    clientsData: Clients[];
-    resourcesMenuItems: ResourceMenuItem[];
+    appointmentsData: Appointment[];
+    roomsData: Room[];
+    clientsData: Client[];
+    
     groups: any;
     crossScrollingEnabled: boolean = false;
     
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
     contextMenuTargetedAppointmentData: any;
-    
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
     
@@ -40,35 +39,23 @@ export class CalendarComponent implements OnInit {
     ngOnInit() {
         this.countDown = this.startTimer(1000);
 
+        console.log(new Date(2018, 8, 1, 9, 30));
+
         let that = this;
         this.clientsData = this.service.getClients();
         this.appointmentsData = this.service.getAppointments();
-        this.resourcesData = this.service.getResources();
-        this.resourcesMenuItems = [];
+        this.roomsData = this.service.getRooms();
+        
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment()},
             { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment()},
             { text: 'Go to Today', onItemClick: () => this.showCurrentDate()}
         ];
 
-        this.resourcesData.forEach(function (item) {
-            let menuItem: ResourceMenuItem = {
-                text: item.text,
-                id: item.id,
-                color: item.color,
-                onItemClick: that.setResource.bind(that)
-            }
-
-            that.resourcesMenuItems.push(menuItem);
-        });
-
         this.appointmentContextMenuItems = [
             { text: 'Open', onItemClick: () => this.onContextShowAppointment() },
-            { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },
-            //{ text: 'Repeat Weekly', beginGroup: true, onItemClick: () => this.repeatAppointmentWeekly() }
-            //{ text: 'Set Room', beginGroup: true, disabled: true }
+            { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },         
         ];
-        //this.appointmentContextMenuItems = [...this.appointmentContextMenuItems, ...this.resourcesMenuItems]
     }
     
     startTimer(time: number): Subscription {
@@ -84,7 +71,7 @@ export class CalendarComponent implements OnInit {
     }
 
     getRoomById(id) {
-        return Query(this.resourcesData).filter(["id", "=", id]).toArray()[0];
+        return Query(this.roomsData).filter(["id", "=", id]).toArray()[0];
     }
     
     getClientById(id) {
