@@ -26,6 +26,7 @@
                             [views]='["day", "week", "month"]'
                             (click)="timer=(60 * 3)"
                             (onCellContextMenu)="onCellContextMenu($event)"
+                            (onAppointmentAdded)="onAppointmentAdded()"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
                             >
@@ -38,11 +39,11 @@
 
                             <dxi-resource
                                 displayExpr="text"
-                                fieldExpr="roomId"
+                                fieldExpr="id"
                                 label="Room"
                                 [dataSource]="roomsData">
                             </dxi-resource>
-                                                    
+
                             <dxo-editing
                                 [allowAdding]="true"
                                 [allowDeleting]="true"
@@ -50,14 +51,14 @@
                                 [allowResizing]="true"
                                 [allowUpdating]="true">
                             </dxo-editing>
-                            
+
                             <div *dxTemplate="let appointment of 'appointment-template'">
                                 <div class='appointment-preview'>
                                     <div>
-                                        {{getRoomById(appointment.roomId).text}}
+                                        {{appointment.room.text}}
                                     </div>
-                                    <div *ngIf="getClientById(appointment.clientId)">
-                                        {{getClientById(appointment.clientId).text}}
+                                    <div *ngIf="getClientById(appointment.client.id)">
+                                        {{appointment.client.text}}
                                     </div>
                                     <div class='dropdown-appointment-dates'>
                                         {{(appointment.startDate | date:'shortTime') + ' - ' + (appointment.endDate | date:'shortTime')}}                                    
@@ -68,13 +69,13 @@
                             <div *dxTemplate="let appointment of 'tooltip-template'">
                                 <div class="appointment-content">
                                     <div class='appointment-tooltip'>
-                                        <img [src]="getRoomById(appointment.roomId).image" />
+                                        <img [src]="appointment.room.image"/>
                                     </div>  
                                     <div class='appointment-text'>
                                         <div *ngIf="appointment.text">{{appointment.text}}</div>
-                                        <div>{{getRoomById(appointment.roomId).text}}</div>
-                                        <div *ngIf="getClientById(appointment.clientId)">
-                                            {{'Client: ' + getClientById(appointment.clientId).text}}
+                                        <div>{{appointment.room.text}}</div>
+                                        <div *ngIf="getClientById(appointment.client.id)">
+                                            {{'Client: ' + appointment.client.text}}
                                         </div>
                                         <div class="appointment-dates">
                                             {{(appointment.startDate | date : 'MMM d') + ' , ' + (appointment.startDate | date:'shortTime') +
@@ -89,14 +90,14 @@
                             </div>
 
                         </dx-scheduler>
-                        
+
                         <div class="options">
                             <div class="caption">Options</div>
                             <div class="option">
                                 <dx-check-box text="Room group" (onValueChanged)="onValueChanged($event)"></dx-check-box>
                             </div>
                         </div>
-                        
+
                         <dx-context-menu #appointmentMenu
                             [dataSource]="appointmentContextMenuItems"
                             target=".dx-scheduler-appointment"
@@ -110,7 +111,7 @@
                                 <div class="item-text">{{e.text}}</div>
                             </div>
                         </dx-context-menu>
-                    
+
                     <dx-context-menu #cellMenu
                         [dataSource]="cellContextMenuItems"
                         target=".dx-scheduler-date-table-cell"

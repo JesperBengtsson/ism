@@ -1,15 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Appointment, Room, Client, Service } from './calendar.service';
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import Query from 'devextreme/data/query';
 
+import { DataService } from '../data.service';
+import { IAppointment } from '../iappointment';
+import { IClient } from '../iclient';
+import { IRoom } from '../iroom';
+
 @Component({
   selector: 'calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
-  providers: [Service]
+  providers: [DataService]
 })
 export class CalendarComponent implements OnInit {
  
@@ -21,10 +25,9 @@ export class CalendarComponent implements OnInit {
     timer = (60 * 3);
     
     currentDate: Date = new Date(Date());
-    appointmentsData: Appointment[];
-    roomsData: Room[];
-    clientsData: Client[];
-    
+    appointmentsData: IAppointment[];
+    roomsData: IRoom[];
+    clientsData: IClient[];
     groups: any;
     crossScrollingEnabled: boolean = false;
     
@@ -34,16 +37,38 @@ export class CalendarComponent implements OnInit {
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
     
-    constructor(private service: Service, private _route : Router) { }
+    constructor(private _dataService: DataService, private _route : Router) { }
     
     ngOnInit() {
+        this._dataService.cacheCalendarData();
+        
+        this._dataService.getAllAppointments()
+        .subscribe( data => {
+            this.appointmentsData = data;
+            JSON.stringify(data);
+            console.log(data);
+        });
+
+        this._dataService.getAllClients()
+        .subscribe( data => {
+            this.clientsData = data;
+            JSON.stringify(data);
+            console.log(data);
+        });
+
+        this._dataService.getAllRooms()
+        .subscribe( data => {
+            this.roomsData = data;
+            JSON.stringify(data);
+            console.log(data);
+        });
+        
+        
         this.countDown = this.startTimer(1000);
 
-        console.log(new Date(2018, 8, 1, 9, 30));
-
-        this.clientsData = this.service.getClients();
-        this.appointmentsData = this.service.getAppointments();
-        this.roomsData = this.service.getRooms();
+        this.clientsData = this._dataService.getCachedClients();
+        this.appointmentsData = this._dataService.getCachedAppointments();
+        this.roomsData = this._dataService.getCachedRooms();
         
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment()},
@@ -103,7 +128,7 @@ export class CalendarComponent implements OnInit {
             this.crossScrollingEnabled = false;
             this.groups=[];
         } else {
-            this.groups = ["roomId"];
+            this.groups = ["id"];
             this.crossScrollingEnabled = true;
         };
     }
