@@ -78,7 +78,7 @@ export class CalendarComponent implements OnInit {
 
         this.appointmentContextMenuItems = [
             { text: 'Open', onItemClick: () => this.onContextShowAppointment() },
-            { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },         
+            { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },
         ];
     }
     
@@ -93,6 +93,11 @@ export class CalendarComponent implements OnInit {
             }
         });
     }
+
+    onAppointmentAdded(e) {
+        console.log(e);
+    }
+
 
     getRoomById(id) {
         return Query(this.roomsData).filter(["id", "=", id]).toArray()[0];
@@ -128,7 +133,7 @@ export class CalendarComponent implements OnInit {
             this.crossScrollingEnabled = false;
             this.groups=[];
         } else {
-            this.groups = ["id"];
+            this.groups = ["roomId"];
             this.crossScrollingEnabled = true;
         };
     }

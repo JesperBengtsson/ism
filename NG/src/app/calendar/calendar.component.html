@@ -26,22 +26,23 @@
                             [views]='["day", "week", "month"]'
                             (click)="timer=(60 * 3)"
                             (onCellContextMenu)="onCellContextMenu($event)"
-                            (onAppointmentAdded)="onAppointmentAdded()"
+                            (onAppointmentAdded)="onAppointmentAdded($event)"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
                             >
+
+                            <dxi-resource
+                                displayExpr="text"
+                                fieldExpr="roomId"
+                                label="Room"
+                                [dataSource]="roomsData">
+                            </dxi-resource>
+
                             <dxi-resource
                                 displayExpr="text"
                                 fieldExpr="clientId"
                                 label="Client"
                                 [dataSource]="clientsData">
-                            </dxi-resource>
-
-                            <dxi-resource
-                                displayExpr="text"
-                                fieldExpr="id"
-                                label="Room"
-                                [dataSource]="roomsData">
                             </dxi-resource>
 
                             <dxo-editing
@@ -52,7 +53,7 @@
                                 [allowUpdating]="true">
                             </dxo-editing>
 
-                            <div *dxTemplate="let appointment of 'appointment-template'">
+                            <div *dxTemplate="let appointment of 'appointment-template'" [ngStyle]="{ backgroundColor: appointment.room.color}">
                                 <div class='appointment-preview'>
                                     <div>
                                         {{appointment.room.text}}
@@ -103,13 +104,6 @@
                             target=".dx-scheduler-appointment"
                             (onItemClick)="onContextMenuItemClick($event)"
                             [width]="200">
-                        
-                            <div *dxTemplate="let e of 'item'">
-                                <div *ngIf="e.color">
-                                    <div class="item-badge" [ngStyle]="{ backgroundColor: e.color}"></div>
-                                </div>
-                                <div class="item-text">{{e.text}}</div>
-                            </div>
                         </dx-context-menu>
 
                     <dx-context-menu #cellMenu
