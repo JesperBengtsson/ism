@@ -1,8 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { HttpClient, HttpClientModule, HttpParams } from "@angular/common/http";
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import Query from 'devextreme/data/query';
+
+import DataSource from "devextreme/data/data_source";
+import "rxjs/add/operator/toPromise";
+import CustomStore from "devextreme/data/custom_store";
+import { createStore } from "devextreme-aspnet-data-nojquery";
 
 import { DataService } from '../data.service';
 import { IAppointment } from '../iappointment';
@@ -25,7 +31,8 @@ export class CalendarComponent implements OnInit {
     timer = (60 * 3);
     
     currentDate: Date = new Date(Date());
-    appointmentsData: IAppointment[];
+//    appointmentsData: IAppointment[];
+    appointmentsData: any = {};
     roomsData: IRoom[];
     clientsData: IClient[];
     groups: any;
@@ -37,17 +44,41 @@ export class CalendarComponent implements OnInit {
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
     
-    constructor(private _dataService: DataService, private _route : Router) { }
+    store: CustomStore;
+    constructor(private _dataService: DataService, private _route : Router, @Inject(HttpClient) httpClient: HttpClient) {
+        let serviceUrl = "http://localhost:8080/api";
+        /*
+        this.store = createStore({
+            key: "id",
+            loadUrl: serviceUrl + "/allappointments",
+            insertUrl: serviceUrl + "/postappointment"
+        });
+*/
+        this.appointmentsData = new DataSource({
+            store: new CustomStore({
+                loadMode: "raw",   
+                load: () => {
+                    console.log(httpClient.get(serviceUrl + '/allappointments')
+                    .toPromise());
+                    return httpClient.get(serviceUrl + '/allappointments')
+                        .toPromise();      
+                },
+                insert: function(values) {
+                    return httpClient.post(serviceUrl + '/postappointment', values)
+                        .toPromise();
+                },
+                //TODO FIX FIX FIX FIX
+                update: function(key, values) {
+                    return httpClient.put((serviceUrl + '/editappointment/') + values.id , values)
+                        .toPromise();
+                }    
+            }),
+            paginate: false
+        })
+     }
     
     ngOnInit() {
         this._dataService.cacheCalendarData();
-        
-        this._dataService.getAllAppointments()
-        .subscribe( data => {
-            this.appointmentsData = data;
-            JSON.stringify(data);
-            console.log(data);
-        });
 
         this._dataService.getAllClients()
         .subscribe( data => {
@@ -66,8 +97,8 @@ export class CalendarComponent implements OnInit {
         
         this.countDown = this.startTimer(1000);
 
+//        this.appointmentsData = this._dataService.getCachedAppointments();
         this.clientsData = this._dataService.getCachedClients();
-        this.appointmentsData = this._dataService.getCachedAppointments();
         this.roomsData = this._dataService.getCachedRooms();
         
         this.cellContextMenuItems = [
@@ -98,13 +129,14 @@ export class CalendarComponent implements OnInit {
         console.log(e);
     }
 
-
     getRoomById(id) {
         return Query(this.roomsData).filter(["id", "=", id]).toArray()[0];
     }
     
     getClientById(id) {
-        return Query(this.clientsData).filter(["id", "=", id]).toArray()[0];
+        if(id.client != null) {
+            return Query(this.clientsData).filter(["id", "=", id.client.id]).toArray()[0];
+        }
     }
 
     setRoom(itemData) {
@@ -133,7 +165,7 @@ export class CalendarComponent implements OnInit {
             this.crossScrollingEnabled = false;
             this.groups=[];
         } else {
-            this.groups = ["roomId"];
+            this.groups = ["room.id"];
             this.crossScrollingEnabled = true;
         };
     }
@@ -197,7 +229,7 @@ export class CalendarComponent implements OnInit {
                 pickerType: "list",
             }
         });
-        form.itemOption("roomId", {
+        form.itemOption("room.id", {
             validationRules: [{
                 type: "required"
             }]

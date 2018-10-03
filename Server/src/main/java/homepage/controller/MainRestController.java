@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@RestController
 @CrossOrigin
+@RestController
 @RequestMapping({"/api"})
 public class MainRestController {
 
@@ -67,6 +67,7 @@ public class MainRestController {
 
         System.out.println("POST");
         System.out.println(appointment);
+        appointmentRepository.save(appointment);
 
         return "{\"ret\": \"APPOINTMENT THROWN\"}";
     }
@@ -106,5 +107,16 @@ public class MainRestController {
 
         return "{\"ret\": \"SLIDE THROWN\"}";
     }
+
+    //TODO FIX FIX FIX FIX FIX
+    @CrossOrigin
+    @PutMapping(value = "/editappointment/{id}")
+    public String editAppointment(@RequestBody Appointment appointment, @PathVariable int id) {
+
+        appointmentRepository.save(appointment);
+
+        return "{\"ret\": \"OK\"}";
+    }
+
 
 }

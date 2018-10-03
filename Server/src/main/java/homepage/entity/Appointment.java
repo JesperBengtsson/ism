@@ -29,6 +29,7 @@ public class Appointment {
     private LocalDateTime endDate;
     private String recurrenceRule;
     private String recurrenceException;
+    private Boolean allDay;
 
     @JsonGetter("id")
     public int getId() {
@@ -100,5 +101,14 @@ public class Appointment {
 
     public void setRecurrenceException(String recurrenceException) {
         this.recurrenceException = recurrenceException;
+    }
+
+    @JsonGetter("allDay")
+    public Boolean getAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(Boolean allDay) {
+        this.allDay = allDay;
     }
 }
