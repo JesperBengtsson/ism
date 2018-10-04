@@ -5,9 +5,9 @@ import homepage.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 
 @CrossOrigin
 @RestController
@@ -108,15 +108,35 @@ public class MainRestController {
         return "{\"ret\": \"SLIDE THROWN\"}";
     }
 
+
     //TODO FIX FIX FIX FIX FIX
     @CrossOrigin
     @PutMapping(value = "/editappointment/{id}")
     public String editAppointment(@RequestBody Appointment appointment, @PathVariable int id) {
 
+        System.out.println(appointment);
         appointmentRepository.save(appointment);
+
 
         return "{\"ret\": \"OK\"}";
     }
 
+    @CrossOrigin
+    @GetMapping(value = "/appointment/{id}")
+    public Appointment getAppointmentById(@PathVariable int id) {
 
+        System.out.println(id);
+
+        return appointmentRepository.findById(id);
+    }
+
+    @DeleteMapping(value = "/appointment/{id}")
+    public String deleteAppointment(@PathVariable int id) {
+
+        System.out.println(id);
+
+        appointmentRepository.deleteById(id);
+
+        return "{\"ret\": \"OK\"}";
+    }
 }

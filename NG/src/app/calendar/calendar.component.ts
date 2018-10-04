@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { HttpClient, HttpClientModule, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
@@ -8,10 +8,8 @@ import Query from 'devextreme/data/query';
 import DataSource from "devextreme/data/data_source";
 import "rxjs/add/operator/toPromise";
 import CustomStore from "devextreme/data/custom_store";
-import { createStore } from "devextreme-aspnet-data-nojquery";
 
 import { DataService } from '../data.service';
-import { IAppointment } from '../iappointment';
 import { IClient } from '../iclient';
 import { IRoom } from '../iroom';
 
@@ -37,6 +35,8 @@ export class CalendarComponent implements OnInit {
     clientsData: IClient[];
     groups: any;
     crossScrollingEnabled: boolean = false;
+
+    idHasBeenGenerated: boolean = false;
     
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
@@ -47,31 +47,39 @@ export class CalendarComponent implements OnInit {
     store: CustomStore;
     constructor(private _dataService: DataService, private _route : Router, @Inject(HttpClient) httpClient: HttpClient) {
         let serviceUrl = "http://localhost:8080/api";
-        /*
-        this.store = createStore({
-            key: "id",
-            loadUrl: serviceUrl + "/allappointments",
-            insertUrl: serviceUrl + "/postappointment"
-        });
-*/
+
         this.appointmentsData = new DataSource({
             store: new CustomStore({
-                loadMode: "raw",   
+                loadMode: "raw",
                 load: () => {
                     console.log(httpClient.get(serviceUrl + '/allappointments')
-                    .toPromise());
+                        .toPromise());
                     return httpClient.get(serviceUrl + '/allappointments')
-                        .toPromise();      
+                        .toPromise();
                 },
-                insert: function(values) {
+                insert: (values) => {
+                    console.log(JSON.stringify(values));
                     return httpClient.post(serviceUrl + '/postappointment', values)
                         .toPromise();
                 },
-                //TODO FIX FIX FIX FIX
-                update: function(key, values) {
-                    return httpClient.put((serviceUrl + '/editappointment/') + values.id , values)
+                //TODO need to wait for ID to be generated in server
+                /*onInserted: (key, values) => {
+                    console.log(key, values);
+                    return httpClient.get((serviceUrl + '/appointment/') + key.id)
+                    .toPromise();
+                },*/
+                update: (key, values) => {
+                    //console.log(values.client.id, values.room.id);
+                    if(values.room.id.length === 1){
+                        values.room.id = values.room.id[0];
+                        values.client.id = values.client.id[0];
+                    }
+                    //console.log(values.room.id, values.client.id);
+                    //console.log(values);
+                    return httpClient.put((serviceUrl + '/editappointment/') + key.id, values)
                         .toPromise();
-                }    
+                },
+                
             }),
             paginate: false
         })
@@ -216,8 +224,7 @@ export class CalendarComponent implements OnInit {
                 editorType: "dxDateBox",
                 editorOptions: {
                 type: "time",
-                pickerType: "list",
-                readOnly: true
+                pickerType: "list"                
             }
         });
         form.itemOption("endDate", {
@@ -237,4 +244,3 @@ export class CalendarComponent implements OnInit {
         form.itemOption("allDay", "visible", false);
     }
 }
-
