@@ -108,15 +108,13 @@ public class MainRestController {
         return "{\"ret\": \"SLIDE THROWN\"}";
     }
 
-
-    //TODO FIX FIX FIX FIX FIX
     @CrossOrigin
     @PutMapping(value = "/editappointment/{id}")
     public String editAppointment(@RequestBody Appointment appointment, @PathVariable int id) {
 
+        System.out.println("EDIT");
         System.out.println(appointment);
         appointmentRepository.save(appointment);
-
 
         return "{\"ret\": \"OK\"}";
     }
@@ -125,14 +123,13 @@ public class MainRestController {
     @GetMapping(value = "/appointment/{id}")
     public Appointment getAppointmentById(@PathVariable int id) {
 
-        System.out.println(id);
-
         return appointmentRepository.findById(id);
     }
 
     @DeleteMapping(value = "/appointment/{id}")
     public String deleteAppointment(@PathVariable int id) {
 
+        System.out.println("DELETE");
         System.out.println(id);
 
         appointmentRepository.deleteById(id);

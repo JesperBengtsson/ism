@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
 import { DataService } from './data.service';
+import { IAppointment } from './iappointment';
 
 @Component({
   selector: 'app-root',
@@ -46,11 +47,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   openClose:string = 'close';
   state = 'in';
+  appointments: IAppointment[];
   
   constructor(private _dataService: DataService ) {}
 
   ngOnInit() {
     this._dataService.cacheData();
+    this._dataService.cacheCalendarData();
+
+    this._dataService.getAllAppointments()
+        .subscribe( data => {
+            this.appointments = data;
+            JSON.stringify(data);
+            console.log(data);
+        });
   }
 
   ngAfterViewInit() {

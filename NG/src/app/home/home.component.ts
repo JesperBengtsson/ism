@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   myBundles() {
-    return this._dataService.getCachedBundles()[1];
+    return this._dataService.getCachedBundles()[0];
   }
 
   mySlides() {

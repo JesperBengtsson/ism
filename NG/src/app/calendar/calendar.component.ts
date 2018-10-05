@@ -35,8 +35,6 @@ export class CalendarComponent implements OnInit {
     clientsData: IClient[];
     groups: any;
     crossScrollingEnabled: boolean = false;
-
-    idHasBeenGenerated: boolean = false;
     
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
@@ -57,49 +55,55 @@ export class CalendarComponent implements OnInit {
                     return httpClient.get(serviceUrl + '/allappointments')
                         .toPromise();
                 },
+                onInserting: () => {
+                    //TODO OVERLAP CHECKER
+                },
                 insert: (values) => {
-                    console.log(JSON.stringify(values));
                     return httpClient.post(serviceUrl + '/postappointment', values)
                         .toPromise();
                 },
-                //TODO need to wait for ID to be generated in server
-                /*onInserted: (key, values) => {
-                    console.log(key, values);
-                    return httpClient.get((serviceUrl + '/appointment/') + key.id)
-                    .toPromise();
-                },*/
+                onInserted: (key) => {
+                        return this.appointmentsData.reload(key);
+                },
+                onUpdating: () => {
+                    //TODO OVERLAP CHECKER
+                },
                 update: (key, values) => {
-                    //console.log(values.client.id, values.room.id);
                     if(values.room.id.length === 1){
                         values.room.id = values.room.id[0];
                         values.client.id = values.client.id[0];
                     }
-                    //console.log(values.room.id, values.client.id);
-                    //console.log(values);
                     return httpClient.put((serviceUrl + '/editappointment/') + key.id, values)
                         .toPromise();
                 },
-                
+                onUpdated: (key) => {
+                    return this.appointmentsData.reload(key);
+                },
+                /*remove: (key) => {
+                    return httpClient.delete((serviceUrl + '/appointment/')+ key.id)
+                    .toPromise();
+                },*/
+                onRemoved: (key) => {
+                    return this.appointmentsData.reload(key);
+                }
             }),
             paginate: false
         })
      }
     
     ngOnInit() {
-        this._dataService.cacheCalendarData();
+        
 
         this._dataService.getAllClients()
         .subscribe( data => {
             this.clientsData = data;
             JSON.stringify(data);
-            console.log(data);
         });
 
         this._dataService.getAllRooms()
         .subscribe( data => {
             this.roomsData = data;
             JSON.stringify(data);
-            console.log(data);
         });
         
         
@@ -188,10 +192,12 @@ export class CalendarComponent implements OnInit {
     
     onTooltipDeleteAppointment(appointment) {
         this.scheduler.instance.deleteAppointment(appointment);
+        this.scheduler.instance.hideAppointmentTooltip();
     }
 
     onTooltipShowAppointment(appointment) {
         this.scheduler.instance.showAppointmentPopup(appointment);
+        this.scheduler.instance.hideAppointmentTooltip();
     }
 
     onContextShowAppointment() {

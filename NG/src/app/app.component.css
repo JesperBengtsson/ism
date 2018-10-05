@@ -24,7 +24,7 @@
     -----------------------------------*/
 
     @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,300,500);
-    @import url(https://fonts.googleapis.com/css?family=Domine);
+    @import url(https://fonts.googleapis.com/css?family=Krub);
     @import url(https://fonts.googleapis.com/css?family=Cinzel);
     
 
@@ -52,7 +52,7 @@
     }
 
     h1,h2,h3,h4,h5,h6 {
-        font-family: 'Cinzel', serif;
+        font-family: 'Krub', sans-serif;
     }
     
     p {
