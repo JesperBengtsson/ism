@@ -1,5 +1,5 @@
 
-<div class="introduction dx-viewport" (click)="timer=(60 * 3)">
+<div class="introduction" (click)="timer=(60 * 3)">
 
     <!-- SCHEDULER -->
 
@@ -55,7 +55,7 @@
 
                             <div *dxTemplate="let appointment of 'appointment-template'" [ngStyle]="{ backgroundColor: appointment.room.color}">
                                 <div class='appointment-preview'>
-                                    <div>
+                                    <div *ngIf="getRoomById(appointment)">
                                         {{appointment.room.text}}
                                     </div>
                                     <div *ngIf="getClientById(appointment)">
@@ -91,14 +91,14 @@
                             </div>
 
                         </dx-scheduler>
-
+<!--
                         <div class="options">
                             <div class="caption">Options</div>
                             <div class="option">
                                 <dx-check-box text="Room group" (onValueChanged)="onValueChanged($event)"></dx-check-box>
                             </div>
                         </div>
-
+-->
                         <dx-context-menu #appointmentMenu
                             [dataSource]="appointmentContextMenuItems"
                             target=".dx-scheduler-appointment"

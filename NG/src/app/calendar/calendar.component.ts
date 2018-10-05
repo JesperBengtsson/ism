@@ -78,8 +78,8 @@ export class CalendarComponent implements OnInit {
                 },
                 onUpdated: (key) => {
                     return this.appointmentsData.reload(key);
-                },
-                /*remove: (key) => {
+                },/*
+                remove: (key) => {
                     return httpClient.delete((serviceUrl + '/appointment/')+ key.id)
                     .toPromise();
                 },*/
@@ -142,7 +142,9 @@ export class CalendarComponent implements OnInit {
     }
 
     getRoomById(id) {
-        return Query(this.roomsData).filter(["id", "=", id]).toArray()[0];
+        if(id.room != null){   
+        return Query(this.roomsData).filter(["id", "=", id.room.id]).toArray()[0];
+        }
     }
     
     getClientById(id) {
@@ -224,6 +226,13 @@ export class CalendarComponent implements OnInit {
     onAppointmentFormCreated(e) {
         var form = e.form;
 
+        console.log(form._options.items);
+        
+
+        var startHour = new Date(e.appointmentData.startDate);
+        var endHour = new Date(startHour);
+        endHour.setHours(startHour.getHours()+1);
+
         form.itemOption("startDate", {
                 name: "startDate",
                 dataField: "startDate",
@@ -235,14 +244,14 @@ export class CalendarComponent implements OnInit {
         });
         form.itemOption("endDate", {
             name: "endDate",
-            dataField: "endDate",
             editorType: "dxDateBox",
             editorOptions: {
                 type: "time",
                 pickerType: "list",
+                value: endHour,
             }
         });
-        form.itemOption("room.id", {
+        form.itemOption("room", {
             validationRules: [{
                 type: "required"
             }]
