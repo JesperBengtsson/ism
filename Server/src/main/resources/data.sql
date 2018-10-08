@@ -16,19 +16,26 @@ INSERT INTO room (text, color, image) VALUES
 ('Room 404', '#e1c539', './src/img/yellow.png'),
 ('Conference Room', '#9bc7df', './src/img/teal.png');
 
-INSERT INTO client (text) VALUES
-('Vattenfall'),
-('Tullverket'),
-('Eltel'),
-('IBM');
+INSERT INTO client (text, logo) VALUES
+('Vattenfall', '/src/img/logos/vattenfall_logo1.png'),
+('Tullverket', '/src/img/logos/tullverket_logo.png'),
+('Eltel', '/src/img/logos/eltel_logo1.png'),
+('Ericsson', '/src/img/logos/ericsson_logo1.png'),
+('T-Systems', '/src/img/logos/t-systems.logo1.png'),
+('Tunstall', '/src/img/logos/tunstall_logo1');
 
 
-INSERT INTO appointment (room_id, client_id, text, start_Date, end_Date, recurrence_Rule) VALUES
-('1', '4', 'Meeting type 1', '2018-09-02 09:30:00', '2018-09-02 11:00:00', 'FREQ=WEEKLY;BYDAY=TU,FR;COUNT=10'),
-('2', '1', 'Meeting type 2', '2018-09-01 09:30:00', '2018-09-01 11:00:00', 'FREQ=WEEKLY;BYDAY=MO,TH;COUNT=10'),
-('3', '1', 'Meeting type 3', '2018-09-01 12:00:00', '2018-09-01 13:00:00', 'FREQ=WEEKLY;BYDAY=MO;WKST=TU;INTERVAL=2;COUNT=2'),
-('4', '2', 'Meeting type 4', '2018-09-01 09:00:00', '2018-09-01 09:15:00', 'FREQ=DAILY;BYDAY=WE;UNTIL=20190601'),
-('5', '2', 'Meeting type 5', '2018-09-26 10:00:00', '2018-09-26 11:00:00', 'FREQ=YEARLY;BYWEEKNO=23'),
-('4', '3', 'Meeting type 6', '2018-09-26 12:00:00', '2018-09-26 13:35:00', 'FREQ=YEARLY;BYWEEKNO=24;BYDAY=TH,FR'),
-('4', '3', 'Meeting type 7', '2018-09-26 14:30:00', '2018-09-26 15:45:00', 'FREQ=MONTHLY;BYMONTHDAY=28;COUNT=1'),
-('5', '4', 'Meeting type 8', '2018-09-01 09:30:00', '2018-09-01 13:00:00', 'FREQ=YEARLY;BYYEARDAY=148');
+INSERT INTO appointment (room_id, client_id, text, start_Date, end_Date) VALUES
+('1', '6', 'Meeting type 2', '2018-10-08 06:00:00', '2018-10-08 07:00:00'),
+('5', '1', 'Meeting type 2', '2018-10-08 08:00:00', '2018-10-08 09:00:00'),
+('2', '1', 'Meeting type 2', '2018-10-08 09:30:00', '2018-10-08 11:00:00'),
+('3', '1', 'Meeting type 3', '2018-10-08 12:00:00', '2018-10-08 13:00:00'),
+('4', '2', 'Meeting type 4', '2018-10-08 09:00:00', '2018-10-08 09:30:00'),
+('4', '2', 'Meeting type 4', '2018-10-08 10:00:00', '2018-10-08 11:00:00'),
+('3', '3', 'Meeting type 1', '2018-10-09 06:00:00', '2018-10-09 07:00:00'),
+('4', '5', 'Meeting type 1', '2018-10-09 08:30:00', '2018-10-09 09:30:00'),
+('1', '4', 'Meeting type 1', '2018-10-09 09:30:00', '2018-10-09 11:00:00'),
+('5', '2', 'Meeting type 5', '2018-10-26 10:00:00', '2018-10-26 11:00:00'),
+('4', '3', 'Meeting type 6', '2018-10-26 12:00:00', '2018-10-26 13:35:00'),
+('4', '3', 'Meeting type 7', '2018-10-26 14:30:00', '2018-10-26 15:45:00'),
+('5', '4', 'Meeting type 8', '2018-10-08 09:30:00', '2018-10-08 13:00:00');

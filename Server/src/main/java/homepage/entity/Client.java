@@ -14,6 +14,7 @@ public class Client {
     private int id;
 
     private String text;
+    private String logo;
 
     @JsonGetter("id")
     public int getId() {
@@ -33,4 +34,12 @@ public class Client {
         this.text = text;
     }
 
+    @JsonGetter("logo")
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 }

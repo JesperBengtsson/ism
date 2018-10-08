@@ -14,36 +14,36 @@ import { IClient } from '../iclient';
 import { IRoom } from '../iroom';
 
 @Component({
-  selector: 'calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css'],
-  providers: [DataService]
+    selector: 'calendar',
+    templateUrl: './calendar.component.html',
+    styleUrls: ['./calendar.component.css'],
+    providers: [DataService]
 })
 export class CalendarComponent implements OnInit {
- 
+
     @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
     @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
     @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
-    
+
     countDown: Subscription;
     timer = (60 * 3);
-    
+
     currentDate: Date = new Date(Date());
-//    appointmentsData: IAppointment[];
+    //    appointmentsData: IAppointment[];
     appointmentsData: any = {};
     roomsData: IRoom[];
     clientsData: IClient[];
     groups: any;
     crossScrollingEnabled: boolean = false;
-    
+
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
     contextMenuTargetedAppointmentData: any;
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
-    
+
     store: CustomStore;
-    constructor(private _dataService: DataService, private _route : Router, @Inject(HttpClient) httpClient: HttpClient) {
+    constructor(private _dataService: DataService, private _route: Router, @Inject(HttpClient) httpClient: HttpClient) {
         let serviceUrl = "http://localhost:8080/api";
 
         this.appointmentsData = new DataSource({
@@ -59,27 +59,32 @@ export class CalendarComponent implements OnInit {
                     //TODO OVERLAP CHECKER
                 },
                 insert: (values) => {
-                    return httpClient.post(serviceUrl + '/postappointment', values)
-                        .toPromise();
+                    if (values.room != null) {
+                        return httpClient.post(serviceUrl + '/postappointment', values)
+                            .toPromise();
+                    }
                 },
                 onInserted: (key) => {
-                        return this.appointmentsData.reload(key);
+                    return this.appointmentsData.reload(key);
                 },
                 onUpdating: () => {
                     //TODO OVERLAP CHECKER
                 },
                 update: (key, values) => {
-                    if(values.room.id.length === 1){
+                    if (values.room.id.length === 1) {
                         values.room.id = values.room.id[0];
                         values.client.id = values.client.id[0];
                     }
-                    return httpClient.put((serviceUrl + '/editappointment/') + key.id, values)
-                        .toPromise();
+                    if (values.room != null) {
+                        return httpClient.put((serviceUrl + '/editappointment/') + key.id, values)
+                            .toPromise();
+                    }
                 },
                 onUpdated: (key) => {
                     return this.appointmentsData.reload(key);
-                },/*
-                remove: (key) => {
+                },
+                //tslint is not accepting the remove function but it still works
+                /*remove: (key) => {
                     return httpClient.delete((serviceUrl + '/appointment/')+ key.id)
                     .toPromise();
                 },*/
@@ -89,34 +94,41 @@ export class CalendarComponent implements OnInit {
             }),
             paginate: false
         })
-     }
-    
+    }
+
     ngOnInit() {
-        
 
         this._dataService.getAllClients()
-        .subscribe( data => {
-            this.clientsData = data;
-            JSON.stringify(data);
-        });
+            .subscribe(data => {
+                this.clientsData = data;
+                JSON.stringify(data
+                    .sort(function (a, b) {
+                        var clientA = a.text.toLowerCase(), clientB = b.text.toLowerCase();
+                        if (clientA < clientB)
+                            return -1;
+                        if (clientA > clientB)
+                            return 1;
+                        return 0;
+                    }));
+            });
 
         this._dataService.getAllRooms()
-        .subscribe( data => {
-            this.roomsData = data;
-            JSON.stringify(data);
-        });
-        
-        
+            .subscribe(data => {
+                this.roomsData = data;
+                JSON.stringify(data);
+            });
+
         this.countDown = this.startTimer(1000);
 
-//        this.appointmentsData = this._dataService.getCachedAppointments();
-        this.clientsData = this._dataService.getCachedClients();
+        //        this.appointmentsData = this._dataService.getCachedAppointments();
         this.roomsData = this._dataService.getCachedRooms();
-        
+        this.clientsData = this._dataService.getCachedClients();
+
+
         this.cellContextMenuItems = [
-            { text: 'New Appointment', onItemClick: () => this.createAppointment()},
-            { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment()},
-            { text: 'Go to Today', onItemClick: () => this.showCurrentDate()}
+            { text: 'New Appointment', onItemClick: () => this.createAppointment() },
+            { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment() },
+            { text: 'Go to Today', onItemClick: () => this.showCurrentDate() }
         ];
 
         this.appointmentContextMenuItems = [
@@ -124,57 +136,55 @@ export class CalendarComponent implements OnInit {
             { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },
         ];
     }
-    
+
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {
-            if(this.timer > 0) {
+            if (this.timer > 0) {
                 this.timer--;
             }
-            if(this.timer === 0) {
+            if (this.timer === 0) {
                 this._route.navigate(['/home']);
                 this.countDown.unsubscribe();
             }
         });
     }
 
-    onAppointmentAdded(e) {
-        console.log(e);
-    }
-
     getRoomById(id) {
-        if(id.room != null){   
-        return Query(this.roomsData).filter(["id", "=", id.room.id]).toArray()[0];
+        if (id.room != null) {
+            return Query(this.roomsData).filter(["id", "=", id.room.id]).toArray()[0];
         }
     }
-    
+
     getClientById(id) {
-        if(id.client != null) {
+        if (id.client != null) {
             return Query(this.clientsData).filter(["id", "=", id.client.id]).toArray()[0];
         }
     }
 
     setRoom(itemData) {
         let data = Object.assign({}, this.contextMenuAppointmentData, {
-            roomId: [itemData.id]
+            roomId: [itemData.room.id]
         });
-        
-        this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, data); 
+
+        this.scheduler.instance.updateAppointment(this.contextMenuAppointmentData, data);
     }
-    
+
     createAppointment() {
         this.scheduler.instance.showAppointmentPopup({
             startDate: this.contextMenuCellData.startDate
         }, true);
     }
-    
+
     createRecurringAppointment() {
         this.scheduler.instance.showAppointmentPopup({
             startDate: this.contextMenuCellData.startDate,
             recurrenceRule: "FREQ=DAILY"
         }, true);
     }
-    
+
+    /*
     groupCell() {
+
         if(this.groups && this.groups.length) {
             this.crossScrollingEnabled = false;
             this.groups=[];
@@ -187,11 +197,12 @@ export class CalendarComponent implements OnInit {
     onValueChanged() {
         this.groupCell();
     }
-    
+    */
+
     showCurrentDate() {
         this.currentDate = new Date();
     }
-    
+
     onTooltipDeleteAppointment(appointment) {
         this.scheduler.instance.deleteAppointment(appointment);
         this.scheduler.instance.hideAppointmentTooltip();
@@ -209,37 +220,37 @@ export class CalendarComponent implements OnInit {
     onContextDeleteAppointment() {
         this.scheduler.instance.deleteAppointment(this.contextMenuAppointmentData);
     }
-    
+
     onContextMenuItemClick(e) {
         e.itemData.onItemClick(e.itemData);
     }
-    
+
     onAppointmentContextMenu(e) {
         this.contextMenuAppointmentData = e.appointmentData;
         this.contextMenuTargetedAppointmentData = e.targetedAppointmentData;
     }
-    
+
     onCellContextMenu(e) {
         this.contextMenuCellData = e.cellData;
-    }  
-    
+    }
+
     onAppointmentFormCreated(e) {
         var form = e.form;
 
         console.log(form._options.items);
-        
+
 
         var startHour = new Date(e.appointmentData.startDate);
         var endHour = new Date(startHour);
-        endHour.setHours(startHour.getHours()+1);
+        endHour.setHours(startHour.getHours() + 1);
 
         form.itemOption("startDate", {
-                name: "startDate",
-                dataField: "startDate",
-                editorType: "dxDateBox",
-                editorOptions: {
+            name: "startDate",
+            dataField: "startDate",
+            editorType: "dxDateBox",
+            editorOptions: {
                 type: "time",
-                pickerType: "list"                
+                pickerType: "list"
             }
         });
         form.itemOption("endDate", {

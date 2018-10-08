@@ -122,6 +122,10 @@ export class DataService {
     this._http.get<IRoom[]>('http://localhost:8080/api/allrooms').subscribe( rooms => { this.rooms = rooms });
   }
 
+  cacheAppointmentData() {
+    this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe( appointments => { this.appointments = appointments });
+  }
+
   slides4bundles(bundle: IBundle) {
     if ( this.slides === [] ) {
       return [];
@@ -129,4 +133,21 @@ export class DataService {
     return this.slides.filter( s => s.bundle.id === bundle.id);
   }
 
+  appointmentsPerDay(appointment: IAppointment[]) {
+    var currentDate = new Date();
+    
+    return appointment.filter(a => new Date(a.startDate).getDay() === currentDate.getDay()
+      && new Date(a.startDate) <= currentDate)
+      .sort((a, b) => new Date(a.startDate).getHours() - new Date(b.startDate).getHours());
+  }
+
+  checkForClientAppointment(appointment: IAppointment[]) {
+    var currentDate = new Date();
+
+    return appointment.filter(a => new Date(a.startDate).getDay() === currentDate.getDay()
+      && new Date(a.startDate) >= currentDate
+      && a.client != null)
+      .sort((a, b) => new Date(a.startDate).getHours() - new Date(b.startDate).getHours());
+    
+  }
 }

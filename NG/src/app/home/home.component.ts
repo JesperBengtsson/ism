@@ -5,58 +5,58 @@ import { DataService } from '../data.service';
 import { ISlide } from '../islide';
 import { IBundle } from '../ibundle';
 
-declare var $ :any;
+declare var $: any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  animations: [
-    trigger('introductionTransition', [
-      state('in', style({ width: '50%' })),
-      state('out', style({ width: '100%' })),
-      transition('in <=> out', animate('200ms'))
-    ])
-  ]
-}) 
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    animations: [
+        trigger('introductionTransition', [
+            state('in', style({ width: '50%' })),
+            state('out', style({ width: '100%' })),
+            transition('in <=> out', animate('200ms'))
+        ])
+    ]
+})
 export class HomeComponent implements OnInit {
 
-  public slides: ISlide[];
-  public bundles: IBundle[];
-  public jsonTest = '';
-  public httpBase = 'http://localhost:8080/';
-  isDataAvailable: boolean = false;
-  introductionState = 'in';
+    public slides: ISlide[];
+    public bundles: IBundle[];
+    public jsonTest = '';
+    public httpBase = 'http://localhost:8080/';
+    isDataAvailable: boolean = false;
+    introductionState = 'in';
 
-  constructor(private _dataService: DataService) { }
+    constructor(private _dataService: DataService) { }
 
-  ngOnInit() {
-    this._dataService.getAllSlides()
-    .subscribe( data => {
-      this.isDataAvailable = true;
-      this.slides = data;
-      this.jsonTest = JSON.stringify(data);
-    });
-    
-    $(document).ready(function(){
-      $('#carousel-home').carousel();
-    });
-  }
+    ngOnInit() {
+        this._dataService.getAllSlides()
+            .subscribe(data => {
+                this.isDataAvailable = true;
+                this.slides = data;
+                this.jsonTest = JSON.stringify(data);
+            });
 
-  introductionInOut($event){
-    this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
-    $(document).ready(function(){
-      $('#carousel-home').carousel();
-      });
-  }
+        $(document).ready(function () {
+            $('#carousel-home').carousel();
+        });
+    }
 
-  myBundles() {
-    return this._dataService.getCachedBundles()[0];
-  }
+    introductionInOut($event) {
+        this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
+        $(document).ready(function () {
+            $('#carousel-home').carousel();
+        });
+    }
 
-  mySlides() {
-    return this._dataService.slides4bundles(this.myBundles());
-  }
+    myBundles() {
+        return this._dataService.getCachedBundles()[0];
+    }
+
+    mySlides() {
+        return this._dataService.slides4bundles(this.myBundles());
+    }
 
 
 

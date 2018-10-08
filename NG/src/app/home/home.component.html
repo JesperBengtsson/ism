@@ -1,30 +1,53 @@
-
 <div class="introduction" [@introductionTransition]="introductionState">
-    
-<!--Carousel Wrapper-->
-<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" (click)="introductionInOut($event)" *ngIf="isDataAvailable">
 
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
+    <!--Carousel Wrapper-->
+    <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" *ngIf="isDataAvailable">
 
-    <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
-      <div class="view">
-        <img class="d-block image" src="{{item.image}}" alt="First slide">
-        <div class="mask rgba-black-light"></div>
-      </div>
-      <a href="http://www.ismobile.com/">
-        <img class="logo" src="/src/img/ismlogo.png">
-      </a>
-      <div class="carousel-caption">
-        <h3 class="h3-responsive">{{item.title}}</h3>
-        <p>{{item.text}}</p>
-      </div>
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+
+            <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+                <div class="view" (click)="introductionInOut($event)">
+                    <img class="d-block image" src="{{item.image}}" alt="First slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <img class="logo" src="/src/img/ismlogo.png">
+                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                    options
+                </button>
+
+                <div class="carousel-caption" (click)="introductionInOut($event)">
+                    <h3 class="h3-responsive">{{item.title}}</h3>
+                    <p>{{item.text}}</p>
+                </div>
+            </div>
+
+        </div>
+        <!--/.Slides-->
+
     </div>
- 
-  </div>
-  <!--/.Slides-->
+    <!--/.Carousel Wrapper-->
 
-</div>
-<!--/.Carousel Wrapper-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

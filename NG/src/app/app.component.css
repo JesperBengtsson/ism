@@ -169,8 +169,8 @@
     }
 
     .meetings-content {
-        min-height: 400px;
-        max-height: 400px;
+        min-height: 250px;
+        max-height: 250px;
         overflow: hidden;
         background-color: #00000038;
         width: 90%;

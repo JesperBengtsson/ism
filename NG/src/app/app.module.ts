@@ -14,25 +14,25 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RoutingComponents
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    CarouselModule,
-    DxButtonModule,
-    DxCheckBoxModule,
-    DxContextMenuModule,
-    DxDateBoxModule,
-    DxTemplateModule,
-    DxSchedulerModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RoutingComponents
+    ],
+    imports: [
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        CarouselModule,
+        DxButtonModule,
+        DxCheckBoxModule,
+        DxContextMenuModule,
+        DxDateBoxModule,
+        DxTemplateModule,
+        DxSchedulerModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [DataService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

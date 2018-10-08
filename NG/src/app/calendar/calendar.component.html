@@ -20,16 +20,31 @@
                             [currentDate]="currentDate"
                             [dataSource]="appointmentsData"
                             [firstDayOfWeek]="1"
-                            [groups]="groups"
-                            [height]="780"
+                            [height]="875"
                             [startDayHour]="5"
                             [views]='["day", "week", "month"]'
                             (click)="timer=(60 * 3)"
                             (onCellContextMenu)="onCellContextMenu($event)"
-                            (onAppointmentAdded)="onAppointmentAdded($event)"
                             (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
                             (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
                             >
+
+                            <dxi-view
+                            type="day"
+                            name="Day"
+                            [groups]="['room.id']"
+                            ></dxi-view>
+
+                            <dxi-view
+                            type="week"
+                            name="Week"
+                            >
+                            </dxi-view>
+
+                            <dxi-view
+                            type="month"
+                            name="Month"
+                            ></dxi-view>
 
                             <dxi-resource
                                 displayExpr="text"
@@ -91,14 +106,7 @@
                             </div>
 
                         </dx-scheduler>
-<!--
-                        <div class="options">
-                            <div class="caption">Options</div>
-                            <div class="option">
-                                <dx-check-box text="Room group" (onValueChanged)="onValueChanged($event)"></dx-check-box>
-                            </div>
-                        </div>
--->
+<!-- 
                         <dx-context-menu #appointmentMenu
                             [dataSource]="appointmentContextMenuItems"
                             target=".dx-scheduler-appointment"
@@ -112,7 +120,7 @@
                         (onItemClick)="onContextMenuItemClick($event)"
                         [width]="200">
                     </dx-context-menu>
-                
+                 -->
                 </div>
             </div>
 
