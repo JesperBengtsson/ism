@@ -21,8 +21,8 @@ INSERT INTO client (text, logo) VALUES
 ('Tullverket', '/src/img/logos/tullverket_logo.png'),
 ('Eltel', '/src/img/logos/eltel_logo1.png'),
 ('Ericsson', '/src/img/logos/ericsson_logo1.png'),
-('T-Systems', '/src/img/logos/t-systems.logo1.png'),
-('Tunstall', '/src/img/logos/tunstall_logo1');
+('T-Systems', '/src/img/logos/t-systems_logo1.png'),
+('Tunstall', '/src/img/logos/tunstall_logo1.png');
 
 
 INSERT INTO appointment (room_id, client_id, text, start_Date, end_Date) VALUES

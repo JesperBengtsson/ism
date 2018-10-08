@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
 
     public slides: ISlide[];
     public bundles: IBundle[];
-    public jsonTest = '';
     public httpBase = 'http://localhost:8080/';
     isDataAvailable: boolean = false;
     introductionState = 'in';
@@ -35,8 +34,18 @@ export class HomeComponent implements OnInit {
             .subscribe(data => {
                 this.isDataAvailable = true;
                 this.slides = data;
-                this.jsonTest = JSON.stringify(data);
+                JSON.stringify(data);
             });
+
+        this._dataService.getAllBundles()
+            .subscribe(data => {
+                this.isDataAvailable = true;
+                this.bundles = data;
+                JSON.stringify(data);
+                console.log(data);
+                
+            });
+
 
         $(document).ready(function () {
             $('#carousel-home').carousel();
