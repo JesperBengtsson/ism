@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state } from '@angular/animations';
+import { FormsModule } from '@angular/forms';
 
 import { DataService } from '../data.service';
 import { ISlide } from '../islide';
@@ -20,6 +21,13 @@ declare var $: any;
     ]
 })
 export class HomeComponent implements OnInit {
+
+
+    foods: Food[] = [
+        {value: 'steak-0', viewValue: 'Steak'},
+        {value: 'pizza-1', viewValue: 'Pizza'},
+        {value: 'tacos-2', viewValue: 'Tacos'}
+      ];
 
     public slides: ISlide[];
     public bundles: IBundle[];
@@ -50,7 +58,8 @@ export class HomeComponent implements OnInit {
         $(document).ready(function () {
             $('#carousel-home').carousel();
         });
-    }
+
+   }
 
     introductionInOut($event) {
         this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
@@ -59,8 +68,13 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    myBundles() {
+    allBundles() {
         return this._dataService.getCachedBundles();
+    }
+
+    allSlides() {
+        
+        return this._dataService.getCachedSlides();
     }
 
     chooseBundle(bundle: any) {
@@ -68,7 +82,7 @@ export class HomeComponent implements OnInit {
     }
 
     mySlides() {
-        return this._dataService.slides4bundles(this.myBundles()[this.chosenBundle]);
+        return this._dataService.slides4bundles(this.allBundles()[this.chosenBundle]);
     }
 
 }

@@ -53,7 +53,7 @@
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
                                     <select [(ngModel)]="bundles" name="bundle" class="form-control">
-                                        <option [ngValue]="bundle" *ngFor="let bundle of myBundles()">
+                                        <option [ngValue]="bundle" *ngFor="let bundle of allBundles()">
                                             {{bundle.name}}
                                         </option>
                                     </select>
@@ -76,9 +76,22 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique aliquid ut
-                                    voluptas natus velit molestiae architecto quas, iste voluptatem eius enim? Tenetur
-                                    soluta consequatur dolorum. Ut maxime quo obcaecati quidem.
+<!--                                     
+                                    <select [(ngModel)]="slides" name="slide" class="form-control">
+                                        <option *ngFor="let slide of allSlides()">
+                                            {{slide.name}}
+                                        </option>
+                                    </select> -->
+
+                                    <mat-form-field>
+                                            <mat-select placeholder="Favorite food">
+                                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                                {{food.viewValue}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                        
+                                    
                                 </div>
                             </div>
                         </div>
