@@ -29,7 +29,6 @@ export class CalendarComponent implements OnInit {
     timer = (60 * 3);
 
     currentDate: Date = new Date(Date());
-    //    appointmentsData: IAppointment[];
     appointmentsData: any = {};
     roomsData: IRoom[];
     clientsData: IClient[];
@@ -97,6 +96,10 @@ export class CalendarComponent implements OnInit {
     }
 
     ngOnInit() {
+        
+        this.countDown = this.startTimer(1000);
+        this.roomsData = this._dataService.getCachedRooms();
+        this.clientsData = this._dataService.getCachedClients();
 
         this._dataService.getAllClients()
             .subscribe(data => {
@@ -117,13 +120,6 @@ export class CalendarComponent implements OnInit {
                 this.roomsData = data;
                 JSON.stringify(data);
             });
-
-        this.countDown = this.startTimer(1000);
-
-        //        this.appointmentsData = this._dataService.getCachedAppointments();
-        this.roomsData = this._dataService.getCachedRooms();
-        this.clientsData = this._dataService.getCachedClients();
-
 
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment() },
@@ -236,9 +232,6 @@ export class CalendarComponent implements OnInit {
 
     onAppointmentFormCreated(e) {
         var form = e.form;
-
-        console.log(form._options.items);
-
 
         var startHour = new Date(e.appointmentData.startDate);
         var endHour = new Date(startHour);

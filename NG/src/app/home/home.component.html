@@ -34,17 +34,73 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Choose slideshow</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Options</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" *ngFor="let bundle of bundles">
-                    {{bundle.name}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-primary">Save changes</button>
+                <div class="modal-body">
+
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne">
+                                    <button class="btn btn-link collapsed" aria-expanded="true" aria-controls="collapseOne">
+                                        Choose slideshow
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <select [(ngModel)]="bundles" name="bundle" class="form-control">
+                                        <option [ngValue]="bundle" *ngFor="let bundle of myBundles()">
+                                            {{bundle.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                                    <button (click)="chooseBundle(bundles)" value="submit" type="button" data-dismiss="modal"
+                                        class="btn btn-outline-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo">
+                                    <button class="btn btn-link collapsed" aria-expanded="false" aria-controls="collapseTwo">
+                                        Create new slideshow
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique aliquid ut
+                                    voluptas natus velit molestiae architecto quas, iste voluptatem eius enim? Tenetur
+                                    soluta consequatur dolorum. Ut maxime quo obcaecati quidem.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree">
+                                    <button class="btn btn-link collapsed" aria-expanded="false" aria-controls="collapseThree">
+                                        Create new slides
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dolorem ea, ut
+                                    quaerat enim voluptatum ad voluptatibus laborum voluptatem veniam fugiat nobis
+                                    harum dolor explicabo aliquam provident commodi distinctio repudiandae!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

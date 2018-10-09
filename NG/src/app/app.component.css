@@ -145,6 +145,10 @@
         transform: translateX(5%);
     }
 
+    .client-content {
+        min-height: 211px;
+    }
+
     .client-name {
         padding: 10px 0 10px 0;
         font-size: 5.50em;
@@ -155,7 +159,8 @@
     }
 
     .client-name img {
-        width: 40rem;
+        max-height: 130px;
+        min-height: 130px;
     }
 
     .client-info {

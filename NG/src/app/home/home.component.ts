@@ -23,30 +23,30 @@ export class HomeComponent implements OnInit {
 
     public slides: ISlide[];
     public bundles: IBundle[];
+    public chosenBundle = 0;
     public httpBase = 'http://localhost:8080/';
     isDataAvailable: boolean = false;
     introductionState = 'in';
 
     constructor(private _dataService: DataService) { }
 
-    ngOnInit() {
+    ngOnInit() {  
+
+        
         this._dataService.getAllSlides()
-            .subscribe(data => {
-                this.isDataAvailable = true;
-                this.slides = data;
-                JSON.stringify(data);
-            });
-
+        .subscribe(data => {
+            this.isDataAvailable = true;
+            this.slides = data;
+            JSON.stringify(data);
+        });
+        
         this._dataService.getAllBundles()
-            .subscribe(data => {
-                this.isDataAvailable = true;
-                this.bundles = data;
-                JSON.stringify(data);
-                console.log(data);
-                
-            });
-
-
+        .subscribe(data => {
+            this.isDataAvailable = true;
+            this.bundles = data;
+            JSON.stringify(data);
+        });
+        
         $(document).ready(function () {
             $('#carousel-home').carousel();
         });
@@ -60,13 +60,15 @@ export class HomeComponent implements OnInit {
     }
 
     myBundles() {
-        return this._dataService.getCachedBundles()[0];
+        return this._dataService.getCachedBundles();
+    }
+
+    chooseBundle(bundle: any) {
+        this.chosenBundle = (bundle.id - 1);
     }
 
     mySlides() {
-        return this._dataService.slides4bundles(this.myBundles());
+        return this._dataService.slides4bundles(this.myBundles()[this.chosenBundle]);
     }
-
-
 
 }

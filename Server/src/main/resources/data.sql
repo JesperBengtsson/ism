@@ -1,6 +1,6 @@
 INSERT INTO bundle (name) VALUES
-('Bundle 1'),
-('Bundle 2');
+('First Slideshow'),
+('Second Slideshow');
 
 INSERT INTO slide (bundle_id, name, title, text, image) VALUES
 ('1', 'Slide 1', 'SITUATION-SMART MOBILITY', 'POWERFUL, PAPER-FREE MANAGED PROCESS', '/src/img/home2.jpg'),

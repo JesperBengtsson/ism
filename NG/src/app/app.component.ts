@@ -49,7 +49,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     state = 'in';
     appointments: IAppointment[];
 
-
     constructor(private _dataService: DataService) { }
 
     ngOnInit() {
@@ -61,7 +60,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             .subscribe(data => {
                 this.appointments = data;
                 JSON.stringify(data);
-                console.log(data);
             });
     }
 
@@ -89,11 +87,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     nextClientAppointment() {
-
+        return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
+    }
+    
+    appointmentsToday() {        
+        return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
     }
 
-    appointmentsToday() {
-        return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
+    checkForClientAppointment() {
+        if(this.nextClientAppointment().length >= 1) {
+            return true;
+        } else
+            return false;
     }
 
 }
