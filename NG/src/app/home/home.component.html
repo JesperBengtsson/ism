@@ -52,17 +52,18 @@
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
-                                    <select [(ngModel)]="bundles" name="bundle" class="form-control">
-                                        <option [ngValue]="bundle" *ngFor="let bundle of allBundles()">
-                                            {{bundle.name}}
-                                        </option>
-                                    </select>
+
+                                    <mat-form-field>
+                                        <mat-select [(ngModel)]="chosenBundle" placeholder="Slideshows" name="bundle">
+                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()">
+                                                {{bundle.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
                                 </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                                    <button (click)="chooseBundle(bundles)" value="submit" type="button" data-dismiss="modal"
-                                        class="btn btn-outline-primary">Save changes</button>
-                                </div>
+
+                                
                             </div>
                         </div>
 
@@ -76,22 +77,15 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-<!--                                     
-                                    <select [(ngModel)]="slides" name="slide" class="form-control">
-                                        <option *ngFor="let slide of allSlides()">
-                                            {{slide.name}}
-                                        </option>
-                                    </select> -->
 
                                     <mat-form-field>
-                                            <mat-select placeholder="Favorite food">
-                                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                                {{food.viewValue}}
-                                              </mat-option>
-                                            </mat-select>
-                                          </mat-form-field>
-                                        
-                                    
+                                        <mat-select [(ngModel)]="slides" placeholder="Slides" name="slide" multiple>
+                                            <mat-option *ngFor="let slide of allSlides()" [value]="slide.id">
+                                                {{slide.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
                                 </div>
                             </div>
                         </div>
@@ -106,9 +100,9 @@
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dolorem ea, ut
-                                    quaerat enim voluptatum ad voluptatibus laborum voluptatem veniam fugiat nobis
-                                    harum dolor explicabo aliquam provident commodi distinctio repudiandae!
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quae optio ullam
+                                    numquam soluta, rerum explicabo quia culpa, aperiam perferendis deserunt assumenda
+                                    ipsam est vitae modi commodi nostrum. Numquam, doloribus!
                                 </div>
                             </div>
                         </div>

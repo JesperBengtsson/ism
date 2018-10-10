@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
-declare var jquery: any;
 declare var $: any;
 
 import 'hammerjs';

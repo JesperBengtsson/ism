@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state } from '@angular/animations';
-import { FormsModule } from '@angular/forms';
 
 import { DataService } from '../data.service';
 import { ISlide } from '../islide';
@@ -22,43 +21,38 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-
-    foods: Food[] = [
-        {value: 'steak-0', viewValue: 'Steak'},
-        {value: 'pizza-1', viewValue: 'Pizza'},
-        {value: 'tacos-2', viewValue: 'Tacos'}
-      ];
-
     public slides: ISlide[];
     public bundles: IBundle[];
-    public chosenBundle = 0;
+    public chosenBundle = 1;
     public httpBase = 'http://localhost:8080/';
     isDataAvailable: boolean = false;
     introductionState = 'in';
 
     constructor(private _dataService: DataService) { }
 
-    ngOnInit() {  
+    ngOnInit() {
+        var self = this;
 
-        
         this._dataService.getAllSlides()
         .subscribe(data => {
             this.isDataAvailable = true;
             this.slides = data;
             JSON.stringify(data);
         });
-        
+
         this._dataService.getAllBundles()
         .subscribe(data => {
             this.isDataAvailable = true;
             this.bundles = data;
             JSON.stringify(data);
         });
-        
+
         $(document).ready(function () {
             $('#carousel-home').carousel();
+            $('#carousel-home').on('slid.bs.carousel', function () {
+                self.isClientAvailable();
+              });
         });
-
    }
 
     introductionInOut($event) {
@@ -73,16 +67,34 @@ export class HomeComponent implements OnInit {
     }
 
     allSlides() {
-        
         return this._dataService.getCachedSlides();
     }
 
+    nextClientAppointment() {
+        return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
+    }
+
+    isClientAvailable() {
+        if(this.nextClientAppointment().length === 0) {
+            if(this.introductionState != 'out') {
+                this.introductionState = 'out';
+                $(document).ready(function () {
+                    $('#carousel-home').carousel();
+                });
+            }
+        }
+        else {
+            this.introductionState = 'in';
+        }
+    }
+
     chooseBundle(bundle: any) {
-        this.chosenBundle = (bundle.id - 1);
+        console.log(bundle)
+        this.chosenBundle = this.bundles.indexOf(bundle);
     }
 
     mySlides() {
-        return this._dataService.slides4bundles(this.allBundles()[this.chosenBundle]);
+        return this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]);
     }
 
 }
