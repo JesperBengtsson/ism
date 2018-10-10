@@ -126,6 +126,7 @@ export class DataService {
         this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe(appointments => { this.appointments = appointments });
     }
 
+    //filters slides of said bundle
     slides4bundles(bundle: IBundle) {
         if (this.slides === []) {
             return [];
@@ -133,6 +134,7 @@ export class DataService {
         return this.slides.filter(s => s.bundle.id === bundle.id);
     }
 
+    //filters out what appointments is from now > end of today
     appointmentsPerDay(appointment: IAppointment[]) {
         var currentDate = new Date();
 
@@ -141,6 +143,7 @@ export class DataService {
             .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
     }
 
+    //filters out client appointments with a 30min margin <=>
     checkForClientAppointment(appointment: IAppointment[]) {
         var currentDate = new Date();
 

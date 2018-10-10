@@ -45,12 +45,11 @@ export class CalendarComponent implements OnInit {
     constructor(private _dataService: DataService, private _route: Router, @Inject(HttpClient) httpClient: HttpClient) {
         let serviceUrl = "http://localhost:8080/api";
 
+        //CRUD
         this.appointmentsData = new DataSource({
             store: new CustomStore({
                 loadMode: "raw",
                 load: () => {
-                    console.log(httpClient.get(serviceUrl + '/allappointments')
-                        .toPromise());
                     return httpClient.get(serviceUrl + '/allappointments')
                         .toPromise();
                 },
@@ -101,11 +100,12 @@ export class CalendarComponent implements OnInit {
         this.roomsData = this._dataService.getCachedRooms();
         this.clientsData = this._dataService.getCachedClients();
 
+        //sorting clients alphabetically
         this._dataService.getAllClients()
             .subscribe(data => {
                 this.clientsData = data;
                 JSON.stringify(data
-                    .sort(function (a, b) {
+                    .sort((a, b) => {
                         var clientA = a.text.toLowerCase(), clientB = b.text.toLowerCase();
                         if (clientA < clientB)
                             return -1;
@@ -121,6 +121,7 @@ export class CalendarComponent implements OnInit {
                 JSON.stringify(data);
             });
 
+        //menu for right click (not in use)
         this.cellContextMenuItems = [
             { text: 'New Appointment', onItemClick: () => this.createAppointment() },
             { text: 'New Recurring Appointment', onItemClick: () => this.createRecurringAppointment() },
@@ -133,6 +134,7 @@ export class CalendarComponent implements OnInit {
         ];
     }
 
+    //route change after settime
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {
             if (this.timer > 0) {
@@ -233,6 +235,7 @@ export class CalendarComponent implements OnInit {
         this.contextMenuCellData = e.cellData;
     }
 
+    //edited options on create appointment popup
     onAppointmentFormCreated(e) {
         var form = e.form;
 

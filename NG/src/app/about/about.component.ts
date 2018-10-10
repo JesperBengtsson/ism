@@ -26,6 +26,7 @@ export class AboutComponent implements OnInit {
 
   }
 
+  //route change after settime
   startTimer(time: number): Subscription {
       return interval(time).subscribe(() => {
           if(this.timer > 0) {

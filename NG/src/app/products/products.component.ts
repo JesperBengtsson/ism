@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
     countDown: Subscription;
     timer = (60 * 3);
 
+    //route change after settime
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {
             if (this.timer > 0) {

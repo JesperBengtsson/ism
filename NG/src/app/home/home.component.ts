@@ -48,16 +48,15 @@ export class HomeComponent implements OnInit {
         });
 
    }
-
+    
+   //called when carousel slides
     activeSlideChange(event: any) {
         this.isClientAvailable();
     }
 
+    //toggles fullscreen <=> animation
     introductionInOut($event) {
         this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
-        $(document).ready(function () {
-            $('#carousel-home').carousel();
-        });
     }
 
     allBundles() {
@@ -72,28 +71,19 @@ export class HomeComponent implements OnInit {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
 
+    //checks for client meeting toggles fullscreen in and out
     isClientAvailable() {
         if(this.nextClientAppointment().length === 0) {
             if(this.introductionState != 'out') {
                 this.introductionState = 'out';
-                $(document).ready(function () {
-                    $('#carousel-home').carousel();
-                });
             }
         }
         else {
             this.introductionState = 'in';
-            $(document).ready(function () {
-                $('#carousel-home').carousel();
-            });
         }
     }
 
-    chooseBundle(bundle: any) {
-        console.log(bundle)
-        this.chosenBundle = this.bundles.indexOf(bundle);
-    }
-
+    //what slides to play
     mySlides() {
         return this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]);
     }

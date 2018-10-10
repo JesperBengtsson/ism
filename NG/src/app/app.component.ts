@@ -31,6 +31,7 @@ import { IAppointment } from './iappointment';
             transition('close <=> open', animate('200ms'))
         ]),
 
+        //carousel for todays meetings
         trigger('move', [
             transition('in => out', [
                 query('.meetings', stagger('300ms', [
@@ -68,6 +69,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             this.state = 'out';
         }, 0);
     }
+
+    //loops todays meeting animation
     onEnd(e) {
         this.state = 'in';
         if (e.toState === 'in') {
@@ -86,14 +89,17 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.openClose = (this.openClose === 'open') ? 'close' : 'open';
     }
 
+    //returns next client meeting
     nextClientAppointment() {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
     
+    //returns all appointments from now > end of today
     appointmentsToday() {        
         return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
     }
 
+    //bool for client meeting
     checkForClientAppointment() {
         if(this.nextClientAppointment().length >= 1) {
             return true;
