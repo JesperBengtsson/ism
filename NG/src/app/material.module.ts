@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatOptionModule,
   MatSelectModule,
-  MatToolbarModule,
-  MatCheckboxModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { 
   DxButtonModule,
@@ -26,12 +22,9 @@ import {
     DxSchedulerModule,
     DxTemplateModule,
     MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
     MatSelectModule,
-    MatToolbarModule,
-    MatCheckboxModule,
+    MatCheckboxModule
+    
   ],
   exports: [
     DxButtonModule,
@@ -41,12 +34,8 @@ import {
     DxSchedulerModule,
     DxTemplateModule,
     MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
     MatSelectModule,
-    MatToolbarModule
-    MatCheckboxModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule {}
