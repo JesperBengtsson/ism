@@ -47,13 +47,11 @@ export class HomeComponent implements OnInit {
             JSON.stringify(data);
         });
 
-        $(document).ready(function () {
-            $('#carousel-home').carousel();
-            $('#carousel-home').on('slid.bs.carousel', function () {
-                self.isClientAvailable();
-              });
-        });
    }
+
+    activeSlideChange(event: any) {
+        this.isClientAvailable();
+    }
 
     introductionInOut($event) {
         this.introductionState = (this.introductionState === 'in') ? 'out' : 'in';
@@ -85,6 +83,9 @@ export class HomeComponent implements OnInit {
         }
         else {
             this.introductionState = 'in';
+            $(document).ready(function () {
+                $('#carousel-home').carousel();
+            });
         }
     }
 

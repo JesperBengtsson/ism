@@ -1,31 +1,28 @@
 <div class="introduction" [@introductionTransition]="introductionState">
 
     <!--Carousel Wrapper-->
-    <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" *ngIf="isDataAvailable">
+    <mdb-carousel [isControls]="false" class="carousel slide" [animation]="'slide'" [interval]="5000"
+        (activeSlideChange)="activeSlideChange($event)" *ngIf="isDataAvailable" #carousel>
 
         <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-
-            <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
-                <div class="view" (click)="introductionInOut($event)">
-                    <img class="d-block image" src="{{item.image}}" alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <img class="logo" src="/src/img/ismlogo.png">
-                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
-                    options
-                </button>
-
-                <div class="carousel-caption" (click)="introductionInOut($event)">
-                    <h3 class="h3-responsive">{{item.title}}</h3>
-                    <p>{{item.text}}</p>
-                </div>
+        <mdb-carousel-item *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+            <div class="view" (click)="introductionInOut($event)">
+                <img class="d-block image" src="{{item.image}}" alt="First slide">
+                <div class="mask rgba-black-light"></div>
             </div>
+            <img class="logo" src="/src/img/ismlogo.png">
+            <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                options
+            </button>
 
-        </div>
+            <div class="carousel-caption" (click)="introductionInOut($event)">
+                <h3 class="h3-responsive">{{item.title}}</h3>
+                <p>{{item.text}}</p>
+            </div>
+        </mdb-carousel-item>
         <!--/.Slides-->
 
-    </div>
+    </mdb-carousel>
     <!--/.Carousel Wrapper-->
 
     <!-- Modal -->
@@ -63,7 +60,7 @@
 
                                 </div>
 
-                                
+
                             </div>
                         </div>
 

@@ -13,7 +13,7 @@ import 'hammerjs';
 })
 export class ProductsComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private _route: Router) { }
 
     countDown: Subscription;
     timer = (60 * 3);
@@ -21,10 +21,13 @@ export class ProductsComponent implements OnInit {
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {
             if (this.timer > 0) {
+                if(this._route.url !== '/products') {
+                    this.countDown.unsubscribe();
+                }
                 this.timer--;
             }
             if (this.timer === 0) {
-                this.router.navigate(['/home']);
+                this._route.navigate(['/home']);
                 this.countDown.unsubscribe();
             }
         });

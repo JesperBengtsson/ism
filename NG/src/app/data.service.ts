@@ -144,8 +144,8 @@ export class DataService {
     checkForClientAppointment(appointment: IAppointment[]) {
         var currentDate = new Date();
 
-        return appointment.filter(a => new Date(a.startDate).getDay() === currentDate.getDay()
-            && new Date(a.startDate) >= currentDate && a.client != null)
+        return appointment.filter(a => (new Date(a.startDate).getTime() + 1800000) >= currentDate.getTime()
+            && (new Date(a.startDate).getTime() - 1800000) <= currentDate.getTime() && a.client != null)
             .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
 
     }

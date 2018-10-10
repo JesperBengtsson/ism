@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   countDown: Subscription;
   timer = (60 * 1);
 
-  constructor(private router : Router) {}
+  constructor(private _route : Router) {}
 
   ngOnInit() {
       // do init at here for current route.
@@ -29,10 +29,13 @@ export class AboutComponent implements OnInit {
   startTimer(time: number): Subscription {
       return interval(time).subscribe(() => {
           if(this.timer > 0) {
-              this.timer--;
+            if(this._route.url !== '/about') {
+                this.countDown.unsubscribe();
+            }
+            this.timer--;
           }
           if(this.timer === 0) {
-              this.router.navigate(['/home']);
+              this._route.navigate(['/home']);
               this.countDown.unsubscribe();
           }
       });

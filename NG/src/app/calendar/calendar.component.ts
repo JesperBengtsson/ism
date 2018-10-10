@@ -136,6 +136,9 @@ export class CalendarComponent implements OnInit {
     startTimer(time: number): Subscription {
         return interval(time).subscribe(() => {
             if (this.timer > 0) {
+                if(this._route.url !== '/calendar') {
+                    this.countDown.unsubscribe();
+                }
                 this.timer--;
             }
             if (this.timer === 0) {
@@ -233,6 +236,8 @@ export class CalendarComponent implements OnInit {
     onAppointmentFormCreated(e) {
         var form = e.form;
 
+        console.log(form);
+        
         var startHour = new Date(e.appointmentData.startDate);
         var endHour = new Date(startHour);
         endHour.setHours(startHour.getHours() + 1);
@@ -255,7 +260,7 @@ export class CalendarComponent implements OnInit {
                 value: endHour,
             }
         });
-        form.itemOption("room", {
+        form.itemOption("room.id", {
             validationRules: [{
                 type: "required"
             }]
