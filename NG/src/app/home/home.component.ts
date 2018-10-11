@@ -4,6 +4,7 @@ import { animate, transition, trigger, style, state } from '@angular/animations'
 import { DataService } from '../data.service';
 import { ISlide } from '../islide';
 import { IBundle } from '../ibundle';
+import { load } from '@angular/core/src/render3/instructions';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
 
     public slides: ISlide[];
     public bundles: IBundle[];
-    public chosenBundle = 1;
+    public chosenBundle: number = 1;
+    public activeSlideIndex: number = 0;
     public httpBase = 'http://localhost:8080/';
     isDataAvailable: boolean = false;
     introductionState = 'in';
@@ -47,12 +49,18 @@ export class HomeComponent implements OnInit {
             JSON.stringify(data);
         });
 
+        $(document).ready(function () {
+            $('#carousel-home').on('slid.bs.carousel', function () {
+                self.isClientAvailable();  
+            });
+        });
    }
     
-   //called when carousel slides
-    activeSlideChange(event: any) {
-        this.isClientAvailable();
-    }
+    //called when carousel slides
+    // activeSlideChange(event: any) {
+    //     this.isClientAvailable();
+    //     console.log('event = null: ',event, 'chosenbundle: ',(this.chosenBundle - 1));
+    // }
 
     //toggles fullscreen <=> animation
     introductionInOut($event) {
@@ -83,9 +91,16 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    
+
     //what slides to play
     mySlides() {
         return this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]);
+    }
+
+    test() {
+        console.log('chosenbundle on click: ', this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]));
+        
     }
 
 }

@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatInputModule,
+  MatTabsModule
 } from '@angular/material';
 import { 
   DxButtonModule,
@@ -23,7 +25,9 @@ import {
     DxTemplateModule,
     MatButtonModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatTabsModule
     
   ],
   exports: [
@@ -35,7 +39,9 @@ import {
     DxTemplateModule,
     MatButtonModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule {}

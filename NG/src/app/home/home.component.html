@@ -1,29 +1,48 @@
 <div class="introduction" [@introductionTransition]="introductionState">
 
-    <!--Carousel Wrapper-->
-    <mdb-carousel [isControls]="false" class="carousel slide" [animation]="'slide'" [interval]="5000"
-        (activeSlideChange)="activeSlideChange($event)" *ngIf="isDataAvailable" #carousel>
+    <!--Carousel Wrapper, does swipe need to be implemented?-->
+    <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="false" *ngIf="isDataAvailable">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+                <div class="view" (click)="introductionInOut($event)">
+                    <img class="d-block image" src="{{item.image}}" alt="First slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <img class="logo" src="/src/img/ismlogo.png">
+                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                    options
+                </button>
+                <div class="carousel-caption" (click)="introductionInOut($event)">
+                    <h3 class="h3-responsive">{{item.title}}</h3>
+                    <p>{{item.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!--Slides-->
-        <mdb-carousel-item *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+    <!--/.Carousel Wrapper, try getting the slidechange working-->
+
+    <!-- <mdb-carousel [isControls]="false" class="carousel slide" [animation]="'slide'" [interval]="7000" *ngIf="isDataAvailable"
+    [(activeSlideIndex)]="activeSlideIndex" (activeSlideChange)="activeSlideChange($event)" [noPause]="true" #carousel>
+
+        
+        <mdb-carousel-item *ngFor="let item of mySlides()">
             <div class="view" (click)="introductionInOut($event)">
-                <img class="d-block image" src="{{item.image}}" alt="First slide">
+                <img class="d-block image" [src]="item.image" alt="First slide">
                 <div class="mask rgba-black-light"></div>
             </div>
             <img class="logo" src="/src/img/ismlogo.png">
             <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
                 options
             </button>
-
             <div class="carousel-caption" (click)="introductionInOut($event)">
                 <h3 class="h3-responsive">{{item.title}}</h3>
                 <p>{{item.text}}</p>
             </div>
         </mdb-carousel-item>
-        <!--/.Slides-->
+        
 
-    </mdb-carousel>
-    <!--/.Carousel Wrapper-->
+    </mdb-carousel> -->
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -52,7 +71,7 @@
 
                                     <mat-form-field>
                                         <mat-select [(ngModel)]="chosenBundle" placeholder="Slideshows" name="bundle">
-                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()">
+                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()" (click)="test()">
                                                 {{bundle.name}}
                                             </mat-option>
                                         </mat-select>
@@ -75,14 +94,21 @@
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
 
-                                    <mat-form-field>
-                                        <mat-select [(ngModel)]="slides" placeholder="Slides" name="slide" multiple>
-                                            <mat-option *ngFor="let slide of allSlides()" [value]="slide.id">
-                                                {{slide.name}}
-                                            </mat-option>
-                                        </mat-select>
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Slideshow name" required>
                                     </mat-form-field>
-
+                                    <br>
+                                    <div class="row">
+                                        <mat-form-field class="col">
+                                            <mat-select [(ngModel)]="slides" placeholder="Slides" name="slide" multiple
+                                                required>
+                                                <mat-option *ngFor="let slide of allSlides()" [value]="slide.id">
+                                                    {{slide.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <button class="btn btn-outline-primary col-sm-3" style="margin-right: 15px" disabled>Save</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
