@@ -1,0 +1,139 @@
+<div class="introduction" [@introductionTransition]="introductionState">
+
+    <!--Carousel Wrapper, does swipe need to be implemented?-->
+    <div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="false" *ngIf="isDataAvailable">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item" *ngFor="let item of mySlides(); let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+                <div class="view" (click)="introductionInOut($event)">
+                    <img class="d-block image" src="{{item.image}}" alt="First slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <img class="logo" src="/src/img/ismlogo.png">
+                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                    options
+                </button>
+                <div class="carousel-caption" (click)="introductionInOut($event)">
+                    <h3 class="h3-responsive">{{item.title}}</h3>
+                    <p>{{item.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/.Carousel Wrapper, try getting the slidechange working-->
+
+    <!-- <mdb-carousel [isControls]="false" class="carousel slide" [animation]="'slide'" [interval]="7000" *ngIf="isDataAvailable"
+    [(activeSlideIndex)]="activeSlideIndex" (activeSlideChange)="activeSlideChange($event)" [noPause]="true" #carousel>
+
+        
+        <mdb-carousel-item *ngFor="let item of mySlides()">
+            <div class="view" (click)="introductionInOut($event)">
+                <img class="d-block image" [src]="item.image" alt="First slide">
+                <div class="mask rgba-black-light"></div>
+            </div>
+            <img class="logo" src="/src/img/ismlogo.png">
+            <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                options
+            </button>
+            <div class="carousel-caption" (click)="introductionInOut($event)">
+                <h3 class="h3-responsive">{{item.title}}</h3>
+                <p>{{item.text}}</p>
+            </div>
+        </mdb-carousel-item>
+        
+
+    </mdb-carousel> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Options</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne">
+                                    <button class="btn btn-link collapsed" aria-expanded="true" aria-controls="collapseOne">
+                                        Choose slideshow
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <mat-form-field>
+                                        <mat-select [(ngModel)]="chosenBundle" placeholder="Slideshows" name="bundle">
+                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()" (click)="test()">
+                                                {{bundle.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo">
+                                    <button class="btn btn-link collapsed" aria-expanded="false" aria-controls="collapseTwo">
+                                        Create new slideshow
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput placeholder="Slideshow name" required>
+                                    </mat-form-field>
+                                    <br>
+                                    <div class="row">
+                                        <mat-form-field class="col">
+                                            <mat-select [(ngModel)]="slides" placeholder="Slides" name="slide" multiple
+                                                required>
+                                                <mat-option *ngFor="let slide of allSlides()" [value]="slide.id">
+                                                    {{slide.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <button class="btn btn-outline-primary col-sm-3" style="margin-right: 15px" disabled>Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree">
+                                    <button class="btn btn-link collapsed" aria-expanded="false" aria-controls="collapseThree">
+                                        Create new slides
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quae optio ullam
+                                    numquam soluta, rerum explicabo quia culpa, aperiam perferendis deserunt assumenda
+                                    ipsam est vitae modi commodi nostrum. Numquam, doloribus!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

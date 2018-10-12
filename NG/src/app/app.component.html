@@ -1,0 +1,93 @@
+<!-- home-page -->
+
+<div class="home-page">
+
+    <img class="background" src="/src/img/background.png">
+
+    <!-- Navigation Menu -->
+
+    <div class="home-container" (click)="hideAndShow($event)">
+
+        <div class="home-content">
+            <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
+            <div *ngIf="!checkForClientAppointment()" style="margin-bottom: 279px;"></div>
+            <div class="intro-content" *ngFor="let item of nextClientAppointment(); let i = index">
+                <div class="client-content" *ngIf="i<1">
+                    <h2 class="client-name">
+                        <!-- <img src="/src/img/logos/vattenfall_logo1.png"> -->
+                        <img src="{{item.client.logo}}" alt="{{item.client.text}}">
+                    </h2>
+                    <h2 class="client-info">Your meeting is {{item.startDate | date:'HH:mm'}} in {{item.room.text}}</h2>
+                </div>
+            </div>
+            <div class="meetings-container">
+                <h2 class="home-text-heading">Upcoming meetings</h2>
+
+                <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
+                    <div class="meetings">
+                        <div *ngFor="let appointments of appointmentsToday()">
+                            <h2>{{appointments.startDate | date:'yyyy-MM-dd HH:mm'}} in {{appointments.room.text}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu" [@toggleMenu]='openClose'>
+
+            <!-- Home Navigation Menu Button -->
+
+            <a class="nav-btn" [routerLink]="['/home']" routerLinkActive="active">
+                <img alt="" src="/src/img/portfolio.jpg">
+
+                <div class="heading">
+                    <i class="fa fa-home"></i>
+                    Home
+                </div>
+            </a>
+
+            <!-- About Navigation Menu Button -->
+
+            <a class="nav-btn" [routerLink]="['/about']" routerLinkActive="active">
+                <img alt="" src="/src/img/about.jpg">
+
+                <div class="heading">
+                    <i class="fa fa-users"></i>
+                    About
+                </div>
+            </a>
+
+            <!-- Calendar Navigation Menu Button -->
+
+            <a class="nav-btn" [routerLink]="['/calendar']" routerLinkActive="active">
+                <img alt="" src="/src/img/conference.png">
+
+                <div class="heading">
+                    <i class="fa fa-calendar"></i>
+                    Calendar
+                </div>
+            </a>
+
+            <!-- Options Navigation Menu Button -->
+
+            <a class="nav-btn" [routerLink]="['/products']" routerLinkActive="active">
+                <img alt="" src="/src/img/service.jpg">
+
+                <div class="heading">
+                    <i class="fa fa-laptop"></i>
+                    Products
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Router outlet -->
+
+    <div class="router-container" [@routerTransition]="getState(o)">
+        <router-outlet #o="outlet" class="dx-viewport">
+        </router-outlet>
+    </div>
+
+</div>

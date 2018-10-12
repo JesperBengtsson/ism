@@ -1,22 +1,4 @@
-*/target/*
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-/.idea
-.idea/
-*.iws
-*.iml
-*.ipr
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
@@ -55,11 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/

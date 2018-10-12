@@ -1,0 +1,55 @@
+
+.introduction {
+    float: right;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+    width: 50vw;
+    height: 100%;
+    font-family: 'Krub', sans-serif;
+}
+
+.view {
+    display: flex;
+    justify-content: center;
+}
+
+.d-block {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.carousel-caption {
+    bottom: inherit;
+}
+
+.carousel-caption p {
+    font-size: 26px;
+    text-shadow: 2px 2px 10px #212529;
+}
+
+.logo {
+    width: 15rem;
+    position: fixed;
+    top: 8px;
+    left: 16px;
+}
+
+.options-btn {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+}
+
+.h3-responsive {
+    font-size: 42px;
+    text-shadow: 2px 2px 10px #212529;
+}
+
+.btn {
+    font-size: 1rem;
+}
+
+.btn-link:active {
+    text-decoration: none;
+}

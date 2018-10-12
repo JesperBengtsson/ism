@@ -1,0 +1,224 @@
+
+
+<div class="introduction" (click)="timer=(60 * 3)">
+
+    <!-- TMP TMP TMP TMP Products TMP TMP TMP TMP -->
+
+    <!--( b ) Profile Page Content -->
+
+    <div class="content-container col-md-12 col-sm-12">
+
+        <div class="container">
+
+            <div class="modal fade" id="carousel">
+                <div class="modal-dialog">
+                    <div class="modal-content" (click)="timer=(60 * 3)">
+                        <div class="modal-body accordion" id="accordion">
+
+                            <!--Carousel Wrapper-->
+                            <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'"
+                                [interval]="0" (activeSlideChange)="activeSlideChange($event)" #carousel>
+
+                                <!--First slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseFirst" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="/src/img/Ismobile-blue1.jpg"
+                                            alt="First slide">
+                                        <div class="mask rgba-black-light"></div>
+                                        <div class="carousel-caption">
+                                                <div class="styling-w styling-size">BLÅ COORDINATOR</div>
+                                            <div id="collapseFirst" class="collapse" data-parent="#accordion">
+                                                    <div class="styling-w">Blå Coordinator is a comprehensive mobile workforce management solution that enables
+                                                         enterprises to mobilise their field force operations, to improve customer service by
+                                                          reducing lead times and to increase productivity. Blå Coordinator allows field personnel,
+                                                           both corporate and sub-contractors, to access enterprise processes using laptops, PDAs,
+                                                            smart phones and ordinary telephones.
+                                                    </div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/First slide-->
+
+                                <!--Second slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseSecond" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="/src/img/ismobile-red1.jpg"
+                                            alt="Second slide">
+                                        <div class="mask rgba-black-light"></div>
+                                        <div class="carousel-caption">
+                                            <div class="styling-w styling-size">SMART METER ROLLOUT</div>
+                                            <div id="collapseSecond" class="collapse" data-parent="#accordion">
+                                                <div class="styling-w">All our customer experiences are built-in into our full-blown enterprise
+                                                     workforce management solution Blå Coordinator. For high-volume applications like Smart Meter
+                                                      Rollout, we have a specific optimized mobile workforce management package (using necessary Blå
+                                                       base modules) with a predefined workflow. Offered as a cloud service.
+                                                </div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Second slide-->
+
+                                <!--Third slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseThird" data-toggle="collapse" class="collapse-toggle view w-100">
+                                        <img class="d-block w-100" src="/src/img/ismobile-mobileworkforce1.jpg"
+                                            alt="Third slide">
+                                        <div class="mask rgba-black-light"></div>
+                                        <div class="carousel-caption">
+                                            <div class="styling-size">MOBILE WORKFORCE TOOLS</div>
+                                            <div id="collapseThird" class="collapse" data-parent="#accordion">
+                                                <div class="styling-w">
+                                                        isMobile SignE - electronic signatures made easy
+                                                        Enhance your Workforce Management solution with isMobile Add-on software tools for the
+                                                         people working in the field. One such service is isMobile SignE. 
+                                                        isMobile Smart Meter Tools - manage individual meters
+                                                        Smart Meter Tools by isMobile is a set of tools that provide field technicians with methods
+                                                         to directly manage individual meters.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Third slide-->
+
+                                <!--/Fourth slide-->
+                                <mdb-carousel-item>
+                                    <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
+
+                                        <img class="d-block w-100" src="/src/img/ismobile-optimizationservies1.jpg"
+                                            alt="Fourth slide">
+                                        <div class="mask rgba-black-light"></div>
+                                        <div class="carousel-caption">
+                                                <div class="styling-size">OPTIMIZATION SERVICES</div>
+                                            <div id="collapseFourth" class="collapse" data-parent="#accordion">
+                                                <div class="styling-w">
+                                                        APPOINTMENT OPTIMIZER
+                                                        is created to solve a specific problem: to quickly optimize a large number of similar
+                                                         assignments and create near-optimal routes. When having near-optimal routes it is easy
+                                                          to propose a time-slot for an appointment to the end-customer.
+                                                          RESOURCE OPTIMIZER
+                                                            is the service for optimizing the utilization of mobile staff even in very fast-changing
+                                                             and dynamic operations. Resource Optimizer can use travel distances and expected road
+                                                              travel times to find the best situated resource for a new assignment. In addition,
+                                                               it also utilizes the skills of your personnel.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mdb-carousel-item>
+                                <!--/Fourth slide-->
+
+                                <!--/Fifth slide-->
+                                <mdb-carousel-item>
+                                        <div href="#collapseFourth" data-toggle="collapse" class="collapse-toggle view w-100">
+    
+                                            <img class="d-block w-100" src="/src/img/ismobile-logistics1.jpg"
+                                                alt="Fifth slide">
+                                            <div class="mask rgba-black-light"></div>
+                                            <div class="carousel-caption">
+                                                <div class="styling-size">LOGISTICS</div>
+                                                <div id="collapseFourth" class="collapse" data-parent="#accordion">
+                                                    <div class="styling-w">Logistics is a logistic system for keeping track of equipment in
+                                                     high-volume applications like Smart Meter Rollout projects; from production site, during central
+                                                      storage, regional warehouse storage, truck transportation to final installation. The articles
+                                                       are tracked as individuals giving complete data for each article about customer, project,
+                                                        shipment, type, serial number, location, location type (main, sub, mobile, …) , status, etc.
+
+                                                     For handling registrations of articles in an efficient way when location is changed, isMobile
+                                                      Logistics has support for mobile barcode scanning using mobile phones/tablets combined with
+                                                       internal/external scanners.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </mdb-carousel-item>
+                                    <!--/Fifth slide-->
+
+                            </mdb-carousel>
+                            <!--/.Carousel Wrapper-->
+
+                        </div><!-- /.modal-body -->
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <div class="clearfix full-height">
+                <h2 class="small-heading">OUR PRODUCTS</h2>
+
+                <div class="col">
+                    <div class="row">
+
+                        <ul class="nav nav-indicators nav-stacked">
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(0)">
+                                            <img src="/src/img/blue.png" style="width: initial" class="img-responsive col-md-12">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">BLÅ COORDINATOR</div><br>
+                                        <span class="italic-style">THE</span><span> ENTERPRISE WORKFORCE SOLUTION</span></span> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(1)">
+                                            <img src="src/img/red.png" style="width: initial" class="img-responsive col-md-12">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">SMART METER ROLLOUT</div><br>
+                                        <div>A PREDEFINED WORKFLOW FOR METER EXCHANGE</div></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(2)">
+                                            <img src="src/img/yellow.png" style="width: initial" class="img-responsive col-md-12" id="myImg">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">MOBILE WORKFORCE TOOLS</div><br>
+                                        <div>SMARTER TOOLS FOR PEOPLE IN THE FIELD</div></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(3)">
+                                            <img src="src/img/green.png" style="width: initial" class="img-responsive col-md-12">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">OPTIMIZATION SERVICES</div><br>
+                                        <div>SMARTER ROUTE PLANNING FOR HAPPIER PEOPLE</div></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="team-member-box center-block text-center">
+                                    <li><a href="#carousel" data-toggle="modal" (click)="carousel.selectSlide(4)">
+                                            <img src="src/img/teal.png" style="width: initial" class="img-responsive col-md-12">
+                                        </a></li>
+                                        <span class="styling"><br>
+                                        <div class="styling-size">LOGISTICS</div><br>
+                                        <div>SMARTER EQUIPMENT TRACKING</div></span>
+                                </div>
+                            </div>
+
+                        </ul>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- /.container -->
+
+    </div>
+    <!-- Social Media Icons [ END ] -->
+
+</div>

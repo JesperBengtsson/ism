@@ -1,0 +1,131 @@
+
+<div class="introduction" (click)="timer=(60 * 3)">
+
+    <!-- SCHEDULER -->
+
+    <div class="content-container col-md-12 col-sm-12">
+
+        <div class="clearfix full-height">
+            <h2 class="small-heading">CALENDAR</h2>
+            <div class="row" style="justify-content: center">
+                <div class="col-md-11">
+
+                        <dx-scheduler
+                            appointmentTemplate="appointment-template"
+                            appointmentTooltipTemplate="tooltip-template"
+                            currentView="week"
+                            recurrenceEditMode="series"
+                            [showAllDayPanel]="false"
+                            [crossScrollingEnabled]="crossScrollingEnabled"
+                            [currentDate]="currentDate"
+                            [dataSource]="appointmentsData"
+                            [firstDayOfWeek]="1"
+                            [height]="875"
+                            [startDayHour]="5"
+                            [views]='["day", "week", "month"]'
+                            (click)="timer=(60 * 3)"
+                            (onCellContextMenu)="onCellContextMenu($event)"
+                            (onAppointmentContextMenu)="onAppointmentContextMenu($event)"
+                            (onAppointmentFormCreated)="onAppointmentFormCreated($event)"
+                            >
+
+                            <dxi-view
+                            type="day"
+                            name="Day"
+                            [groups]="['room.id']"
+                            ></dxi-view>
+
+                            <dxi-view
+                            type="week"
+                            name="Week"
+                            >
+                            </dxi-view>
+
+                            <dxi-view
+                            type="month"
+                            name="Month"
+                            ></dxi-view>
+
+                            <dxi-resource
+                                displayExpr="text"
+                                fieldExpr="room.id"
+                                label="Room"
+                                [dataSource]="roomsData">
+                            </dxi-resource>
+
+                            <dxi-resource
+                                displayExpr="text"
+                                fieldExpr="client.id"
+                                label="Client"
+                                [dataSource]="clientsData">
+                            </dxi-resource>
+
+                            <dxo-editing
+                                [allowAdding]="true"
+                                [allowDeleting]="true"
+                                [allowDragging]="true"
+                                [allowResizing]="true"
+                                [allowUpdating]="true">
+                            </dxo-editing>
+
+                            <div *dxTemplate="let appointment of 'appointment-template'" [ngStyle]="{ backgroundColor: appointment.room.color}">
+                                <div class='appointment-preview'>
+                                    <div *ngIf="getRoomById(appointment)">
+                                        {{appointment.room.text}}
+                                    </div>
+                                    <div *ngIf="getClientById(appointment)">
+                                        {{appointment.client.text}}
+                                    </div>
+                                    <div class='dropdown-appointment-dates'>
+                                        {{(appointment.startDate | date:'shortTime') + ' - ' + (appointment.endDate | date:'shortTime')}}                 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *dxTemplate="let appointment of 'tooltip-template'">
+                                <div class="appointment-content">
+                                    <div class='appointment-tooltip'>
+                                        <img [src]="appointment.room.image"/>
+                                    </div>
+                                    <div class='appointment-text'>
+                                        <div *ngIf="appointment.text">{{appointment.text}}</div>
+                                        <div>{{appointment.room.text}}</div>
+                                        <div *ngIf="getClientById(appointment)">
+                                            {{'Client: ' + appointment.client.text}}
+                                        </div>
+                                        <div class="appointment-dates">
+                                            {{(appointment.startDate | date : 'MMM d') + ' , ' + (appointment.startDate | date:'shortTime') +
+                                            ' - ' + (appointment.endDate | date:'shortTime')}}
+                                        </div>
+                                    </div>
+                                    <div class="appointment-button">
+                                        <dx-button class ="delete-appointment" icon="trash" (onClick)="onTooltipDeleteAppointment(appointment)"></dx-button>
+                                        <dx-button class ="delete-appointment" icon="edit" (onClick)="onTooltipShowAppointment(appointment)"></dx-button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </dx-scheduler>
+<!-- 
+                        <dx-context-menu #appointmentMenu
+                            [dataSource]="appointmentContextMenuItems"
+                            target=".dx-scheduler-appointment"
+                            (onItemClick)="onContextMenuItemClick($event)"
+                            [width]="200">
+                        </dx-context-menu>
+
+                    <dx-context-menu #cellMenu
+                        [dataSource]="cellContextMenuItems"
+                        target=".dx-scheduler-date-table-cell"
+                        (onItemClick)="onContextMenuItemClick($event)"
+                        [width]="200">
+                    </dx-context-menu>
+                 -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
