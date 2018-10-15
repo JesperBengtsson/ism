@@ -28,7 +28,7 @@ export class CalendarComponent implements OnInit {
     countDown: Subscription;
     timer = (60 * 3);
 
-    currentDate: Date = new Date(Date());
+    currentDate: Date = new Date();
     appointmentsData: any = {};
     roomsData: IRoom[];
     clientsData: IClient[];
