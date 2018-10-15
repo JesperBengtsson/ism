@@ -66,6 +66,10 @@
     .full-height {
         min-height: 100vh;
     }
+
+    ::ng-deep .dx-scheduler-work-space {
+        height: 80vh;
+    }
     
     ::ng-deep .options {
         padding: 20px;

@@ -237,6 +237,7 @@
         text-align: center;
         margin: 0;
         letter-spacing: 1px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.315);
     }
     
     .nav-btn:hover .heading i {

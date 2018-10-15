@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
         });
 
         $(document).ready(function () {
+            $('#carousel-home').carousel();
             $('#carousel-home').on('slid.bs.carousel', function () {
                 self.isClientAvailable();  
             });
@@ -91,16 +92,9 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    
-
     //what slides to play
     mySlides() {
         return this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]);
-    }
-
-    test() {
-        console.log('chosenbundle on click: ', this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]));
-        
     }
 
 }

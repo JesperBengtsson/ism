@@ -82,10 +82,10 @@ export class CalendarComponent implements OnInit {
                     return this.appointmentsData.reload(key);
                 },
                 //tslint is not accepting the remove function but it still works
-                /*remove: (key) => {
+                remove: (key) => {
                     return httpClient.delete((serviceUrl + '/appointment/')+ key.id)
                     .toPromise();
-                },*/
+                },
                 onRemoved: (key) => {
                     return this.appointmentsData.reload(key);
                 }

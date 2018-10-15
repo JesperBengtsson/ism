@@ -25,7 +25,7 @@
     }
     
     .content-container {
-        left: 0;
+        
         position: relative;
         padding: 0, 10, 0, 10;
         background: #e8e7e4;
@@ -156,6 +156,6 @@
     }
 
     .full-height {
-        min-height: calc(100vh - 68px);
+        min-height: 100vh;
     }
 

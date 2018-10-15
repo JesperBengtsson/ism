@@ -9,6 +9,7 @@ import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { DataService } from './data.service';
 
 import { CarouselModule } from 'angular-bootstrap-md';
+
 import { MaterialModule } from './material.module';
 
 @NgModule({

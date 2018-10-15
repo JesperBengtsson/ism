@@ -77,6 +77,7 @@ public class MainRestController {
 
         System.out.println("POST");
         System.out.println(bundle);
+        bundleRepository.save(bundle);
 
         return "{\"ret\": \"BUNDLE THROWN\"}";
     }
@@ -86,6 +87,7 @@ public class MainRestController {
 
         System.out.println("POST");
         System.out.println(client);
+        clientRepository.save(client);
 
         return "{\"ret\": \"CLIENT THROWN\"}";
     }
@@ -95,6 +97,7 @@ public class MainRestController {
 
         System.out.println("POST");
         System.out.println(room);
+        roomRepository.save(room);
 
         return "{\"ret\": \"ROOM THROWN\"}";
     }
@@ -104,9 +107,11 @@ public class MainRestController {
 
         System.out.println("POST");
         System.out.println(slide);
+        slideRepository.save(slide);
 
         return "{\"ret\": \"SLIDE THROWN\"}";
     }
+
 
     @CrossOrigin
     @PutMapping(value = "/editappointment/{id}")

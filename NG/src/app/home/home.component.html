@@ -71,7 +71,7 @@
 
                                     <mat-form-field>
                                         <mat-select [(ngModel)]="chosenBundle" placeholder="Slideshows" name="bundle">
-                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()" (click)="test()">
+                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()">
                                                 {{bundle.name}}
                                             </mat-option>
                                         </mat-select>
