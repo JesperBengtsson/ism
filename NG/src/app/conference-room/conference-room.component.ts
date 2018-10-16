@@ -21,10 +21,12 @@ export class ConferenceRoomComponent implements OnInit {
     constructor() {
         setInterval(() => {
             this.currentDate = new Date();
-          }, (60000));
+          }, 1000);
     }
 
-    ngOnInit() {    
+    
+    ngOnInit() {
+
     }
 
     showSchedule($event) {

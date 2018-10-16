@@ -46,10 +46,21 @@
     text-shadow: 2px 2px 10px #212529;
 }
 
-.btn {
-    font-size: 1rem;
+.options-btn {
+    font-size: 1rem !important;
 }
 
 .btn-link:active {
     text-decoration: none;
 }
+
+.input-file-container {
+    position: relative;
+    width: 225px;
+  } 
+  .input-file {
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }

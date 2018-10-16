@@ -9,7 +9,7 @@
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <img class="logo" src="/src/img/ismlogo.png">
-                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-outline-light options-btn" data-toggle="modal" data-target="#homepageModal">
                     options
                 </button>
                 <div class="carousel-caption" (click)="introductionInOut($event)">
@@ -45,12 +45,12 @@
     </mdb-carousel> -->
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="homepageModal" tabindex="-1" role="dialog" aria-labelledby="homepageModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Options</h5>
+                    <h5 class="modal-title" id="homepageModalLabel">Options</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,6 +58,7 @@
                 <div class="modal-body">
 
                     <div id="accordion">
+
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne">
@@ -68,7 +69,6 @@
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
-
                                     <mat-form-field>
                                         <mat-select [(ngModel)]="chosenBundle" placeholder="Slideshows" name="bundle">
                                             <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()">
@@ -76,10 +76,7 @@
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
-
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -93,7 +90,6 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-
                                     <mat-form-field style="width: 100%">
                                         <input matInput placeholder="Slideshow name" required>
                                     </mat-form-field>
@@ -107,7 +103,8 @@
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                        <button class="btn btn-outline-primary col-sm-3" style="margin-right: 15px" disabled>Save</button>
+                                        <button class="btn btn-outline-primary col-sm-3" style="margin-right: 15px"
+                                            disabled>Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -123,14 +120,15 @@
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quae optio ullam
-                                    numquam soluta, rerum explicabo quia culpa, aperiam perferendis deserunt assumenda
-                                    ipsam est vitae modi commodi nostrum. Numquam, doloribus!
+                                    <div class="input-file-container">
+                                        <input class="input-file" id="my-file" type="file">
+                                        <label tabindex="0" for="my-file" class="btn btn-outline-primary">Select a
+                                            file...</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
