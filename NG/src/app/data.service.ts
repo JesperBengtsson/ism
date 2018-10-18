@@ -146,10 +146,9 @@ export class DataService {
     //filters out client appointments with a 30min margin <=>
     checkForClientAppointment(appointment: IAppointment[]) {
         var currentDate = new Date();
-
+        
         return appointment.filter(a => (new Date(a.startDate).getTime() + 1800000) >= currentDate.getTime()
             && (new Date(a.startDate).getTime() - 1800000) <= currentDate.getTime() && a.client != null)
             .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-
     }
 }

@@ -1,49 +1,68 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
+
+// COMPONENTS NEEDED FOR SCHEDULER
+// import { DxContextMenuComponent, DxSchedulerComponent } from 'devextreme-angular';
+// import Query from 'devextreme/data/query';
+// import CustomStore from "devextreme/data/custom_store";
+// import DataSource from "devextreme/data/data_source";
 import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
-import Query from 'devextreme/data/query';
 
-import DataSource from "devextreme/data/data_source";
 import "rxjs/add/operator/toPromise";
-import CustomStore from "devextreme/data/custom_store";
 
-import { DataService } from '../data.service';
-import { IClient } from '../iclient';
-import { IRoom } from '../iroom';
+
+// DATA FOR SCHEDULER
+// import { DataService } from '../data.service';
+// import { IClient } from '../iclient';
+// import { IRoom } from '../iroom';
 
 @Component({
     selector: 'calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.css'],
-    providers: [DataService]
+    //providers: [DataService]
 })
 export class CalendarComponent implements OnInit {
 
-    @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
-    @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
-    @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
+    // @ViewChild(DxSchedulerComponent) scheduler: DxSchedulerComponent;
+    // @ViewChild('appointmentMenu') appointmentMenu: DxContextMenuComponent;
+    // @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
 
     countDown: Subscription;
     timer = (60 * 3);
-
     currentDate: Date = new Date();
+
+    // ----------------------------------
+    // SCHEDULER CODE BELOW COMMENTED OUT
+    // ----------------------------------
+    // SCHEDULER CODE BELOW COMMENTED OUT
+    // ----------------------------------
+    // SCHEDULER CODE BELOW COMMENTED OUT
+    // ----------------------------------
+
+    /*
     appointmentsData: any = {};
     roomsData: IRoom[];
     clientsData: IClient[];
     groups: any;
     crossScrollingEnabled: boolean = false;
-
     contextMenuCellData: any;
     contextMenuAppointmentData: any;
     contextMenuTargetedAppointmentData: any;
     appointmentContextMenuItems: any;
     cellContextMenuItems: any;
 
-    store: CustomStore;
-    constructor(private _dataService: DataService, private _route: Router, @Inject(HttpClient) httpClient: HttpClient) {
-        let serviceUrl = "http://localhost:8080/api";
+    store: CustomStore; */
+
+    //  IN CONSTRUCTOR FOR SCHEDULER
+    //---------------------------------
+    // private _dataService: DataService
+    // @Inject(HttpClient) httpClient: HttpClient
+    //---------------------------------
+
+    constructor(private _route: Router) {
+        /*let serviceUrl = "http://localhost:8080/api";
 
         //CRUD
         this.appointmentsData = new DataSource({
@@ -91,12 +110,12 @@ export class CalendarComponent implements OnInit {
                 }
             }),
             paginate: false
-        })
+        })*/
     }
 
     ngOnInit() {
         
-        this.countDown = this.startTimer(1000);
+    /*    this.countDown = this.startTimer(1000);
         this.roomsData = this._dataService.getCachedRooms();
         this.clientsData = this._dataService.getCachedClients();
 
@@ -131,7 +150,7 @@ export class CalendarComponent implements OnInit {
         this.appointmentContextMenuItems = [
             { text: 'Open', onItemClick: () => this.onContextShowAppointment() },
             { text: 'Delete', onItemClick: () => this.onContextDeleteAppointment() },
-        ];
+        ]; */
     }
 
     //route change after settime
@@ -149,7 +168,7 @@ export class CalendarComponent implements OnInit {
             }
         });
     }
-
+/*
     getRoomById(id) {
         if (id.room != null) {
             return Query(this.roomsData).filter(["id", "=", id.room.id]).toArray()[0];
@@ -183,7 +202,7 @@ export class CalendarComponent implements OnInit {
         }, true);
     }
 
-    /*
+    
     groupCell() {
 
         if(this.groups && this.groups.length) {
@@ -198,53 +217,52 @@ export class CalendarComponent implements OnInit {
     onValueChanged() {
         this.groupCell();
     }
-    */
-
+    
     showCurrentDate() {
         this.currentDate = new Date();
     }
-
+    
     onTooltipDeleteAppointment(appointment) {
         this.scheduler.instance.deleteAppointment(appointment);
         this.scheduler.instance.hideAppointmentTooltip();
     }
-
+    
     onTooltipShowAppointment(appointment) {
         this.scheduler.instance.showAppointmentPopup(appointment);
         this.scheduler.instance.hideAppointmentTooltip();
     }
-
+    
     onContextShowAppointment() {
         this.scheduler.instance.showAppointmentPopup(this.contextMenuAppointmentData);
     }
-
+    
     onContextDeleteAppointment() {
         this.scheduler.instance.deleteAppointment(this.contextMenuAppointmentData);
     }
-
+    
     onContextMenuItemClick(e) {
         e.itemData.onItemClick(e.itemData);
     }
-
+    
     onAppointmentContextMenu(e) {
         this.contextMenuAppointmentData = e.appointmentData;
         this.contextMenuTargetedAppointmentData = e.targetedAppointmentData;
     }
-
+    
     onCellContextMenu(e) {
         this.contextMenuCellData = e.cellData;
     }
-
+    
     //edited options on create appointment popup
     onAppointmentFormCreated(e) {
         var form = e.form;
-
+        
         console.log(form);
         
         var startHour = new Date(e.appointmentData.startDate);
         var endHour = new Date(startHour);
         endHour.setHours(startHour.getHours() + 1);
-
+        
         form.itemOption("startDate", {
             name: "startDate",
             dataField: "startDate",
@@ -270,4 +288,5 @@ export class CalendarComponent implements OnInit {
         });
         form.itemOption("allDay", "visible", false);
     }
+    */
 }

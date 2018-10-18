@@ -1,4 +1,4 @@
-<div class="introduction" (click)="showSchedule($event)">
+<div class="introduction" (click)="showSchedule($event)" (swipeUp)="showSchedule($event)">
 
   <div class="content-container col-md-12 col-sm-12">
 
@@ -13,8 +13,8 @@
 
   <div class="schedule-container" [@toggleSchedule]='openClose'>
     <div class="schedule-content">
-      <h2 class="room-heading">CONFLUENCE</h2>
-      <h2 class="room-heading">GOES HERE</h2>
+      <iframe src="https://wiki.ismobile.com/display/ISMOBILE/calendar/3c099332-8c8e-471d-9c3b-103999fa44a9?calendarName=Red%20Conference"
+      style="width: 80vw"></iframe>
     </div>
   </div>
 </div>

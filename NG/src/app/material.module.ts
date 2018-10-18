@@ -6,23 +6,25 @@ import {
   MatInputModule,
   MatTabsModule
 } from '@angular/material';
-import { 
-  DxButtonModule,
-  DxCheckBoxModule,
-  DxContextMenuModule,
-  DxDateBoxModule,
-  DxSchedulerModule,
-  DxTemplateModule
-} from 'devextreme-angular';
+
+// MODULES FOR SCHEDULER
+// import { 
+//   DxButtonModule,
+//   DxCheckBoxModule,
+//   DxContextMenuModule,
+//   DxDateBoxModule,
+//   DxSchedulerModule,
+//   DxTemplateModule
+// } from 'devextreme-angular';
 
 @NgModule({
   imports: [
-    DxButtonModule,
-    DxCheckBoxModule,
-    DxContextMenuModule,
-    DxDateBoxModule,
-    DxSchedulerModule,
-    DxTemplateModule,
+    // DxButtonModule,
+    // DxCheckBoxModule,
+    // DxContextMenuModule,
+    // DxDateBoxModule,
+    // DxSchedulerModule,
+    // DxTemplateModule,
     MatButtonModule,
     MatSelectModule,
     MatCheckboxModule,
@@ -31,12 +33,12 @@ import {
     
   ],
   exports: [
-    DxButtonModule,
-    DxCheckBoxModule,
-    DxContextMenuModule,
-    DxDateBoxModule,
-    DxSchedulerModule,
-    DxTemplateModule,
+    // DxButtonModule,
+    // DxCheckBoxModule,
+    // DxContextMenuModule,
+    // DxDateBoxModule,
+    // DxSchedulerModule,
+    // DxTemplateModule,
     MatButtonModule,
     MatSelectModule,
     MatCheckboxModule,

@@ -47,7 +47,7 @@ import { IAppointment } from './iappointment';
 export class AppComponent implements OnInit, AfterViewInit {
 
     openClose: string = 'close';
-    state = 'in';
+    carouselState = 'in';
     appointments: IAppointment[];
 
     constructor(private _dataService: DataService) { }
@@ -66,16 +66,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         setTimeout(() => {
-            this.state = 'out';
+            this.carouselState = 'out';
         }, 0);
     }
 
     //loops todays meeting animation
     onEnd(e) {
-        this.state = 'in';
+        this.carouselState = 'in';
         if (e.toState === 'in') {
             setTimeout(() => {
-                this.state = 'out';
+                this.carouselState = 'out';
                 this._dataService.cacheAppointmentData();
             }, 0);
         }
