@@ -4,7 +4,6 @@ import { animate, transition, trigger, style, state } from '@angular/animations'
 import { DataService } from '../data.service';
 import { ISlide } from '../islide';
 import { IBundle } from '../ibundle';
-import { load } from '@angular/core/src/render3/instructions';
 
 declare var $: any;
 
