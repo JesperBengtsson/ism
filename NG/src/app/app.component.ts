@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
 import { DataService } from './data.service';
 import { IAppointment } from './iappointment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -50,18 +51,22 @@ export class AppComponent implements OnInit, AfterViewInit {
     state = 'in';
     appointments: IAppointment[];
 
-    constructor(private _dataService: DataService) { }
+    constructor(private _dataService: DataService, private _http: HttpClient) { }
 
     ngOnInit() {
         this._dataService.cacheCalendarData();
         this._dataService.cacheData();
         this._dataService.getCachedAppointments();
-
+        
+        
         this._dataService.getAllAppointments()
-            .subscribe(data => {
+        .subscribe(data => {
                 this.appointments = data;
                 JSON.stringify(data);
             });
+            
+
+           console.log(this._dataService.getAppointmentPerDate())
     }
 
     ngAfterViewInit() {
@@ -107,4 +112,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             return false;
     }
 
+    
+        
+    
+ 
 }

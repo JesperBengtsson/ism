@@ -23,10 +23,17 @@ export class ConferenceRoomComponent implements OnInit {
             this.currentDate = new Date();
           }, 1000);
     }
-
     
     ngOnInit() {
 
+    }
+
+    onLeft($event) {
+        this.openClose = 'open';
+    }
+
+    onRight($event) {
+        this.openClose = 'close';
     }
 
     showSchedule($event) {

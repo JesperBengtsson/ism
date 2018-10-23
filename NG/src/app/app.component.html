@@ -25,8 +25,8 @@
 
                 <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
                     <div class="meetings">
-                        <div *ngFor="let appointments of appointmentsToday()">
-                            <h2>{{appointments.startDate | date:'yyyy-MM-dd HH:mm'}} in {{appointments.room.text}}</h2>
+                        <div *ngFor="let appointments of result">
+                            <h2>{{appointments.start.dateTime | date:'yyyy-MM-dd HH:mm'}}</h2>
                         </div>
                     </div>
                 </div>
