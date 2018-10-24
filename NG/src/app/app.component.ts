@@ -50,8 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     openClose: string = 'close';
     state = 'in';
     appointments: IAppointment[];
-    response: any;
-
+    testArr: any = [];
 
     constructor(private _dataService: DataService, private _http: HttpClient) { }
 
@@ -63,43 +62,39 @@ export class AppComponent implements OnInit, AfterViewInit {
         .subscribe(data => {
             this.appointments = data;
             JSON.stringify(data);
-            console.log('old data: ', data)
+            console.log('old data: ',typeof data , data)
         });
-        
-        this.getCalendarData()
-        
-    }
 
-    getCalendarData() {
-        let API_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
-            CALENDAR_ID = 'g64n4pes2ku0jq49pj20a1r02g@group.calendar.google.com';
-        let dataUrl = [ 'https://www.googleapis.com/calendar/v3/calendars/',
-                CALENDAR_ID, '/events?key=', API_KEY].join('');
-            this._http.get(dataUrl)
-            .subscribe((response) => {
-                this.response = response;
-            });
     }
-
+    
     ngAfterViewInit() {
         setTimeout(() => {
             this.state = 'out';
         }, 0);
     }
-
-/*    unWrapAppointments() {
-        this._dataService.getAppointmentPerDate().then(value => {
-            return value;
-        });
+    
+    getCalendarData() {
+        this._dataService.getData()
+        .subscribe(data => {
+            var currentDate = new Date();
+            for(var i = 0; i < data.items.length; i++) {
+                if(new Date(data.items[i].start.dateTime).getDay() === currentDate.getDay()
+                && (new Date(data.items[i].start.dateTime).getTime() + 1800000) >= currentDate.getTime()){
+                    this.testArr.push(data.items[i].start.dateTime)
+                }
+            }
+        })
     }
-*/
+
+
+
     //loops todays meeting animation
     onEnd(e) {
         this.state = 'in';
         if (e.toState === 'in') {
             setTimeout(() => {
                 this.state = 'out';
-                this._dataService.cacheAppointmentData();
+                this.getCalendarData();
             }, 0);
         }
     }
@@ -107,6 +102,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     getState(outlet) {
         return outlet.activatedRouteData.state;
     }
+
+    /*testDataFilter(value: any) {
+        var currentDate = new Date();
+        console.log(value.items)
+        var test = Object.keys(value.items)
+            .filter( a => new Date(value.items[a].start.dateTime).getDay() === currentDate.getDay())
+            for(var i = 0; i < test.length; i++) {
+                return i++;
+            }
+    }*/
 
     hideAndShow($event) {
         this.openClose = (this.openClose === 'open') ? 'close' : 'open';
@@ -118,7 +123,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     
     //returns all appointments from now > end of today
-    appointmentsToday() {        
+    appointmentsToday() {    
+        console.log(this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments()))    
         return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
     }
 
