@@ -20,6 +20,7 @@ export class DataService {
     slides: ISlide[] = [];
     bundles: IBundle[] = [];
     test: any;
+    values: any[];
 
     appointments: IAppointment[] = [];
     clients: IClient[] = [];
@@ -128,28 +129,12 @@ export class DataService {
         this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe(appointments => { this.appointments = appointments });
     }
 
-    getData() {
-        let PUBLIC_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
+    getData<T>(): Observable<T> {
+        let API_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
             CALENDAR_ID = 'g64n4pes2ku0jq49pj20a1r02g@group.calendar.google.com';
         let dataUrl = [ 'https://www.googleapis.com/calendar/v3/calendars/',
-                CALENDAR_ID, '/events?key=', PUBLIC_KEY].join('');
-                return this._http.get(dataUrl).toPromise().then((data: any) => data.items);
-    }
-
-    async unWrapApiPromise() {
-        var data = this.getData().then(value => 
-            console.log(value[0].start.dateTime));
-        
-        return data;
-    }
-
-    async getAppointmentPerDate() {
-        var currentDate = new Date();
-        return this.getData().then(value =>
-            value.filter(val => new Date(val.start.dateTime).getDay() === currentDate.getDay()
-            && (new Date(val.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
-           .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
-        )
+                CALENDAR_ID, '/events?key=', API_KEY].join('');
+                return this._http.get<T>(dataUrl);
     }
 
     //filters slides of said bundle

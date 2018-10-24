@@ -50,23 +50,35 @@ export class AppComponent implements OnInit, AfterViewInit {
     openClose: string = 'close';
     state = 'in';
     appointments: IAppointment[];
+    response: any;
+
 
     constructor(private _dataService: DataService, private _http: HttpClient) { }
 
     ngOnInit() {
         this._dataService.cacheCalendarData();
         this._dataService.cacheData();
-        this._dataService.getCachedAppointments();
-        
         
         this._dataService.getAllAppointments()
         .subscribe(data => {
-                this.appointments = data;
-                JSON.stringify(data);
-            });
-            
+            this.appointments = data;
+            JSON.stringify(data);
+            console.log('old data: ', data)
+        });
+        
+        this.getCalendarData()
+        
+    }
 
-           console.log(this._dataService.getAppointmentPerDate())
+    getCalendarData() {
+        let API_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
+            CALENDAR_ID = 'g64n4pes2ku0jq49pj20a1r02g@group.calendar.google.com';
+        let dataUrl = [ 'https://www.googleapis.com/calendar/v3/calendars/',
+                CALENDAR_ID, '/events?key=', API_KEY].join('');
+            this._http.get(dataUrl)
+            .subscribe((response) => {
+                this.response = response;
+            });
     }
 
     ngAfterViewInit() {
@@ -75,6 +87,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
 
+/*    unWrapAppointments() {
+        this._dataService.getAppointmentPerDate().then(value => {
+            return value;
+        });
+    }
+*/
     //loops todays meeting animation
     onEnd(e) {
         this.state = 'in';
