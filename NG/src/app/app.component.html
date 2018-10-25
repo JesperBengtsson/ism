@@ -25,8 +25,8 @@
 
                 <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
                     <div class="meetings">
-                        <div *ngIf="testArr">
-                            <div *ngFor="let item of testArr">
+                        <div *ngIf="appointmentsTodayArray">
+                            <div *ngFor="let item of appointmentsTodayArray">
                                 <h2>{{item | date:'yyyy-MM-dd HH:mm'}}</h2>
                             </div>
 

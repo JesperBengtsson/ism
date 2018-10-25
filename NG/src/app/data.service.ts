@@ -43,6 +43,7 @@ export class DataService {
     // Slides [START]
     pushGlobMovie(slides: ISlide[]) {
         this.slides = slides;
+        
     }
 
     getCachedSlides(): ISlide[] { return this.slides; }
@@ -127,14 +128,6 @@ export class DataService {
 
     cacheAppointmentData() {
         this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe(appointments => { this.appointments = appointments });
-    }
-
-    getData<T>(): Observable<T> {
-        let API_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
-            CALENDAR_ID = 'g64n4pes2ku0jq49pj20a1r02g@group.calendar.google.com';
-        let dataUrl = [ 'https://www.googleapis.com/calendar/v3/calendars/',
-                CALENDAR_ID, '/events?key=', API_KEY].join('');
-                return this._http.get<T>(dataUrl);
     }
 
     //filters slides of said bundle

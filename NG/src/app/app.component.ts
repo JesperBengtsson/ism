@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, query, group, state, stagger, keyframes } from '@angular/animations';
 import { DataService } from './data.service';
+import { CalendarService } from './calendar.service';
 import { IAppointment } from './iappointment';
 import { HttpClient } from '@angular/common/http';
 
@@ -50,9 +51,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     openClose: string = 'close';
     state = 'in';
     appointments: IAppointment[];
-    testArr: any = [];
+    appointmentsTodayArray: any = [];
 
-    constructor(private _dataService: DataService, private _http: HttpClient) { }
+    constructor(private _dataService: DataService, private _calendarService: CalendarService, private _http: HttpClient) { }
 
     ngOnInit() {
         this._dataService.cacheCalendarData();
@@ -62,7 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         .subscribe(data => {
             this.appointments = data;
             JSON.stringify(data);
-            console.log('old data: ',typeof data , data)
+            //console.log('old data: ',typeof data , data)
         });
 
     }
@@ -74,11 +75,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     
     getTodaysCalenderData() {
-        this._dataService.getData()
+        this._calendarService.getBlueConference()
         .subscribe(data => {
+           //console.log(JSON.stringify(data));
+            
             this.appointmentsTodayFilter(data)
         })
-        console.log(this.testArr)
+        console.log(this.appointmentsTodayArray)
     }
 
     appointmentsTodayFilter(data: any) {
@@ -86,8 +89,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             for(var i = 0; i < data.items.length; i++) {
                 if(new Date(data.items[i].start.dateTime).getDay() === currentDate.getDay()
                 && (new Date(data.items[i].start.dateTime).getTime() + 1800000) >= currentDate.getTime() 
-                && !this.testArr.includes(data.items[i].start.dateTime)) {
-                    this.testArr.push(data.items[i].start.dateTime)
+                && !this.appointmentsTodayArray.includes(data.items[i].start.dateTime)) {
+                    this.appointmentsTodayArray.push(data.items[i].start.dateTime)
                 }
             }
     }
