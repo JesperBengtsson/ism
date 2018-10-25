@@ -73,20 +73,24 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
     
-    getCalendarData() {
+    getTodaysCalenderData() {
         this._dataService.getData()
         .subscribe(data => {
-            var currentDate = new Date();
+            this.appointmentsTodayFilter(data)
+        })
+        console.log(this.testArr)
+    }
+
+    appointmentsTodayFilter(data: any) {
+        var currentDate = new Date();
             for(var i = 0; i < data.items.length; i++) {
                 if(new Date(data.items[i].start.dateTime).getDay() === currentDate.getDay()
-                && (new Date(data.items[i].start.dateTime).getTime() + 1800000) >= currentDate.getTime()){
+                && (new Date(data.items[i].start.dateTime).getTime() + 1800000) >= currentDate.getTime() 
+                && !this.testArr.includes(data.items[i].start.dateTime)) {
                     this.testArr.push(data.items[i].start.dateTime)
                 }
             }
-        })
     }
-
-
 
     //loops todays meeting animation
     onEnd(e) {
@@ -94,7 +98,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (e.toState === 'in') {
             setTimeout(() => {
                 this.state = 'out';
-                this.getCalendarData();
+                this.getTodaysCalenderData();
             }, 0);
         }
     }
@@ -102,16 +106,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     getState(outlet) {
         return outlet.activatedRouteData.state;
     }
-
-    /*testDataFilter(value: any) {
-        var currentDate = new Date();
-        console.log(value.items)
-        var test = Object.keys(value.items)
-            .filter( a => new Date(value.items[a].start.dateTime).getDay() === currentDate.getDay())
-            for(var i = 0; i < test.length; i++) {
-                return i++;
-            }
-    }*/
 
     hideAndShow($event) {
         this.openClose = (this.openClose === 'open') ? 'close' : 'open';
