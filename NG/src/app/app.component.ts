@@ -51,48 +51,42 @@ export class AppComponent implements OnInit, AfterViewInit {
     openClose: string = 'close';
     state = 'in';
     appointments: IAppointment[];
-    appointmentsTodayArray: any = [];
 
     constructor(private _dataService: DataService, private _calendarService: CalendarService, private _http: HttpClient) { }
 
     ngOnInit() {
         this._dataService.cacheCalendarData();
         this._dataService.cacheData();
-        
+
         this._dataService.getAllAppointments()
-        .subscribe(data => {
-            this.appointments = data;
-            JSON.stringify(data);
-            //console.log('old data: ',typeof data , data)
-        });
+            .subscribe(data => {
+                this.appointments = data;
+                JSON.stringify(data);
+                //console.log('old data: ',typeof data , data)
+            });
 
     }
-    
+
     ngAfterViewInit() {
         setTimeout(() => {
             this.state = 'out';
         }, 0);
     }
-    
-    getTodaysCalenderData() {
-        this._calendarService.getBlueConference()
-        .subscribe(data => {
-           //console.log(JSON.stringify(data));
-            
-            this.appointmentsTodayFilter(data)
-        })
-        console.log(this.appointmentsTodayArray)
-    }
 
-    appointmentsTodayFilter(data: any) {
+    
+
+    allAppointmentsTodayInitAndFilter() {
+        this._calendarService.allAppointments = []
         var currentDate = new Date();
-            for(var i = 0; i < data.items.length; i++) {
-                if(new Date(data.items[i].start.dateTime).getDay() === currentDate.getDay()
-                && (new Date(data.items[i].start.dateTime).getTime() + 1800000) >= currentDate.getTime() 
-                && !this.appointmentsTodayArray.includes(data.items[i].start.dateTime)) {
-                    this.appointmentsTodayArray.push(data.items[i].start.dateTime)
-                }
+
+        for (var i = 0; i < this._calendarService.conferenceRooms.length; i++) {
+            for (var j = 0; j < this._calendarService.conferenceRooms[i].items.length; j++) {
+                this._calendarService.allAppointments.push(this._calendarService.conferenceRooms[i].items[j])
             }
+        }
+        return this._calendarService.allAppointments.filter(data => new Date(data.start.dateTime).getDay() === currentDate.getDay()
+            && (new Date(data.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
+            .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
     }
 
     //loops todays meeting animation
@@ -101,7 +95,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (e.toState === 'in') {
             setTimeout(() => {
                 this.state = 'out';
-                this.getTodaysCalenderData();
+                this._calendarService.getTodaysCalenderData();
             }, 0);
         }
     }
@@ -118,23 +112,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     nextClientAppointment() {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
-    
+
     //returns all appointments from now > end of today
-    appointmentsToday() {    
-        console.log(this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments()))    
+    appointmentsToday() {
+        console.log(this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments()))
         return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
     }
 
     //bool for client meeting
     checkForClientAppointment() {
-        if(this.nextClientAppointment().length >= 1) {
+        if (this.nextClientAppointment().length >= 1) {
             return true;
         } else
             return false;
     }
 
-    
-        
-    
- 
+
+
+
+
 }

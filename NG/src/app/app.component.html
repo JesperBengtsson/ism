@@ -24,15 +24,14 @@
                 <h2 class="home-text-heading">Upcoming meetings</h2>
 
                 <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
-                    <div class="meetings">
-                        <div *ngIf="appointmentsTodayArray">
-                            <div *ngFor="let item of appointmentsTodayArray">
-                                <h2>{{item | date:'yyyy-MM-dd HH:mm'}}</h2>
+                    <div class="meetings">    
+                            <div *ngFor="let item of allAppointmentsTodayInitAndFilter()">
+                                <h2>{{item.start.dateTime | date:'yyyy-MM-dd HH:mm'}} in {{item.organizer.displayName}}</h2>
                             </div>
 
                             <!-- <h2>{{item.start.dateTime}}</h2> -->
                             <!-- <h2>{{response.items.start.dateTime | date:'yyyy-MM-dd HH:mm'}}</h2> -->
-                        </div>
+                        
                     </div>
                 </div>
             </div>
