@@ -3,7 +3,6 @@ import { animate, transition, trigger, style, query, group, state, stagger, keyf
 import { DataService } from './data.service';
 import { CalendarService } from './calendar.service';
 import { IAppointment } from './iappointment';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -52,7 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     state = 'in';
     appointments: IAppointment[];
 
-    constructor(private _dataService: DataService, private _calendarService: CalendarService, private _http: HttpClient) { }
+    constructor(private _dataService: DataService, private _calendarService: CalendarService) { }
 
     ngOnInit() {
         this._dataService.cacheCalendarData();
@@ -62,9 +61,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             .subscribe(data => {
                 this.appointments = data;
                 JSON.stringify(data);
-                //console.log('old data: ',typeof data , data)
             });
-
     }
 
     ngAfterViewInit() {
@@ -73,8 +70,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
 
-    
-
+    //pushes all appointments to array and filters per day
     allAppointmentsTodayInitAndFilter() {
         this._calendarService.allAppointments = []
         var currentDate = new Date();
@@ -84,7 +80,8 @@ export class AppComponent implements OnInit, AfterViewInit {
                 this._calendarService.allAppointments.push(this._calendarService.conferenceRooms[i].items[j])
             }
         }
-        return this._calendarService.allAppointments.filter(data => new Date(data.start.dateTime).getDay() === currentDate.getDay()
+        return this._calendarService.allAppointments.filter(data => 
+            new Date(data.start.dateTime).getDay() === currentDate.getDay()
             && (new Date(data.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
             .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
     }
@@ -115,7 +112,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     //returns all appointments from now > end of today
     appointmentsToday() {
-        console.log(this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments()))
         return this._dataService.appointmentsPerDay(this._dataService.getCachedAppointments());
     }
 
@@ -126,9 +122,5 @@ export class AppComponent implements OnInit, AfterViewInit {
         } else
             return false;
     }
-
-
-
-
 
 }
