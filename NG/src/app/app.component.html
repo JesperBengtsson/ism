@@ -10,16 +10,17 @@
 
         <div class="home-content">
             <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
-            <div *ngIf="!checkForClientAppointment()" style="margin-bottom: 279px;"></div>
-            <div class="intro-content" *ngFor="let item of nextClientAppointment(); let i = index">
-                <div class="client-content" *ngIf="i<1">
+            <!-- <div style="margin-bottom: 279px;"> -->
+            <div class="intro-content" >
+                <div class="client-content">
                     <h2 class="client-name">
-                        <!-- <img src="/src/img/logos/vattenfall_logo1.png"> -->
-                        <img src="{{item.client.logo}}" alt="{{item.client.text}}">
+                        <h2 class="client-info">{{returnNextClientMeeting()}}</h2>
+                        <!-- <img src="{{item.client.logo}}" alt="{{item.client.text}}"> -->
                     </h2>
-                    <h2 class="client-info">Your meeting is {{item.startDate | date:'HH:mm'}} in {{item.room.text}}</h2>
-                </div>
+                    <!-- <h2 class="client-info">Your meeting is {{item.startDate | date:'HH:mm'}} in {{item.room.text}}</h2> -->
+                <!-- </div> -->
             </div>
+        </div>
             <div class="meetings-container">
                 <h2 class="home-text-heading">Upcoming meetings</h2>
 

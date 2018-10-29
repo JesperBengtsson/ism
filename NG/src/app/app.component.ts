@@ -3,6 +3,7 @@ import { animate, transition, trigger, style, query, group, state, stagger, keyf
 import { DataService } from './data.service';
 import { CalendarService } from './calendar.service';
 import { IAppointment } from './iappointment';
+import { truncate } from 'fs';
 
 @Component({
     selector: 'app-root',
@@ -74,6 +75,7 @@ export class AppComponent implements OnInit, AfterViewInit {
                 this._calendarService.allAppointments.push(this._calendarService.conferenceRooms[i].items[j])
             }
         }
+        this.returnNextClientMeeting()
         return this._calendarService.allAppointments.filter(data => 
             new Date(data.start.dateTime).getDay() === currentDate.getDay()
             && (new Date(data.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
@@ -102,6 +104,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     //returns next client meeting
     nextClientAppointment() {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
+    }
+
+    returnNextClientMeeting() {
+        for(var i = 0; i < this._calendarService.allAppointments.length; i++) {
+            if(this._calendarService.allAppointments[i].description !== undefined) {
+                if(this._calendarService.allAppointments[i].description.includes('#')) {
+                    return (this._calendarService.allAppointments[i].description.slice(1, -1))
+                }
+            }
+        }
+    }
+
+    checkForClientMeeting() {
+        if(this.returnNextClientMeeting()) {
+            return true;
+        } else
+            return false;
     }
 
     //returns all appointments from now > end of today
