@@ -54,14 +54,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     constructor(private _dataService: DataService, private _calendarService: CalendarService) { }
 
     ngOnInit() {
-        this._dataService.cacheCalendarData();
         this._dataService.cacheData();
 
-        this._dataService.getAllAppointments()
-            .subscribe(data => {
-                this.appointments = data;
-                JSON.stringify(data);
-            });
     }
 
     ngAfterViewInit() {

@@ -24,15 +24,8 @@
 }
 
 .schedule-content {
-    color: #fff;
-    font: "Roboto", Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
     height: 100%;
-    position: relative;
-    background-image: linear-gradient(to bottom right, #5C258D, #4389A2);
 }
 
 h1 {
@@ -54,8 +47,7 @@ h2.room-heading {
     min-height: 6%;
     background-color: #fff;
     color: #000;
-    font-size: 30px
-    
+    font-size: 30px;
 }
 
 .calendar-heading img {

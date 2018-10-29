@@ -31,6 +31,21 @@ export class ConferenceRoomComponent implements OnInit {
     ngOnInit() {        
     }
 
+    background() {
+        if(this.getId() === 0){
+            return 'linear-gradient(to bottom right, #1A2980, #26D0CE)';
+        }
+        if(this.getId() === 1){
+            return 'linear-gradient(to right bottom, #ca1818, #29261f)';
+        }
+        if(this.getId() === 2){
+            return 'linear-gradient(to bottom right, #5C258D, #4389A2)';
+        }
+        if(this.getId() === 3){
+            return 'linear-gradient(to bottom right, #2c8a43, #4389A2)';
+        }
+    }
+
     showSchedule($event) {   
         $('iframe').attr('src', $('iframe').attr('src'));
         setTimeout(() => {
