@@ -64,7 +64,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
 
-    //pushes all appointments to array and filters per day
+    //pushes all appointments to array and filters from now > end of day
     allAppointmentsTodayInitAndFilter() {
         this._calendarService.allAppointments = []
         var currentDate = new Date();
