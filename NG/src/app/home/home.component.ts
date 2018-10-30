@@ -76,6 +76,7 @@ export class HomeComponent implements OnInit {
         return this._dataService.getCachedSlides();
     }
 
+    /*
     nextClientAppointment() {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
@@ -90,7 +91,7 @@ export class HomeComponent implements OnInit {
         else {
             this.introductionState = 'in';
         }
-    }
+    }*/
 
     //what slides to play
     mySlides() {

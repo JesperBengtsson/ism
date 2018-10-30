@@ -49,8 +49,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     openClose: string = 'close';
     state = 'in';
-    appointments: IAppointment[];
     dataIsAvaiable: boolean = false;
+   // appointments: IAppointment[];
 
     constructor(private _dataService: DataService, private _calendarService: CalendarService) { }
 
@@ -108,15 +108,11 @@ export class AppComponent implements OnInit, AfterViewInit {
             .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
     }
 
-    //returns next client meeting
-    nextClientAppointment() {
-        return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
-    }
-
+    
     //checks every event rn
     returnNextClientMeeting() {
         var currentDate = new Date();
-
+        
         for(var i = 0; i < this.allAppointmentsTodayInitAndFilter().length; i++) {
             if(this.allAppointmentsTodayInitAndFilter()[i].description !== undefined) {
                 if((new Date(this.allAppointmentsTodayInitAndFilter()[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
@@ -127,7 +123,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
         }
     }
-
+    
     checkInClientArray() {
         if(this.returnNextClientMeeting() !== undefined) {
             for(var i = 0; i < this.returnNextClientMeeting().length; i++) {
@@ -139,11 +135,17 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
         }
     }
-
+    
     checkIfLogoReady() {
         if(this.checkInClientArray() !== undefined) {
             this.dataIsAvaiable = true
         }
+    }
+    
+    /*  ---- OLD API ----
+    //returns next client meeting
+    nextClientAppointment() {
+        return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
 
     //returns all appointments from now > end of today
@@ -157,6 +159,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             return true;
         } else
             return false;
-    }
+    }*/
 
 }

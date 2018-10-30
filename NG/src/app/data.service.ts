@@ -55,8 +55,6 @@ export class DataService {
         ['adc krone', '/src/img/logos/adc_krone_logo1.png']
     ];
 
-    public SortEmmitter = new EventEmitter<string>();
-
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -65,14 +63,9 @@ export class DataService {
         this.baseUrl = 'http://localhost:8080/api/';
     }
 
-    emitSortChange(str: string) {
-        this.SortEmmitter.emit(str);
-    }
-
     // Slides [START]
     pushGlobMovie(slides: ISlide[]) {
-        this.slides = slides;
-        
+        this.slides = slides;      
     }
 
     getCachedSlides(): ISlide[] { return this.slides; }
@@ -102,9 +95,10 @@ export class DataService {
     }
     // Bundles [END]
 
-    ///// CALENDAR DATA /////
+    ///// OLD CALENDAR DATA /////
 
     // Appointments [START]
+    /*
     pushGlobAppointment(appointments: IAppointment[]) {
         this.appointments = appointments;
     }
@@ -143,12 +137,7 @@ export class DataService {
         return this._http.get<IRoom[]>('http://localhost:8080/api/allrooms');
     }
     // Rooms [END]
-
-    cacheData() {
-        this._http.get<ISlide[]>('http://localhost:8080/api/allslides').subscribe(slides => { this.slides = slides; });
-        this._http.get<IBundle[]>('http://localhost:8080/api/allbundles').subscribe(bundles => { this.bundles = bundles; });
-    }
-
+    
     cacheCalendarData() {
         this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe(appointments => { this.appointments = appointments });
         this._http.get<IClient[]>('http://localhost:8080/api/allclients').subscribe(clients => { this.clients = clients });
@@ -157,7 +146,14 @@ export class DataService {
 
     cacheAppointmentData() {
         this._http.get<IAppointment[]>('http://localhost:8080/api/allappointments').subscribe(appointments => { this.appointments = appointments });
+    
+    }*/
+    
+    cacheData() {
+        this._http.get<ISlide[]>('http://localhost:8080/api/allslides').subscribe(slides => { this.slides = slides; });
+        this._http.get<IBundle[]>('http://localhost:8080/api/allbundles').subscribe(bundles => { this.bundles = bundles; });
     }
+    
 
     //filters slides of said bundle
     slides4bundles(bundle: IBundle) {
