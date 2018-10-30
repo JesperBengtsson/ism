@@ -3,7 +3,6 @@ import { animate, transition, trigger, style, query, group, state, stagger, keyf
 import { DataService } from './data.service';
 import { CalendarService } from './calendar.service';
 import { IAppointment } from './iappointment';
-import { truncate } from 'fs';
 
 @Component({
     selector: 'app-root',
@@ -38,7 +37,7 @@ import { truncate } from 'fs';
             transition('in => out', [
                 query('.meetings', stagger('300ms', [
                     animate('20s', keyframes([
-                        style({ transform: 'translateY(18rem)', offset: 0 }),
+                        style({ transform: 'translateY(21rem)', offset: 0 }),
                         style({ transform: 'translateY(-100%)', offset: 1 }),
                     ]))]), { optional: true })
             ])
@@ -71,7 +70,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
 
-    
+
     //loops todays meeting animation
     onEnd(e) {
         this.state = 'in';
@@ -81,18 +80,18 @@ export class AppComponent implements OnInit, AfterViewInit {
             this.checkInClientArray()
             setTimeout(() => {
                 this.checkIfLogoReady()
-            }, 100);
+            }, 1000);
         }
     }
-    
+
     getState(outlet) {
         return outlet.activatedRouteData.state;
     }
-    
+
     hideAndShow($event) {
         this.openClose = (this.openClose === 'open') ? 'close' : 'open';
     }
-    
+
     //pushes all appointments to array and filters from now > end of day
     allAppointmentsTodayInitAndFilter() {
         this._calendarService.allAppointments = []

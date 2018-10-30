@@ -189,7 +189,7 @@
 
     .meetings{
         left: 10px;
-        transform: translateX(-100%);
+        transform: translateY(22rem);
     }
 
     .meetings h2 {
