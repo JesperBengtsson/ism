@@ -71,23 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 0);
     }
 
-    //pushes all appointments to array and filters from now > end of day
-    allAppointmentsTodayInitAndFilter() {
-        this._calendarService.allAppointments = []
-        var currentDate = new Date();
-
-        for (var i = 0; i < this._calendarService.conferenceRooms.length; i++) {
-            for (var j = 0; j < this._calendarService.conferenceRooms[i].items.length; j++) {
-                this._calendarService.allAppointments.push(this._calendarService.conferenceRooms[i].items[j])
-            }
-        }
-        this.returnNextClientMeeting()
-        return this._calendarService.allAppointments.filter(data => 
-            new Date(data.start.dateTime).getDay() === currentDate.getDay()
-            && (new Date(data.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
-            .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
-    }
-
+    
     //loops todays meeting animation
     onEnd(e) {
         this.state = 'in';
@@ -99,13 +83,29 @@ export class AppComponent implements OnInit, AfterViewInit {
             }, 0);
         }
     }
-
+    
     getState(outlet) {
         return outlet.activatedRouteData.state;
     }
-
+    
     hideAndShow($event) {
         this.openClose = (this.openClose === 'open') ? 'close' : 'open';
+    }
+    
+    //pushes all appointments to array and filters from now > end of day
+    allAppointmentsTodayInitAndFilter() {
+        this._calendarService.allAppointments = []
+        var currentDate = new Date();
+
+        for (var i = 0; i < this._calendarService.conferenceRooms.length; i++) {
+            for (var j = 0; j < this._calendarService.conferenceRooms[i].items.length; j++) {
+                this._calendarService.allAppointments.push(this._calendarService.conferenceRooms[i].items[j])
+            }
+        }
+        return this._calendarService.allAppointments.filter(data => 
+            new Date(data.start.dateTime).getDay() === currentDate.getDay()
+            && (new Date(data.start.dateTime).getTime() + 1800000) >= currentDate.getTime())
+            .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
     }
 
     //returns next client meeting
@@ -115,25 +115,25 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     //checks every event rn
     returnNextClientMeeting() {
+        var currentDate = new Date();
         for(var i = 0; i < this._calendarService.allAppointments.length; i++) {
             if(this._calendarService.allAppointments[i].description !== undefined) {
-                if(this._calendarService.allAppointments[i].description.includes('#')) {
-                    return(this._calendarService.allAppointments[i].description.split(' '))
+                if((new Date(this._calendarService.allAppointments[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
+                    if(this._calendarService.allAppointments[i].description.includes('#')) {
+                        return(this._calendarService.allAppointments[i].description.split(' '))
+                    }
                 }
             }
         }
     }
 
     checkInClientArray() {
-        // console.log(this.returnNextClientMeeting())
         if(this.returnNextClientMeeting() !== undefined) {
-
             for(var i = 0; i < this.returnNextClientMeeting().length; i++) {
                 for(var j = 0; j < this._dataService.clientsArray.length; j++) {
                     if(this._dataService.clientsArray[j][0].toLowerCase() === this.returnNextClientMeeting()[i].slice(1, -1).toLowerCase()) {
                         return this._dataService.clientsArray[j][1]
                     }
-                    
                 }
             }
         }
@@ -141,7 +141,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     checkIfLogoReady() {
         if(this.checkInClientArray() !== undefined) {
-            console.log('is now true')
             this.dataIsAvaiable = true
         }
     }

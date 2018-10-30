@@ -19,8 +19,9 @@
   <div class="schedule-container" [@toggleSchedule]='openClose'>
     <div class="schedule-content">
       <div class="calendar-heading" *ngIf='getCurrentConferenceRoom()'>
-        {{getCurrentConferenceRoom().summary}}
+        <div class="heading-content">{{getCurrentConferenceRoom().summary}}
         <img src='/src/img/close_sm.png' (click)='hideSchedule($event)'/>
+      </div>
       </div>
 
       <iframe *ngIf='getId() == 0' src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;mode=WEEK&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=n4979evsjdn5cpd9j0cpfjo17k%40group.calendar.google.com&amp;color=%232952A3&amp;ctz=Europe%2FStockholm"
