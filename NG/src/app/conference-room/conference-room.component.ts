@@ -49,7 +49,6 @@ export class ConferenceRoomComponent implements OnInit {
     showSchedule($event) {   
         $('iframe').attr('src', $('iframe').attr('src'));
         setTimeout(() => {
-
             this.openClose = 'open';
         }, 500)    
     }

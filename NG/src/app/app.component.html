@@ -10,14 +10,13 @@
 
         <div class="home-content">
             <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
-            <!-- <div style="margin-bottom: 279px;"> -->
             <div class="intro-content" >
+                <div style="margin-bottom: 226px;" *ngIf="!dataIsAvaiable">
+                </div>
                 <div class="client-content" *ngIf='dataIsAvaiable'>
                     <h2 class="client-name">
                         <img src="{{checkInClientArray()}}">
                     </h2>
-                    <!-- <h2 class="client-info">Your meeting is {{item.startDate | date:'HH:mm'}} in {{item.room.text}}</h2> -->
-                <!-- </div> -->
             </div>
         </div>
             <div class="meetings-container">
@@ -28,10 +27,6 @@
                             <div *ngFor="let item of allAppointmentsTodayInitAndFilter()">
                                 <h2>{{item.start.dateTime | date:'yyyy-MM-dd HH:mm'}} in {{item.organizer.displayName}}</h2>
                             </div>
-
-                            <!-- <h2>{{item.start.dateTime}}</h2> -->
-                            <!-- <h2>{{response.items.start.dateTime | date:'yyyy-MM-dd HH:mm'}}</h2> -->
-                        
                     </div>
                 </div>
             </div>

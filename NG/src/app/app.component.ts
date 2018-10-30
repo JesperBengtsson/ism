@@ -76,11 +76,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     onEnd(e) {
         this.state = 'in';
         if (e.toState === 'in') {
+            this.state = 'out';
+            this._calendarService.getTodaysCalenderData();
+            this.checkInClientArray()
             setTimeout(() => {
-                this.state = 'out';
-                this.checkInClientArray()
-                this._calendarService.getTodaysCalenderData();
-            }, 0);
+                this.checkIfLogoReady()
+            }, 100);
         }
     }
     
@@ -116,11 +117,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     //checks every event rn
     returnNextClientMeeting() {
         var currentDate = new Date();
-        for(var i = 0; i < this._calendarService.allAppointments.length; i++) {
-            if(this._calendarService.allAppointments[i].description !== undefined) {
-                if((new Date(this._calendarService.allAppointments[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
-                    if(this._calendarService.allAppointments[i].description.includes('#')) {
-                        return(this._calendarService.allAppointments[i].description.split(' '))
+
+        for(var i = 0; i < this.allAppointmentsTodayInitAndFilter().length; i++) {
+            if(this.allAppointmentsTodayInitAndFilter()[i].description !== undefined) {
+                if((new Date(this.allAppointmentsTodayInitAndFilter()[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
+                    if(this.allAppointmentsTodayInitAndFilter()[i].description.includes('#')) {
+                        return this.allAppointmentsTodayInitAndFilter()[i].description.split(' ')
                     }
                 }
             }
