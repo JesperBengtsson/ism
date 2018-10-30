@@ -112,7 +112,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     //checks every event rn
     returnNextClientMeeting() {
         var currentDate = new Date();
-        
+
         for(var i = 0; i < this.allAppointmentsTodayInitAndFilter().length; i++) {
             if(this.allAppointmentsTodayInitAndFilter()[i].description !== undefined) {
                 if((new Date(this.allAppointmentsTodayInitAndFilter()[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
@@ -123,7 +123,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
         }
     }
-    
+
+    //looks if a client is entered in description with #client# syntax and prints out logo
     checkInClientArray() {
         if(this.returnNextClientMeeting() !== undefined) {
             for(var i = 0; i < this.returnNextClientMeeting().length; i++) {

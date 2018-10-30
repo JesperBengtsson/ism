@@ -12,7 +12,7 @@ export class CalendarService {
 
     constructor(private _http: HttpClient) { }
 
-    // | GET CALENDAR EVENTS |
+    // | GET CALENDAR EVENTS FROM GOOGLE |
     getBlueConference<T>(): Observable<T> {
         let API_KEY = 'AIzaSyA2vzWK-mUU-YDrQsoRV2w9hUWaAtYXOEc',
             CALENDAR_ID = 'n4979evsjdn5cpd9j0cpfjo17k@group.calendar.google.com';
@@ -42,6 +42,7 @@ export class CalendarService {
         return this._http.get<T>(dataUrl);
     }
 
+    //subscribe all events and push them to array
     getTodaysCalenderData() {
         this.getBlueConference()
         .subscribe(blue => {
