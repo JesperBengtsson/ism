@@ -51,11 +51,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     openClose: string = 'close';
     state = 'in';
     appointments: IAppointment[];
+    dataIsAvaiable: boolean = false;
 
     constructor(private _dataService: DataService, private _calendarService: CalendarService) { }
 
     ngOnInit() {
         this._dataService.cacheData();
+        this.checkInClientArray()
+
+        setTimeout(() => {
+            this.checkIfLogoReady()
+        }, 1000)
 
     }
 
@@ -88,6 +94,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (e.toState === 'in') {
             setTimeout(() => {
                 this.state = 'out';
+                this.checkInClientArray()
                 this._calendarService.getTodaysCalenderData();
             }, 0);
         }
@@ -106,21 +113,37 @@ export class AppComponent implements OnInit, AfterViewInit {
         return this._dataService.checkForClientAppointment(this._dataService.getCachedAppointments());
     }
 
+    //checks every event rn
     returnNextClientMeeting() {
         for(var i = 0; i < this._calendarService.allAppointments.length; i++) {
             if(this._calendarService.allAppointments[i].description !== undefined) {
                 if(this._calendarService.allAppointments[i].description.includes('#')) {
-                    return (this._calendarService.allAppointments[i].description.slice(1, -1))
+                    return(this._calendarService.allAppointments[i].description.split(' '))
                 }
             }
         }
     }
 
-    checkForClientMeeting() {
-        if(this.returnNextClientMeeting()) {
-            return true;
-        } else
-            return false;
+    checkInClientArray() {
+        // console.log(this.returnNextClientMeeting())
+        if(this.returnNextClientMeeting() !== undefined) {
+
+            for(var i = 0; i < this.returnNextClientMeeting().length; i++) {
+                for(var j = 0; j < this._dataService.clientsArray.length; j++) {
+                    if(this._dataService.clientsArray[j][0].toLowerCase() === this.returnNextClientMeeting()[i].slice(1, -1).toLowerCase()) {
+                        return this._dataService.clientsArray[j][1]
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    checkIfLogoReady() {
+        if(this.checkInClientArray() !== undefined) {
+            console.log('is now true')
+            this.dataIsAvaiable = true
+        }
     }
 
     //returns all appointments from now > end of today

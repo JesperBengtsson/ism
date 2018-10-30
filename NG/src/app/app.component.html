@@ -12,10 +12,9 @@
             <h2 class="small-heading">WELCOME TO ISMOBILE</h2>
             <!-- <div style="margin-bottom: 279px;"> -->
             <div class="intro-content" >
-                <div class="client-content">
+                <div class="client-content" *ngIf='dataIsAvaiable'>
                     <h2 class="client-name">
-                        <h2 class="client-info">{{returnNextClientMeeting()}}</h2>
-                        <!-- <img src="{{item.client.logo}}" alt="{{item.client.text}}"> -->
+                        <img src="{{checkInClientArray()}}">
                     </h2>
                     <!-- <h2 class="client-info">Your meeting is {{item.startDate | date:'HH:mm'}} in {{item.room.text}}</h2> -->
                 <!-- </div> -->
