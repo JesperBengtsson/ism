@@ -12,7 +12,7 @@ declare var $: any;
     animations: [
         trigger('toggleSchedule', [
             state('open', style({ position: 'fixed', opacity: '1' })),
-            state('close', style({ opacity: '0' })),
+            state('close', style({position: 'relative' })),
             transition('open <=> close', animate('500ms'))
         ]),
     ]

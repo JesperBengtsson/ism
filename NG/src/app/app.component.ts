@@ -108,7 +108,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
     }
 
-    
+
     //checks every event rn
     returnNextClientMeeting() {
         var currentDate = new Date();

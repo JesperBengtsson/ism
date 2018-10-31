@@ -1,8 +1,8 @@
 <div class="introduction" (swipeleft)='showSchedule($event)' (swiperight)='showSchedule($event)'>
 
-  <div class="content-container col-md-12 col-sm-12" [ngStyle]="{'background-image': background()}">
+  <div class="content-container col-md-12 col-sm-12" [ngStyle]="{'background-image': background()}" [@toggleSchedule]='openClose'>
 
-    <h2 class="room-heading" *ngIf='getCurrentConferenceRoom()'>
+    <h2 class="room-heading" *ngIf='getCurrentConferenceRoom()' >
       {{getCurrentConferenceRoom().summary}}
     </h2>
     <h2 class="small-heading">
