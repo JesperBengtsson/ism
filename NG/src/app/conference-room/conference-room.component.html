@@ -9,7 +9,7 @@
       {{currentDate | date:'HH:mm'}}
     </h2>
     <div *ngIf='!checkOngoingMeeting()'>
-      <h1>No ongoing meeting</h1>
+      <h1>Available</h1>
     </div>
     <div *ngIf='checkOngoingMeeting()'>
       <h1>Ongoing meeting untill {{getOngoingMeeting().end.dateTime | date:'HH:mm'}}</h1>
