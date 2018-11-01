@@ -90,20 +90,19 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    <mat-form-field style="width: 100%">
-                                        <input matInput placeholder="Slideshow name" required>
-                                    </mat-form-field>
-                                    <br>
                                     <div class="row">
-                                        <mat-form-field class="col">
+                                        <mat-form-field style="margin-left:10px;">
+                                            <input matInput placeholder="Slideshow name" required>
+                                        </mat-form-field>
+                                        <!-- <mat-form-field class="col">
                                             <mat-select [(ngModel)]="slides" placeholder="Slides" name="slide" multiple
                                                 required>
                                                 <mat-option *ngFor="let slide of allSlides()" [value]="slide.id">
                                                     {{slide.name}}
                                                 </mat-option>
                                             </mat-select>
-                                        </mat-form-field>
-                                        <button class="btn btn-outline-primary col-sm-3" style="margin-right: 15px"
+                                        </mat-form-field> -->
+                                        <button class="btn btn-outline-primary col-sm-3" style="margin-left: 30%;"
                                             disabled>Save</button>
                                     </div>
                                 </div>
@@ -120,11 +119,28 @@
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                 <div class="card-body">
-                                    <div class="input-file-container">
-                                        <input class="input-file" id="my-file" type="file">
-                                        <label tabindex="0" for="my-file" class="btn btn-outline-primary">Select a
-                                            file...</label>
-                                    </div>
+                                    <mat-form-field class="slideshow-form">
+                                        <input matInput placeholder="Name" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="slideshow-form">
+                                        <input matInput placeholder="Caption">
+                                    </mat-form-field>
+                                    <mat-form-field class="slideshow-form">
+                                        <input matInput placeholder="Text">
+                                    </mat-form-field>
+                                    <mat-form-field class="slideshow-form">
+                                        <input matInput placeholder="Image path" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="slideshow-form">
+                                        <mat-select [(ngModel)]="bundles" placeholder="Slideshows" name="bundle">
+                                            <mat-option [value]="bundle.id" *ngFor="let bundle of allBundles()">
+                                                {{bundle.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <button class="btn btn-outline-primary slideshow-form-btn"
+                                            disabled>Save</button>
+
                                 </div>
                             </div>
                         </div>

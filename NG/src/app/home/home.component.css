@@ -58,9 +58,19 @@
     position: relative;
     width: 225px;
   } 
+  
   .input-file {
     position: absolute;
     top: 0; left: 0;
     opacity: 0;
     cursor: pointer;
+  }
+
+  .slideshow-form {
+      padding: 10px;
+  }
+
+  .slideshow-form-btn {
+      padding: 10px;
+      width: 180px;
   }
