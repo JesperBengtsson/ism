@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this._dataService.cacheData();
-        this.checkInClientArray()
+        this.returnClientLogo()
 
         setTimeout(() => {
             this.checkIfLogoReady()
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (e.toState === 'in') {
             this.state = 'out';
             this._calendarService.getTodaysCalenderData();
-            this.checkInClientArray()
+            this.returnClientLogo()
             setTimeout(() => {
                 this.checkIfLogoReady()
             }, 1000);
@@ -110,7 +110,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
     //checks every event rn
-    returnNextClientMeeting() {
+    nextClientMeeting() {
         var currentDate = new Date();
 
         for(var i = 0; i < this.allAppointmentsTodayInitAndFilter().length; i++) {
@@ -125,11 +125,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     //looks if a client is entered in description with #client# syntax and prints out logo
-    checkInClientArray() {
-        if(this.returnNextClientMeeting() !== undefined) {
-            for(var i = 0; i < this.returnNextClientMeeting().length; i++) {
+    returnClientLogo() {
+        if(this.nextClientMeeting() !== undefined) {
+            for(var i = 0; i < this.nextClientMeeting().length; i++) {
                 for(var j = 0; j < this._dataService.clientsArray.length; j++) {
-                    if(this._dataService.clientsArray[j][0].toLowerCase() === this.returnNextClientMeeting()[i].slice(1, -1).toLowerCase()) {
+                    if(this._dataService.clientsArray[j][0].toLowerCase() === this.nextClientMeeting()[i].slice(1, -1).toLowerCase()) {
                         return this._dataService.clientsArray[j][1]
                     }
                 }
@@ -138,7 +138,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     
     checkIfLogoReady() {
-        if(this.checkInClientArray() !== undefined) {
+        if(this.returnClientLogo() !== undefined) {
             this.dataIsAvaiable = true
         }
     }

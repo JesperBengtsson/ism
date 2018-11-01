@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 declare var $ :any;
