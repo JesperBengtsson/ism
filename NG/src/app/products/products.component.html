@@ -10,7 +10,7 @@
 
         <div class="container">
 
-            <div class="modal fade" id="{{'carousel' + i}}" *ngFor="let item of products; let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
+            <div class="modal fade" id="{{'carousel' + i}}" *ngFor="let item of products; let i = index">
                 <div class="modal-dialog">
                     <div class="modal-content" (click)="timer=(60 * 3)">
                         <div class="modal-body accordion" id="accordion">
@@ -27,7 +27,7 @@
                                             alt="First slide">
                                         <div class="mask rgba-black-light"></div>
                                         <div class="carousel-caption">
-                                                <div class="styling-w styling-size">{{item.name}}</div>
+                                                <div class="styling-w styling-size text-uppercase">{{item.name}}</div>
                                             <div id="collapseFirst" class="collapse" data-parent="#accordion">
                                                     <div class="styling-w">{{slides.description}}
                                                     </div>    

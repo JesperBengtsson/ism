@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { animate, transition, trigger, style, state } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarService } from '../calendar.service';
@@ -28,7 +28,7 @@ export class ConferenceRoomComponent implements OnInit {
           }, 1000);
     }
     
-    ngOnInit() {        
+    ngOnInit() {
     }
 
     background() {
