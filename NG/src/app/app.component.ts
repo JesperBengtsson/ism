@@ -115,8 +115,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         for(var i = 0; i < this.allAppointmentsTodayInitAndFilter().length; i++) {
             if(this.allAppointmentsTodayInitAndFilter()[i].description !== undefined) {
-                if((new Date(this.allAppointmentsTodayInitAndFilter()[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
-                    if(this.allAppointmentsTodayInitAndFilter()[i].description.includes('#')) {
+                if(this.allAppointmentsTodayInitAndFilter()[i].description.includes('#')) {
+                    if((new Date(this.allAppointmentsTodayInitAndFilter()[i].start.dateTime).getTime() - 1800000) <= currentDate.getTime()) {
                         return this.allAppointmentsTodayInitAndFilter()[i].description.split(' ')
                     }
                 }

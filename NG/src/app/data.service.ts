@@ -33,7 +33,9 @@ export class DataService {
         ['Tullverket', '/src/img/logos/tullverket_logo1.png'],
         ['T-Systems', '/src/img/logos/t-systems_logo1.png'],
         ['TSystems', '/src/img/logos/t-systems_logo1.png'],
-        ['Telia', '/src/img/logos/telia_logo1.png'],
+        ['Telia', '/src/img/logos/telia_logo2.png'],
+        ['Telia-company', '/src/img/logos/telia_logo1.png'],
+        ['Teliacompany', '/src/img/logos/telia_logo1.png'],
         ['Symbol', '/src/img/logos/symbol_logo1.png'],
         ['Sogeti', '/src/img/logos/sogeti_logo1.png'],
         ['sibelga', '/src/img/logos/sibelga_logo1.png'],
@@ -42,17 +44,19 @@ export class DataService {
         ['Oracle', '/src/img/logos/oracle_logo1.png'],
         ['Optimus', '/src/img/logos/optimus_logo1.png'],
         ['maintpartner', '/src/img/logos/maintpartner_logo1.png'],
-        ['Maint Partner', '/src/img/logos/maintpartner_logo1.png'],
+        ['Maint-Partner', '/src/img/logos/maintpartner_logo1.png'],
         ['Kamstrup', '/src/img/logos/kamstrup_logo1.png'],
         ['intermec', '/src/img/logos/intermec_logo1.png'],
         ['ibm', '/src/img/logos/ibm_logo1.png'],
         ['Gegenbauer', '/src/img/logos/gegenbauer_logo1.png'],
-        ['Gasnatural Fenosa', '/src/img/logos/gasnatural_fenosa_logo1.png'],
+        ['Gasnatural-Fenosa', '/src/img/logos/gasnatural_fenosa_logo1.png'],
+        ['GasnaturalFenosa', '/src/img/logos/gasnatural_fenosa_logo1.png'],
         ['Ericsson', '/src/img/logos/ericsson_logo1.png'],
         ['Enexis', '/src/img/logos/enexis_logo1.png'],
         ['Eltel', '/src/img/logos/eltel_logo1.png'],
         ['Digita', '/src/img/logos/digita_logo1.png'],
-        ['adc krone', '/src/img/logos/adc_krone_logo1.png']
+        ['adckrone', '/src/img/logos/adc_krone_logo1.png'],
+        ['adc-krone', '/src/img/logos/adc_krone_logo1.png']
     ];
 
     httpOptions = {
