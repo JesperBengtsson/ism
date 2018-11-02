@@ -36,7 +36,7 @@ import { IAppointment } from './iappointment';
         trigger('move', [
             transition('in => out', [
                 query('.meetings', stagger('300ms', [
-                    animate('20s', keyframes([
+                    animate('25s', keyframes([
                         style({ transform: 'translateY(21rem)', offset: 0 }),
                         style({ transform: 'translateY(-100%)', offset: 1 }),
                     ]))]), { optional: true })

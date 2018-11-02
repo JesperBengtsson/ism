@@ -10,8 +10,8 @@ declare var $ :any;
 })
 export class AboutComponent implements OnInit {
 
-//   countDown: Subscription;
-//   timer = (60 * 1);
+  // countDown: Subscription;
+  // timer = (60 * 1);
 
   constructor(private _route : Router) {}
 

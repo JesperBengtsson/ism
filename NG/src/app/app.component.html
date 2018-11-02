@@ -25,7 +25,8 @@
                 <div [@move]="state" (@move.done)="onEnd($event)" class="meetings-content">
                     <div class="meetings">
                         <div *ngFor="let item of allAppointmentsTodayInitAndFilter()">
-                            <h2>{{item.start.dateTime | date:'yyyy-MM-dd HH:mm'}} in {{item.organizer.displayName}}</h2>
+                            <h2>{{item.start.dateTime | date:'yyyy-MM-dd HH:mm'}} in {{item.organizer.displayName}}<br>
+                                {{item.summary}}</h2>
                         </div>
                     </div>
                 </div>

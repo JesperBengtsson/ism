@@ -69,7 +69,7 @@ export class ProductsComponent implements OnInit {
     constructor(private _route: Router) { }
 
     countDown: Subscription;
-    timer = (60 * 3);
+    timer = (180);
 
     //route change after settime
     startTimer(time: number): Subscription {

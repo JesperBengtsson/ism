@@ -21,7 +21,6 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
     
-    selectedFile: File;
     public slides: ISlide[];
     public bundles: IBundle[];
     public chosenBundle: number = 1;
@@ -96,10 +95,6 @@ export class HomeComponent implements OnInit {
     //what slides to play
     mySlides() {
         return this._dataService.slides4bundles(this.allBundles()[(this.chosenBundle - 1)]);
-    }
-
-    onFileChanged(event) {
-        this.selectedFile = event.target.files[0];
     }
 
 }
