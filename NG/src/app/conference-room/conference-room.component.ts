@@ -21,6 +21,7 @@ export class ConferenceRoomComponent implements OnInit {
 
     openClose: string = 'close';
     public currentDate: Date = new Date();
+    nextMeetingArray: any [];
 
     constructor( private _route: ActivatedRoute, private _calendarService: CalendarService) {
         setInterval(() => {
@@ -50,6 +51,7 @@ export class ConferenceRoomComponent implements OnInit {
         $('iframe').attr('src', $('iframe').attr('src'));
         setTimeout(() => {
             this.openClose = 'open';
+            console.log(this.getNextMeeting())
         }, 500)    
     }
 
@@ -82,6 +84,17 @@ export class ConferenceRoomComponent implements OnInit {
                     return this.getCurrentConferenceRoom().items[i]
                 }
             }
+        }
+    }
+
+    getNextMeeting() {
+        // this.nextMeetingArray = [];
+
+        if(this.getCurrentConferenceRoom()) {
+            // return Object.keys(this.getCurrentConferenceRoom().items)
+            // .sort((a, b) => new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())[0]
+            return this.getCurrentConferenceRoom().items.sort((a, b) =>
+            new Date(a.start.dateTime).getTime() - new Date(b.start.dateTime).getTime())
         }
     }
 

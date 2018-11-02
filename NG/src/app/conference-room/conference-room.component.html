@@ -8,8 +8,11 @@
     <h2 class="small-heading">
       {{currentDate | date:'HH:mm'}}
     </h2>
-    <div *ngIf='!checkOngoingMeeting()'>
-      <h1>Available</h1>
+    <div class="col" *ngIf='!checkOngoingMeeting()'>
+      <h1 class="row" style="justify-content: center; font-size: 4rem;">Available</h1>
+
+
+      <h1 class="row" style="justify-content: center" *ngIf='getNextMeeting()'>next meeting at {{getNextMeeting()[0].start.dateTime | date:'HH:mm'}}</h1>
     </div>
     <div *ngIf='checkOngoingMeeting()'>
       <h1>Ongoing meeting untill {{getOngoingMeeting().end.dateTime | date:'HH:mm'}}</h1>

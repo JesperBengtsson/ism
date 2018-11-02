@@ -65,5 +65,10 @@ h2.room-heading {
     margin-left: 20px;
 }
 
+.availability {
+    display: flex;
+    align-content: center;
+}
+
 
 

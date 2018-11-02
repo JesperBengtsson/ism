@@ -30,7 +30,7 @@ export class CalendarComponent implements OnInit {
     // @ViewChild('cellMenu') cellMenu: DxContextMenuComponent;
 
     countDown: Subscription;
-    timer = (60 * 3);
+    timer = (180);
     currentDate: Date = new Date();
 
     // ----------------------------------
@@ -115,8 +115,8 @@ export class CalendarComponent implements OnInit {
 
     ngOnInit() {
         
-    /*    this.countDown = this.startTimer(1000);
-        this.roomsData = this._dataService.getCachedRooms();
+        this.countDown = this.startTimer(1000);
+    /*    this.roomsData = this._dataService.getCachedRooms();
         this.clientsData = this._dataService.getCachedClients();
 
         //sorting clients alphabetically
