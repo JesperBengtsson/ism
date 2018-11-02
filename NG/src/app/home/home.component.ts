@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
         })
 
 
-        $(document).ready(function () {
+        $(document).ready(() => {
             $('#carousel-home').carousel();
             $('#carousel-home').on('slid.bs.carousel', function () {
             // self.isClientAvailable();
