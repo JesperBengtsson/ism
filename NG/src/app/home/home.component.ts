@@ -32,21 +32,16 @@ export class HomeComponent implements OnInit {
     constructor(private _dataService: DataService) { }
 
     ngOnInit() {
-        var self = this;
-
         this._dataService.getAllSlides()
-        .subscribe(data => {
-            this.isDataAvailable = true;
-            this.slides = data;
-            JSON.stringify(data);
-        });
+        .subscribe(slideData => {
+            this._dataService.getAllBundles()
+            .subscribe(bundleData => {
+                this.bundles = bundleData;
+                this.slides = slideData;
+                this.isDataAvailable = true;
+            })
+        })
 
-        this._dataService.getAllBundles()
-        .subscribe(data => {
-            this.isDataAvailable = true;
-            this.bundles = data;
-            JSON.stringify(data);
-        });
 
         $(document).ready(function () {
             $('#carousel-home').carousel();
